@@ -32,14 +32,14 @@ const servicesList: ServiceItem[] = [
     title: "Society Redevelopment Advisory",
     subtitle: "End-to-End Fiduciary Society Representation",
     description:
-      "Comprehensive advisory for cooperative housing societies across Mumbai. From general body alignment and Section 79A procedural adherence to developer selection and airtight Development Agreement execution.",
+      "Comprehensive advisory for cooperative housing societies across Mumbai. From general body alignment and Section 79A procedural adherence to developer selection and Development Agreement coordination.",
     icon: Building2,
     deliverables: ["Section 79A Compliance", "Member Consensus Building", "DA Covenant Drafting"],
   },
   {
     number: "02",
     title: "Self-Redevelopment Guidance",
-    subtitle: "Retaining 100% Equity & Surplus Value",
+    subtitle: "Society-Led Planning & Value Assessment",
     description:
       "Strategic advisory empowering societies to redevelop independently. Assisting committees with project feasibility, bank financing tie-ups, PMC appointment, and regulatory approvals without developer dependency.",
     icon: Users2,
@@ -48,11 +48,11 @@ const servicesList: ServiceItem[] = [
   {
     number: "03",
     title: "Legal & Title Due Diligence",
-    subtitle: "Airtight Risk Mitigation & Conveyance",
+    subtitle: "Title Review & Conveyance Guidance",
     description:
-      "Rigorous legal scrutiny safeguarding society land ownership. Covering 30-year title search reports, deemed conveyance clearance, CTS plan verification, and uncompromised member security covenants.",
+      "Rigorous legal scrutiny safeguarding society land ownership. Covering property-specific title investigations, deemed conveyance clearance, CTS plan verification, and uncompromised member security covenants.",
     icon: Scale,
-    deliverables: ["Deemed Conveyance", "30-Year Title Search", "MOFA & RERA Vetting"],
+    deliverables: ["Deemed Conveyance", "Title History Review", "MOFA & RERA Vetting"],
   },
   {
     number: "04",
@@ -114,7 +114,7 @@ export const ServicesSection: React.FC = () => {
         aria-hidden="true"
       />
       <div
-        className="absolute inset-0 opacity-[0.04] pointer-events-none select-none bg-[radial-gradient(#C6A66B_1px,transparent_1px)] [background-size:28px_28px]"
+        className="absolute inset-0 opacity-0 pointer-events-none select-none bg-[radial-gradient(#C6A66B_1px,transparent_1px)] [background-size:28px_28px]"
         aria-hidden="true"
       />
 
@@ -153,7 +153,7 @@ export const ServicesSection: React.FC = () => {
             viewport={{ once: true, margin: "-60px" }}
             custom={1}
             variants={fadeIn}
-            className="lg:col-span-5 flex flex-col justify-between p-8 sm:p-10 rounded-xs bg-navy-900/90 border border-gold/35 relative overflow-hidden group shadow-2xl"
+            className="lg:col-span-5 flex flex-col justify-between p-8 sm:p-10 rounded-xs bg-navy-900/90 border border-gold/35 relative overflow-hidden group shadow-none"
           >
             {/* Subtle background image accent */}
             <div className="absolute inset-0 z-0 opacity-15 transition-opacity duration-700 group-hover:opacity-25 pointer-events-none">

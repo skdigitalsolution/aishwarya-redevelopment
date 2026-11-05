@@ -16,7 +16,7 @@ const landServices = [
     description:
       "Identifying, aggregating, and holding strategic parcels in emerging growth corridors across the Mumbai Metropolitan Region (MMR). Aligned with transit-oriented infrastructure and master plan expansion.",
     icon: Compass,
-    deliverables: ["Corridor Growth Analysis", "Land Aggregation Planning", "Long-Term Capital Safety"],
+    deliverables: ["Corridor Growth Analysis", "Land Aggregation Planning", "Long-Term Holding Assessment"],
   },
   {
     number: "02",
@@ -32,9 +32,9 @@ const landServices = [
     title: "Title Due Diligence & Feasibility",
     subtitle: "Statutory Title & Regulatory Vetting",
     description:
-      "Comprehensive verification of 7/12 extracts, mutation records, CTS survey plans, DP reservation impacts, and coastal/environmental constraints to ensure 100% marketable and litigation-free title.",
+      "Comprehensive verification of 7/12 extracts, mutation records, CTS survey plans, DP reservation impacts, and coastal/environmental constraints to identify title issues and matters requiring further legal review.",
     icon: FileSearch2,
-    deliverables: ["7/12 & CTS Title Audits", "DP Reservation Feasibility", "Marketable Title Sanctions"],
+    deliverables: ["7/12 & CTS Title Audits", "DP Reservation Feasibility", "Title Issue Identification"],
   },
   {
     number: "04",
@@ -83,7 +83,7 @@ export const LandBankingSection: React.FC = () => {
               Unlocking the Potential of <span className="italic font-light text-gold-300">Every Acre.</span>
             </span>
           }
-          subtitle="Connecting strategic landholdings with institutional capital, airtight title diligence, and high-value joint development structures across Mumbai and MMR."
+          subtitle="Connecting strategic landholdings with institutional capital, property-specific title diligence, and high-value joint development structures across Mumbai and MMR."
           align="center"
           theme="dark"
         />
@@ -103,7 +103,7 @@ export const LandBankingSection: React.FC = () => {
             <div className="absolute inset-0 z-0">
               <Image
                 src="/images/hero/hero-architecture-fallback.jpg"
-                alt="Strategic urban land aggregation and development in Mumbai"
+                alt="Illustrative architectural facade used as a visual backdrop for land advisory"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 className="object-cover object-center opacity-20"

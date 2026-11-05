@@ -83,10 +83,10 @@ export const FounderSection: React.FC = () => {
               />
 
               {/* Dignified Executive Placeholder Card */}
-              <div className="relative aspect-[4/5] w-full rounded-xs bg-navy-950 p-8 flex flex-col justify-between border border-gold/35 shadow-2xl text-ivory overflow-hidden">
+              <div className="relative aspect-[4/5] w-full rounded-xs bg-navy-950 p-8 flex flex-col justify-between border border-gold/35 shadow-none text-ivory overflow-hidden">
                 {/* Subtle architectural background texture */}
                 <div
-                  className="absolute inset-0 opacity-10 bg-[radial-gradient(#C6A66B_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none"
+                  className="absolute inset-0 opacity-0 bg-[radial-gradient(#C6A66B_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none"
                   aria-hidden="true"
                 />
 
@@ -100,8 +100,8 @@ export const FounderSection: React.FC = () => {
 
                 {/* Center Monogram Insignia & Transparent Asset Notice */}
                 <div className="relative z-10 my-auto text-center py-8">
-                  <div className="size-24 sm:size-28 mx-auto rounded-full border-2 border-gold/40 flex items-center justify-center bg-navy-900/90 shadow-inner mb-5">
-                    <span className="font-serif text-3xl sm:text-4xl font-semibold tracking-wider text-gold-300">
+                  <div className="size-24 sm:size-28 mx-auto border-y border-gold/40 flex items-center justify-center mb-7">
+                    <span className="font-serif text-5xl sm:text-6xl font-light tracking-wide text-gold-300">
                       SM
                     </span>
                   </div>
@@ -112,12 +112,12 @@ export const FounderSection: React.FC = () => {
                     Founder &amp; Director
                   </p>
 
-                  <div className="mt-6 px-4 py-2.5 rounded-xs bg-navy-900/80 border border-gold/20 max-w-xs mx-auto">
+                  <div className="mt-6 px-4 py-2.5 rounded-xs border-t border-gold/20 max-w-xs mx-auto">
                     <p className="font-mono text-[11px] text-gold-300/80 leading-snug">
                       Official Client Portrait Pending
                     </p>
                     <p className="font-mono text-[10px] text-ivory-300/60 mt-0.5">
-                      Target: /images/founder/founder-portrait.jpg
+                      Official founder portrait forthcoming
                     </p>
                   </div>
                 </div>
@@ -189,8 +189,8 @@ export const FounderSection: React.FC = () => {
             {/* CTA Button */}
             <div>
               <Link
-                href="#contact"
-                className="group inline-flex items-center gap-2.5 px-7 py-3.5 text-xs font-sans font-semibold uppercase tracking-[0.16em] text-ivory-50 bg-navy hover:bg-navy-900 border border-gold/40 hover:border-gold transition-all duration-300 rounded-xs shadow-md"
+                href="/founder"
+                className="group inline-flex items-center gap-2.5 px-7 py-3.5 text-xs font-sans font-semibold uppercase tracking-[0.16em] text-ivory-50 bg-navy hover:bg-navy-900 border border-gold/40 hover:border-gold transition-all duration-300 rounded-xs shadow-none"
               >
                 <span>Meet Our Founder</span>
                 <ArrowRight className="size-3.5 text-gold-400 group-hover:text-gold transition-transform group-hover:translate-x-1" />

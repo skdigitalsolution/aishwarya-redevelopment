@@ -8,29 +8,39 @@ import { BrandWordmark } from "@/components/brand/BrandWordmark";
 import { COMPANY_DETAILS } from "@/lib/constants";
 
 const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About Us", href: "#about" },
-  { label: "Advisory Services", href: "#services" },
-  { label: "Redevelopment Process", href: "#redevelopment" },
-  { label: "Strategic Land Banking", href: "#land-banking" },
-  { label: "Executive Leadership", href: "#team" },
-  { label: "Consultation", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about" },
+  { label: "Advisory Services", href: "/services" },
+  { label: "Redevelopment Process", href: "/redevelopment" },
+  { label: "Strategic Land Banking", href: "/land-banking" },
+  { label: "Executive Leadership", href: "/founder" },
+  { label: "Our Team", href: "/our-team" },
+  { label: "Consultation", href: "/contact" },
 ];
 
 const serviceQuickLinks = [
-  { label: "Society Redevelopment Advisory", href: "#services" },
-  { label: "Self-Redevelopment Guidance", href: "#services" },
-  { label: "Legal & Title Due Diligence", href: "#services" },
-  { label: "Architectural Feasibility & FSI", href: "#services" },
-  { label: "Developer Due Diligence & Tendering", href: "#services" },
-  { label: "Strategic Land Banking & JDA", href: "#land-banking" },
+  { label: "Society Redevelopment Advisory", href: "/services#redevelopment" },
+  { label: "Self-Redevelopment Guidance", href: "/services#redevelopment" },
+  { label: "Legal & Title Due Diligence", href: "/services#legal" },
+  { label: "Architectural Feasibility & FSI", href: "/services#financial" },
+  { label: "Developer Due Diligence & Tendering", href: "/services#redevelopment" },
+  { label: "Strategic Land Banking & JDA", href: "/land-banking" },
 ];
 
+// Read browser time after hydration, keeping the server and initial client output equal.
+const subscribeToYear = () => () => {};
+const getCurrentYear = () => new Date().getFullYear();
+const getServerYear = () => null;
+
 export const Footer: React.FC = () => {
-  const currentYear = new Date().getFullYear();
+  const currentYear = React.useSyncExternalStore(
+    subscribeToYear,
+    getCurrentYear,
+    getServerYear,
+  );
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
   };
 
   return (
@@ -44,8 +54,8 @@ export const Footer: React.FC = () => {
         aria-hidden="true"
       />
 
-      <Container size="xl" className="relative z-10 pt-16 sm:pt-20 pb-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-16 border-b border-gold/15">
+      <Container size="xl" className="relative z-10 pt-16 sm:pt-24 pb-9">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-12 sm:pb-16 border-b border-gold/15">
           {/* Column 1: Brand Wordmark & Factual Summary (5 cols) */}
           <div className="lg:col-span-5 space-y-5">
             <BrandWordmark variant="dark" />
@@ -62,15 +72,15 @@ export const Footer: React.FC = () => {
 
           {/* Column 2: Navigation Links (2 cols) */}
           <div className="lg:col-span-2 space-y-4">
-            <h4 className="font-serif text-base text-ivory-50 font-medium tracking-wide">
+            <h2 className="font-serif text-xl text-ivory-50 font-normal tracking-wide">
               Navigation
-            </h4>
-            <ul className="space-y-2.5">
+            </h2>
+            <ul className="space-y-3">
               {navLinks.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-xs font-sans text-ivory-300/75 hover:text-gold transition-colors inline-block"
+                    className="text-xs font-sans text-ivory-300/75 hover:text-gold transition-colors inline-block decoration-gold/50 underline-offset-4 hover:underline focus-visible:underline"
                   >
                     {link.label}
                   </Link>
@@ -81,15 +91,15 @@ export const Footer: React.FC = () => {
 
           {/* Column 3: Advisory Capabilities (3 cols) */}
           <div className="lg:col-span-3 space-y-4">
-            <h4 className="font-serif text-base text-ivory-50 font-medium tracking-wide">
+            <h2 className="font-serif text-xl text-ivory-50 font-normal tracking-wide">
               Advisory Services
-            </h4>
-            <ul className="space-y-2.5">
+            </h2>
+            <ul className="space-y-3">
               {serviceQuickLinks.map((item) => (
                 <li key={item.label}>
                   <Link
                     href={item.href}
-                    className="text-xs font-sans text-ivory-300/75 hover:text-gold transition-colors inline-block"
+                    className="text-xs font-sans text-ivory-300/75 hover:text-gold transition-colors inline-block decoration-gold/50 underline-offset-4 hover:underline focus-visible:underline"
                   >
                     {item.label}
                   </Link>
@@ -100,9 +110,9 @@ export const Footer: React.FC = () => {
 
           {/* Column 4: Contact & Office Location (2 cols) */}
           <div className="lg:col-span-2 space-y-4">
-            <h4 className="font-serif text-base text-ivory-50 font-medium tracking-wide">
+            <h2 className="font-serif text-xl text-ivory-50 font-normal tracking-wide">
               Direct Contact
-            </h4>
+            </h2>
             <div className="space-y-3 text-xs font-sans text-ivory-300/80">
               <div>
                 <span className="block text-[10px] uppercase tracking-wider text-gold-400/80 font-medium mb-1">
@@ -131,13 +141,13 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Sub-Footer Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-sans text-ivory-300/60">
+        <div className="pt-7 sm:pt-9 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-sans text-ivory-300/60">
           <p>
             &copy; {currentYear} {COMPANY_DETAILS.legalName}. All rights reserved.
           </p>
 
-          <div className="flex items-center gap-6">
-            <span className="text-[11px] text-ivory-300/50">
+          <div className="flex flex-wrap items-center justify-center gap-6">
+            <span className="text-[11px] text-ivory-300/65">
               Fiduciary Real Estate &amp; Redevelopment Advisory
             </span>
             <button

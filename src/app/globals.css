@@ -74,6 +74,72 @@ body {
   color: #1E2229;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+  text-rendering: optimizeLegibility;
+}
+
+/* Shared editorial treatments; brand colors and font families remain unchanged. */
+main :is(h1, h2, h3) {
+  text-wrap: balance;
+}
+
+main :is(p, dd) {
+  text-wrap: pretty;
+}
+
+.editorial-hero-title {
+  font-size: clamp(2.875rem, 4.6vw + 1rem, 6.25rem);
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+}
+
+.editorial-portrait-title {
+  font-size: clamp(3.5rem, 6vw + 1rem, 7rem);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+
+.editorial-image-frame {
+  outline: 1px solid rgba(198, 166, 107, 0.24);
+  outline-offset: -1px;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  main a.bg-gold,
+  header a.bg-gold {
+    transition: background-color 180ms ease, box-shadow 180ms ease;
+  }
+
+  main a.bg-gold:hover,
+  header a.bg-gold:hover {
+    box-shadow: 0 4px 16px rgba(11, 29, 58, 0.12);
+  }
+}
+
+/* Keep long editorial headings and grid content within narrow viewports. */
+main :is(h1, h2, h3), footer p {
+  overflow-wrap: anywhere;
+}
+
+main .grid > * {
+  min-width: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
 }
 
 /* Editorial & Luxury Utility Classes */

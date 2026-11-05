@@ -6,7 +6,7 @@ import { Phone, Calendar, ArrowRight, ShieldCheck, CheckCircle2 } from "lucide-r
 import { Container } from "@/components/layout/Container";
 import { COMPANY_DETAILS } from "@/lib/constants";
 
-export const ConsultationCTA: React.FC = () => {
+export const ConsultationCTA: React.FC<{ title?: React.ReactNode }> = ({ title }) => {
   const shouldReduceMotion = useReducedMotion();
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formData, setFormData] = useState({
@@ -31,6 +31,15 @@ export const ConsultationCTA: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const form = e.currentTarget as HTMLFormElement;
+    const nameInput = form.querySelector<HTMLInputElement>("#contact-name");
+    const phoneInput = form.querySelector<HTMLInputElement>("#contact-phone");
+    nameInput?.setCustomValidity(formData.name.trim().length >= 2 ? "" : "Please enter your name.");
+    phoneInput?.setCustomValidity(
+      /^[+\d\s().-]+$/.test(formData.phone) && /^\d{7,15}$/.test(formData.phone.replace(/\D/g, ""))
+        ? "" : "Please enter a valid phone number with 7–15 digits.",
+    );
+    if (!form.reportValidity()) return;
     setFormSubmitted(true);
   };
 
@@ -46,7 +55,7 @@ export const ConsultationCTA: React.FC = () => {
         aria-hidden="true"
       />
       <div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none select-none bg-[radial-gradient(#C6A66B_1px,transparent_1px)] [background-size:24px_24px]"
+        className="absolute inset-0 opacity-0 pointer-events-none select-none bg-[radial-gradient(#C6A66B_1px,transparent_1px)] [background-size:24px_24px]"
         aria-hidden="true"
       />
 
@@ -71,8 +80,8 @@ export const ConsultationCTA: React.FC = () => {
 
             {/* Heading */}
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-ivory-50 tracking-tight leading-[1.12]">
-              Your Property Deserves the{" "}
-              <span className="italic font-light text-gold-300">Right Guidance.</span>
+              {title ?? <>Your Property Deserves the{" "}
+              <span className="italic font-light text-gold-300">Right Guidance.</span></>}
             </h2>
 
             {/* Description */}
@@ -98,7 +107,7 @@ export const ConsultationCTA: React.FC = () => {
             <div className="pt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
               <a
                 href={`tel:${COMPANY_DETAILS.contact.phoneTel}`}
-                className="group inline-flex items-center justify-center gap-3 px-6 py-4 text-xs sm:text-sm font-sans font-semibold uppercase tracking-[0.16em] text-navy-950 bg-gold hover:bg-gold-300 transition-all duration-300 rounded-xs shadow-lg active:scale-[0.98] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gold"
+                className="group inline-flex items-center justify-center gap-3 px-6 py-4 text-xs sm:text-sm font-sans font-semibold uppercase tracking-[0.16em] text-navy-950 bg-gold hover:bg-gold-300 transition-all duration-300 rounded-xs shadow-none focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gold"
               >
                 <Phone className="size-4 text-navy-950" aria-hidden="true" />
                 <span>Call Our Team: {COMPANY_DETAILS.contact.phone}</span>
@@ -106,7 +115,7 @@ export const ConsultationCTA: React.FC = () => {
 
               <a
                 href="#consultation-form"
-                className="group inline-flex items-center justify-center gap-2.5 px-6 py-4 text-xs sm:text-sm font-sans font-medium uppercase tracking-[0.16em] text-ivory-100 hover:text-gold border border-gold/40 hover:border-gold hover:bg-navy-900/60 transition-all duration-300 rounded-xs active:scale-[0.98] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gold"
+                className="group inline-flex items-center justify-center gap-2.5 px-6 py-4 text-xs sm:text-sm font-sans font-medium uppercase tracking-[0.16em] text-ivory-100 hover:text-gold border border-gold/40 hover:border-gold hover:bg-navy-900/60 transition-all duration-300 rounded-xs focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gold"
               >
                 <Calendar className="size-4 text-gold-400" aria-hidden="true" />
                 <span>Schedule a Consultation</span>
@@ -124,30 +133,31 @@ export const ConsultationCTA: React.FC = () => {
             variants={fadeIn}
             className="lg:col-span-5 relative"
           >
-            <div className="p-8 sm:p-10 rounded-xs bg-navy-900/90 border border-gold/30 shadow-2xl relative">
+            <div className="p-6 sm:p-10 rounded-xs bg-navy border border-gold/30 shadow-none relative">
               <div className="pb-5 border-b border-gold/20 mb-6">
                 <h3 className="font-serif text-2xl text-ivory-50 font-medium">
                   Request an Advisory Session
                 </h3>
                 <p className="font-sans text-xs text-ivory-300/70 mt-1">
-                  Confidential preliminary review for managing committees &amp; property owners.
+                  Online delivery is unavailable. Prepare your details, then call our team. Nothing is sent or stored.
                 </p>
               </div>
 
               {formSubmitted ? (
-                <div className="py-8 text-center space-y-3">
+                <div role="status" className="py-8 text-center space-y-3">
                   <div className="size-12 mx-auto rounded-full bg-gold/20 border border-gold/40 flex items-center justify-center text-gold-400">
                     <CheckCircle2 className="size-6" />
                   </div>
                   <h4 className="font-serif text-xl text-ivory-50 font-medium">
-                    Consultation Request Received
+                    Details Ready — Not Sent
                   </h4>
                   <p className="font-sans text-xs text-ivory-300/80 leading-relaxed max-w-xs mx-auto">
-                    Our senior redevelopment advisory team will contact your managing committee within 24 business hours.
+                    Your details have not been delivered. Please call our team to discuss your consultation.
                   </p>
-                  <p className="font-mono text-xs text-gold-400 pt-2">
-                    Direct Helpline: {COMPANY_DETAILS.contact.phone}
-                  </p>
+                  <a href={`tel:${COMPANY_DETAILS.contact.phoneTel}`} className="inline-flex min-h-11 items-center font-mono text-xs text-gold-400 focus-visible:outline-2 focus-visible:outline-gold">
+                    Call: {COMPANY_DETAILS.contact.phone}
+                  </a>
+                  <button type="button" onClick={() => setFormSubmitted(false)} className="block mx-auto min-h-11 text-xs underline focus-visible:outline-2 focus-visible:outline-gold">Edit your details</button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
@@ -162,6 +172,9 @@ export const ConsultationCTA: React.FC = () => {
                       id="contact-name"
                       type="text"
                       required
+                      autoComplete="name"
+                      maxLength={120}
+                      onInput={(e) => e.currentTarget.setCustomValidity("")}
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="e.g. Secretary / Chairman / Landowner"
@@ -180,6 +193,9 @@ export const ConsultationCTA: React.FC = () => {
                       id="contact-phone"
                       type="tel"
                       required
+                      autoComplete="tel"
+                      maxLength={25}
+                      onInput={(e) => e.currentTarget.setCustomValidity("")}
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="+91 98765 43210"
@@ -223,14 +239,14 @@ export const ConsultationCTA: React.FC = () => {
 
                   <button
                     type="submit"
-                    className="w-full mt-2 inline-flex items-center justify-center gap-2 py-3 px-4 text-xs font-sans font-semibold uppercase tracking-[0.16em] text-navy-950 bg-gold hover:bg-gold-300 transition-colors rounded-xs shadow-md active:scale-[0.98] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gold"
+                    className="w-full mt-2 inline-flex items-center justify-center gap-2 py-3 px-4 text-xs font-sans font-semibold uppercase tracking-[0.16em] text-navy-950 bg-gold hover:bg-gold-300 transition-colors rounded-xs shadow-none focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gold"
                   >
-                    <span>Submit Consultation Request</span>
+                    <span>Review Consultation Details</span>
                     <ArrowRight className="size-3.5 text-navy-950" />
                   </button>
 
                   <p className="text-[10px] text-center text-ivory-300/60 font-sans pt-1">
-                    Strict fiduciary confidentiality guaranteed. No data shared with third parties.
+                    Your details stay in this page and are not sent or saved.
                   </p>
                 </form>
               )}

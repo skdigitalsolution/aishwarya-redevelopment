@@ -21,7 +21,7 @@ const advisoryPillars = [
   {
     icon: Building2,
     title: "Tender & DA Structuring",
-    detail: "Rigorous developer selection & airtight legal covenants",
+    detail: "Rigorous developer selection & carefully reviewed legal covenants",
   },
   {
     icon: Landmark,
@@ -62,16 +62,16 @@ export const Hero: React.FC = () => {
           priority
           quality={88}
           sizes="100vw"
-          className="object-cover object-center scale-[1.02] transform transition-transform duration-1000"
+          className="object-cover object-[60%_center] lg:object-center"
         />
 
         {/* Multi-layered luxury deep navy scrims for high editorial contrast */}
         <div
-          className="absolute inset-0 bg-gradient-to-r from-navy-950/95 via-navy-950/85 to-navy-900/70"
+          className="absolute inset-0 bg-gradient-to-r from-navy-950/95 via-navy-950/80 to-navy-900/45"
           aria-hidden="true"
         />
         <div
-          className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/40 to-navy-950/30"
+          className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/25 to-navy-950/30"
           aria-hidden="true"
         />
         <div
@@ -83,7 +83,7 @@ export const Hero: React.FC = () => {
       {/* Main Editorial Content Container */}
       <div className="relative z-10 my-auto">
         <Container size="xl">
-          <div className="max-w-4xl">
+          <div className="max-w-5xl">
             {/* Editorial Category Eyebrow */}
             <motion.div
               custom={1}
@@ -104,7 +104,7 @@ export const Hero: React.FC = () => {
               initial="hidden"
               animate="visible"
               variants={fadeInUp}
-              className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[4.75rem] font-normal text-ivory-50 tracking-[-0.01em] leading-[1.08] mb-6 sm:mb-8"
+              className="editorial-hero-title font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[4.75rem] font-normal text-ivory-50 tracking-[-0.01em] leading-[1.08] mb-6 sm:mb-8"
             >
               Transforming Spaces.{" "}
               <br className="hidden sm:inline" />
@@ -128,12 +128,12 @@ export const Hero: React.FC = () => {
               initial="hidden"
               animate="visible"
               variants={fadeInUp}
-              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-5"
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6"
             >
               {/* Primary CTA */}
               <Link
                 href="#services"
-                className="group inline-flex items-center justify-center gap-3 px-7 py-3.5 sm:py-4 text-xs sm:text-sm font-sans font-semibold uppercase tracking-[0.16em] text-navy-950 bg-gold hover:bg-gold-300 transition-all duration-300 rounded-xs shadow-lg shadow-gold/15 active:scale-[0.98] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy-950"
+                className="group inline-flex items-center justify-center gap-3 px-7 py-3.5 sm:py-4 text-xs sm:text-sm font-sans font-semibold uppercase tracking-[0.16em] text-navy-950 bg-gold hover:bg-gold-300 transition-all duration-300 rounded-xs shadow-none active:scale-[0.98] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy-950"
               >
                 <span>Explore Our Services</span>
                 <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />

@@ -21,7 +21,7 @@ const differentiators = [
   {
     number: "02",
     title: "Legal & Regulatory Expertise",
-    subtitle: "Airtight Statutory Safeguards",
+    subtitle: "Project-Specific Statutory Review",
     description:
       "Deep mastery of Maharashtra cooperative law, Section 79A guidelines, MOFA, and RERA frameworks to safeguard member rights, title clarity, and enforce binding covenants.",
     icon: Scale,
@@ -32,7 +32,7 @@ const differentiators = [
     title: "Developer Due Diligence",
     subtitle: "Rigorous Financial & Track Record Vetting",
     description:
-      "Exhaustive audits of prospective developers' financial liquidity, balance sheets, past project delivery timelines, and structuring performance guarantees before any contractual commitment.",
+      "Exhaustive audits of prospective developers' financial liquidity, balance sheets, past project delivery timelines, and evaluating proposed security arrangements before contractual commitments.",
     icon: FileSearch,
     highlights: ["Balance sheet audits", "Delivery timeline verification", "Bank guarantee structuring"],
   },
@@ -96,7 +96,7 @@ export const WhyChooseUsSection: React.FC = () => {
                 viewport={{ once: true, margin: "-60px" }}
                 custom={index + 1}
                 variants={fadeIn}
-                className="group p-8 sm:p-10 rounded-xs bg-white border border-gold/25 hover:border-gold/60 shadow-xs hover:shadow-xl transition-all duration-300 relative flex flex-col justify-between"
+                className="group p-8 sm:p-10 rounded-xs bg-white border border-gold/25 hover:border-gold/60 shadow-none transition-colors duration-200 relative flex flex-col justify-between"
               >
                 <div>
                   {/* Top Bar with Numbering and Icon */}
@@ -104,7 +104,7 @@ export const WhyChooseUsSection: React.FC = () => {
                     <span className="font-mono text-sm font-semibold text-gold-600 tracking-widest">
                       {item.number}
                     </span>
-                    <div className="p-2.5 rounded-xs bg-gold/10 border border-gold/20 text-gold-600 group-hover:bg-gold group-hover:text-navy transition-colors duration-300">
+                    <div className="p-2.5 rounded-xs bg-gold/10 border border-gold/20 text-gold-600 group-hover:border-gold/50 transition-colors duration-300">
                       <Icon className="size-5" aria-hidden="true" />
                     </div>
                   </div>
@@ -129,7 +129,7 @@ export const WhyChooseUsSection: React.FC = () => {
                     {item.highlights.map((point) => (
                       <span
                         key={point}
-                        className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-sans rounded-xs bg-ivory border border-gold/20 text-charcoal/80"
+                        className="inline-flex items-center gap-1.5 pl-3 py-1 text-xs font-sans border-l border-gold/40 text-charcoal/80"
                       >
                         <span className="size-1 rounded-full bg-gold-600" aria-hidden="true" />
                         <span>{point}</span>

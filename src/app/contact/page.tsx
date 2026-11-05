@@ -1,0 +1,39 @@
+import type { Metadata } from "next";
+import { ArrowDown, ArrowUpRight, Building2, MapPin, Phone, Landmark, Handshake } from "lucide-react";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
+import { Container } from "@/components/layout/Container";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { ContactForm } from "@/components/contact/ContactForm";
+
+export const metadata: Metadata = {
+  title: "Contact Us | Aishwarya Redevelopment Advisory Company",
+  description: "Contact Aishwarya Redevelopment Advisory Company in Mumbai for society redevelopment, land banking, legal and title advisory, or business partnership enquiries. Call +91 70218 92236.",
+};
+
+const focus = "focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold";
+const prompts = [
+  { icon: Building2, title: "For housing societies", description: "Discuss your building's current stage, member priorities and the redevelopment or self-redevelopment options you want to understand.", hint: "Society name · Locality · Current stage" },
+  { icon: Landmark, title: "For landowners & investors", description: "Explore property evaluation, title questions or land advisory. Begin with the asset's location, approximate area and your objectives.", hint: "Property location · Area · Advisory needs" },
+  { icon: Handshake, title: "For developers & partners", description: "Introduce your organization, mandate or collaboration proposal so we can understand the scope of a potential engagement.", hint: "Organization · Mandate · Partnership scope" },
+];
+
+export default function ContactPage() {
+  return (
+    <>
+      <Navbar />
+      <main className="flex-1 bg-ivory pt-24 text-navy sm:pt-32">
+        <section aria-labelledby="contact-heading" className="bg-navy py-16 text-ivory sm:py-24 lg:py-28"><Container><div className="grid items-end gap-12 lg:grid-cols-12 lg:gap-16"><div className="lg:col-span-8"><p className="mb-8 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.24em] text-gold"><span className="h-px w-9 bg-gold" aria-hidden="true" />Get in Touch</p><h1 id="contact-heading" className="editorial-hero-title font-serif text-5xl leading-[1.04] tracking-tight sm:text-7xl lg:text-8xl">Let&apos;s Discuss<br />Your <span className="font-light italic text-gold">Next Chapter.</span></h1><p className="mt-8 max-w-xl text-base leading-8 text-ivory/75">Connect with our team for professional redevelopment, real estate and land advisory enquiries.</p><a href="#enquiry" className={`${focus} mt-9 inline-flex min-h-12 items-center gap-5 border-b border-gold/50 text-xs text-gold hover:text-ivory`}>Start the conversation <ArrowDown size={16} aria-hidden="true" /></a></div><div className="border-l border-gold/50 pl-6 lg:col-span-4"><p className="text-[10px] uppercase tracking-[0.2em] text-gold">Speak with our team</p><a href="tel:+917021892236" className={`${focus} mt-5 inline-flex min-h-12 items-center gap-3 font-serif text-3xl hover:text-gold`}><Phone size={18} aria-hidden="true" />+91 70218 92236</a><p className="mt-5 text-xs leading-6 text-ivory/65">Mumbai, Maharashtra, India</p></div></div></Container></section>
+
+        <section id="enquiry" aria-label="Contact details and enquiry form" className="scroll-mt-28 py-20 sm:py-28"><Container><div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16"><div className="lg:col-span-5"><SectionHeading align="left" eyebrow="A conversation with purpose" title={<>Tell us what<br /><span className="italic">comes next.</span></>} /><p className="mt-6 max-w-md text-sm leading-7 text-charcoal/75">Whether you are weighing a society decision, reviewing a land asset or exploring a business relationship, share the context and the questions that matter to you.</p><dl className="mt-10 divide-y divide-navy/15 border-t border-navy/15"><div className="py-6"><dt className="text-[10px] uppercase tracking-[0.18em] text-gold-800">Company</dt><dd className="mt-3 font-serif text-2xl leading-tight">Aishwarya Redevelopment Advisory Company</dd></div><div className="py-6"><dt className="text-[10px] uppercase tracking-[0.18em] text-gold-800">Phone</dt><dd><a href="tel:+917021892236" className={`${focus} mt-2 inline-flex min-h-11 items-center gap-3 text-sm hover:text-gold-800`}><Phone size={16} aria-hidden="true" />+91 70218 92236</a></dd></div><div className="py-6"><dt className="text-[10px] uppercase tracking-[0.18em] text-gold-800">Location</dt><dd className="mt-3 flex items-center gap-3 text-sm"><MapPin size={17} aria-hidden="true" className="text-gold-700" />Mumbai, Maharashtra, India</dd></div></dl></div><div className="lg:col-span-7"><h2 className="mb-6 font-serif text-3xl">Your enquiry</h2><ContactForm /></div></div></Container></section>
+
+        <section aria-label="Service-based contact" className="border-y border-navy/10 bg-white/50 py-20 sm:py-24"><Container><SectionHeading align="left" eyebrow="The right starting point" title={<>Different priorities.<br /><span className="italic">The same considered attention.</span></>} /><div className="mt-12 grid gap-9 md:grid-cols-3">{prompts.map(({ icon: Icon, title, description, hint }) => <article key={title} className="border-t border-gold/60 pt-7"><Icon size={27} strokeWidth={1.2} className="mb-6 text-gold-700" aria-hidden="true" /><h3 className="font-serif text-3xl leading-tight">{title}</h3><p className="mt-4 text-sm leading-7 text-charcoal/75">{description}</p><p className="mt-6 text-[10px] leading-6 text-gold-800">{hint}</p><a href="#enquiry" className={`${focus} mt-3 inline-flex min-h-11 items-center gap-3 text-xs hover:text-gold-800`}>Prepare your enquiry <ArrowUpRight size={16} aria-hidden="true" /></a></article>)}</div></Container></section>
+
+        <section aria-label="Our location" className="py-20 sm:py-24"><Container><div className="grid items-center gap-9 lg:grid-cols-12 lg:gap-16"><div className="lg:col-span-5"><SectionHeading align="left" eyebrow="Our location" title={<>Mumbai,<br /><span className="italic">Maharashtra.</span></>} /></div><div className="border-l border-gold pl-7 lg:col-span-7"><p className="max-w-xl text-sm leading-7 text-charcoal/75">Our advisory conversations begin with the context of your society, property or proposed engagement. Call our team to discuss your enquiry and any meeting arrangements.</p><a href="tel:+917021892236" className={`${focus} mt-5 inline-flex min-h-11 items-center gap-3 border-b border-gold text-xs`}>Discuss with our team <ArrowUpRight size={16} aria-hidden="true" /></a></div></div></Container></section>
+
+        <section aria-labelledby="closing-contact" className="relative overflow-hidden border-t border-gold/25 bg-navy-950 py-20 text-ivory sm:py-24"><div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(198,166,107,0.09),transparent_70%)]" /><Container className="relative"><div className="grid items-center gap-10 lg:grid-cols-12"><div className="lg:col-span-8"><p className="mb-5 text-[10px] font-semibold uppercase tracking-[0.22em] text-gold">Let&apos;s build your future</p><h2 id="closing-contact" className="font-serif text-4xl leading-tight sm:text-5xl">Your next decision deserves<br /><span className="font-light italic text-gold">a thoughtful conversation.</span></h2></div><div className="lg:col-span-4"><a href="tel:+917021892236" className={`${focus} inline-flex min-h-12 w-full items-center justify-center gap-3 bg-gold px-5 py-4 text-sm font-medium text-navy hover:bg-gold-300 motion-safe:transition-colors`}><Phone size={16} aria-hidden="true" />+91 70218 92236</a></div></div></Container></section>
+      </main>
+      <Footer />
+    </>
+  );
+}

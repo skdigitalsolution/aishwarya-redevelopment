@@ -42,7 +42,7 @@ export const BrandWordmark: React.FC<BrandWordmarkProps> = ({
         {/* Subtle Architectural Geometry Indicator */}
         <span
           className={cn(
-            "size-2 rotate-45 border transition-transform duration-300 group-hover:rotate-90",
+            "size-2 rotate-45 border",
             isDark
               ? "border-gold-400 bg-gold-400/20"
               : "border-gold-600 bg-gold-500/20"
@@ -51,7 +51,7 @@ export const BrandWordmark: React.FC<BrandWordmarkProps> = ({
         />
         <span
           className={cn(
-            "font-serif text-xl sm:text-2xl font-semibold tracking-[0.06em] uppercase leading-none",
+            "font-serif text-xl sm:text-2xl font-medium tracking-[0.1em] uppercase leading-none",
             isDark ? "text-ivory-50" : "text-navy"
           )}
         >
@@ -62,7 +62,7 @@ export const BrandWordmark: React.FC<BrandWordmarkProps> = ({
       {showSubtext && (
         <span
           className={cn(
-            "mt-1 text-[9px] sm:text-[10px] font-sans font-medium uppercase tracking-[0.24em] pl-4 leading-none transition-colors",
+            "mt-1.5 text-[9px] sm:text-[10px] font-sans font-medium uppercase tracking-[0.19em] pl-4 leading-none transition-colors",
             isDark ? "text-gold-400/90 group-hover:text-gold-300" : "text-gold-700"
           )}
         >

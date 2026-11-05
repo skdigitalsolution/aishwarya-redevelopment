@@ -36,7 +36,7 @@ export const BRAND_TOKENS = {
 export const COMPANY_DETAILS = {
   name: "Aishwarya Redevelopment Advisory",
   shortName: "Aishwarya Advisory",
-  legalName: "Aishwarya Redevelopment Advisory Private Limited",
+  legalName: "Aishwarya Redevelopment Advisory Company",
   tagline: "Strategic Real Estate Advisory for Landmark Redevelopment",
   subTagline:
     "Guiding housing societies, landlord estates, and developers through fiduciary diligence, master planning, and value realization.",

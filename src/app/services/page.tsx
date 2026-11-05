@@ -1,0 +1,148 @@
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowDown, ArrowUpRight, Building2, Scale, Landmark, HardHat, Phone } from "lucide-react";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
+import { Container } from "@/components/layout/Container";
+import { COMPANY_DETAILS } from "@/lib/constants";
+import { Reveal } from "./Reveal";
+
+export const metadata: Metadata = {
+  title: "Our Services | Aishwarya Redevelopment Advisory Company",
+  description: "Explore redevelopment, legal and regulatory, financial, and project execution advisory for Mumbai housing societies and property owners.",
+};
+
+const redevelopment = [
+  ["Society Redevelopment Strategic Advisory", "Guidance on redevelopment options, society priorities and developer selection, helping committees make informed decisions at each stage."],
+  ["Self-Redevelopment Turnkey Guidance", "Coordinated guidance on feasibility, funding, consultant appointments and project planning for societies pursuing self-redevelopment."],
+  ["Developer Due Diligence & Reputation Audits", "Review of developer financial standing, delivery history and reputation to support a considered selection process."],
+  ["Tender Document Preparation & Floating", "Preparation and circulation of tender documents, with clearly defined requirements to support transparent bid comparison."],
+  ["Tenant Mediation & Consent Management", "Support for stakeholder discussions, documentation of concerns and consent coordination throughout the redevelopment process."],
+];
+const legal = [
+  ["Forensic Legal Title Search & Investigation", "Examination of ownership records, title history and encumbrances to identify issues requiring legal review."],
+  ["Municipal NOC Liaisoning & Regulatory Approvals", "Coordination of submissions, documentation and follow-up with relevant authorities for applicable permissions and NOCs."],
+  ["Property Card & 7/12 Title Mutation", "Assistance with documentation and applications to update ownership entries in applicable land and property records."],
+  ["Deemed Conveyance Legal Execution", "Coordination of the legal documentation and application process for societies seeking deemed conveyance."],
+  ["Revenue & City Survey N.A. Sanctions", "Support with revenue and city survey records and applicable non-agricultural permission procedures."],
+  ["Tripartite & Development Agreement Drafting", "Coordination of agreement drafting and review to clarify stakeholder obligations, commercial terms and project milestones."],
+  ["RERA Registration & Compliance Management", "Assistance with registration documentation, submissions and ongoing compliance requirements applicable to the project."],
+];
+const financial = [
+  ["TDR Trading & Allocation", "Advisory on transferable development rights, allocation requirements and transaction coordination in the context of project feasibility."],
+  ["Institutional Bank Funding & Project Finance", "Preparation and coordination of project funding proposals, with support in evaluating lender terms and financing requirements."],
+  ["Architectural Feasibility & FSI Optimization", "Assessment of development potential, permissible FSI and area planning to inform practical redevelopment options."],
+  ["Commercial Negotiation & Joint Development Structuring", "Support in evaluating commercial proposals and structuring joint development terms around stakeholder priorities and project viability."],
+];
+const execution = [
+  ["Structural Audit & Engineering Assessments", "Coordination of structural inspections and engineering assessments to inform building condition reviews and redevelopment planning."],
+  ["Demolition Management & Site Safety Oversight", "Coordination of demolition planning and site safety reviews with appointed contractors and technical professionals."],
+  ["Construction Progress & Quality Auditing", "Review of construction milestones and quality observations, with reporting to help stakeholders track progress and address concerns."],
+  ["Final Occupation Certificate (OC) & Possession Formalities", "Coordination of completion documentation, OC follow-up and possession formalities with the relevant project stakeholders."],
+];
+
+const chapters = [
+  { id: "redevelopment", label: "Redevelopment Advisory", count: "05" },
+  { id: "legal", label: "Legal & Regulatory", count: "07" },
+  { id: "financial", label: "Financial & Strategic", count: "04" },
+  { id: "execution", label: "Project Execution & Handover", count: "04" },
+];
+const eyebrow = "text-[10px] sm:text-xs font-semibold uppercase tracking-[0.22em]";
+const focus = "focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold";
+
+export default function ServicesPage() {
+  return (
+    <>
+      <Navbar />
+      <main id="services-main" className="flex-1 bg-ivory pt-24 text-navy sm:pt-32">
+        <section aria-labelledby="services-heading" className="overflow-hidden bg-navy text-ivory">
+          <Container className="grid gap-12 py-16 sm:py-24 lg:grid-cols-12 lg:gap-8 lg:py-28">
+            <div className="relative z-10 self-center lg:col-span-7 lg:pr-8">
+              <p className={`${eyebrow} mb-8 flex items-center gap-4 text-gold`}><span className="h-px w-10 bg-gold" />Our Services</p>
+              <h1 id="services-heading" className="editorial-hero-title max-w-3xl font-serif text-5xl leading-[1.04] tracking-tight sm:text-6xl lg:text-7xl">Expertise Across Every Stage of <span className="font-light italic text-gold">Redevelopment.</span></h1>
+              <p className="mt-8 max-w-lg text-sm leading-7 text-ivory/75 sm:text-base">From the first society discussion to the final handover, considered advice for the decisions that shape your property&apos;s future.</p>
+              <a href="#service-index" className={`${focus} mt-10 inline-flex items-center gap-5 border-b border-gold/50 pb-3 text-xs tracking-wide text-gold motion-safe:transition-colors hover:text-ivory`}>Explore our expertise <ArrowDown size={16} aria-hidden="true" /></a>
+            </div>
+            <figure className="lg:col-span-5 lg:pt-8">
+              <div className="relative aspect-[4/5] max-h-[590px] overflow-hidden border border-gold/20">
+                <Image src="/images/hero/hero-architecture-fallback.jpg" alt="Architectural facade with layered balconies and refined structural lines" fill preload sizes="(max-width: 1024px) 100vw, 42vw" className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-transparent to-transparent" />
+                <span className="absolute bottom-6 left-6 right-6 border-t border-ivory/40 pt-4 text-[10px] uppercase tracking-[0.2em] text-ivory">A considered approach to transformation</span>
+              </div>
+              <figcaption className="mt-4 flex justify-between text-[10px] uppercase tracking-[0.18em] text-ivory/60"><span>Mumbai, Maharashtra</span><span>Advisory / 01—04</span></figcaption>
+            </figure>
+          </Container>
+        </section>
+
+        <section id="service-index" aria-labelledby="introduction-heading" className="scroll-mt-32 border-b border-navy/10 py-16 sm:py-24">
+          <Container>
+            <div className="grid gap-7 lg:grid-cols-12 lg:gap-16">
+              <p className={`${eyebrow} text-gold-700 lg:col-span-3`}>An integrated perspective</p>
+              <div className="lg:col-span-9">
+                <h2 id="introduction-heading" className="max-w-3xl font-serif text-4xl leading-tight sm:text-5xl">Many disciplines.<br /><span className="italic">One considered direction.</span></h2>
+                <p className="mt-6 max-w-2xl text-sm leading-7 text-charcoal/75">Redevelopment brings technical, legal, financial and regulatory decisions into the same conversation. Aishwarya Redevelopment Advisory Company connects these disciplines to support housing societies, property owners and project stakeholders through planning, documentation, negotiation and execution.</p>
+              </div>
+            </div>
+            <nav aria-label="Service categories" className="mt-14 grid gap-x-8 sm:grid-cols-2 lg:grid-cols-4">
+              {chapters.map((chapter, index) => <a key={chapter.id} href={`#${chapter.id}`} className={`${focus} group flex items-start gap-4 border-t border-navy/20 py-5 hover:border-gold motion-safe:transition-colors`}><span className="font-serif text-xl text-gold-700">0{index + 1}</span><span className="flex-1 text-xs leading-5">{chapter.label}<span className="mt-2 block text-[10px] text-charcoal/60">{chapter.count} services</span></span><ArrowUpRight size={16} aria-hidden="true" className="text-gold-700 motion-safe:transition-transform motion-safe:group-hover:-translate-y-1" /></a>)}
+            </nav>
+          </Container>
+        </section>
+
+        <section id="redevelopment" aria-labelledby="redevelopment-heading" className="scroll-mt-28 py-20 sm:py-28">
+          <Container><Reveal><div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-20">
+            <div className="lg:col-span-5">
+              <Building2 className="mb-6 text-gold-700" size={28} strokeWidth={1.2} aria-hidden="true" />
+              <p className={`${eyebrow} mb-4 text-gold-700`}>01 / Setting the direction</p>
+              <h2 id="redevelopment-heading" className="font-serif text-4xl leading-tight sm:text-5xl">Redevelopment<br /><span className="italic">Advisory</span></h2>
+              <p className="mt-5 max-w-sm text-sm leading-7 text-charcoal/70">A clear framework for the choices, conversations and commitments that come before construction.</p>
+              <div className="relative mt-9 aspect-[4/3] overflow-hidden"><Image src="/images/projects/about-redevelopment-study.jpg" alt="Residential building facade used as an architectural redevelopment study" fill sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover" /></div>
+            </div>
+            <ol className="divide-y divide-navy/15 border-t border-navy/15 lg:col-span-7">
+              {redevelopment.map(([title, description], index) => <li key={title} className="group flex gap-5 py-7"><span className="pt-1 font-serif text-xl text-gold-700">{String(index + 1).padStart(2, "0")}</span><div><h3 className="font-serif text-2xl leading-tight motion-safe:transition-colors group-hover:text-gold-800">{title}</h3><p className="mt-3 text-sm leading-7 text-charcoal/70">{description}</p></div></li>)}
+            </ol>
+          </div></Reveal></Container>
+        </section>
+
+        <section id="legal" aria-labelledby="legal-heading" className="scroll-mt-28 bg-navy py-20 text-ivory sm:py-28">
+          <Container><Reveal>
+            <div className="grid gap-8 border-b border-ivory/20 pb-12 lg:grid-cols-2 lg:gap-20">
+              <div><Scale className="mb-6 text-gold" size={28} strokeWidth={1.2} aria-hidden="true" /><p className={`${eyebrow} mb-4 text-gold`}>02 / Establishing the foundation</p><h2 id="legal-heading" className="font-serif text-4xl sm:text-5xl">Legal &amp; <span className="italic text-gold">Regulatory</span></h2></div>
+              <p className="max-w-md self-end text-sm leading-7 text-ivory/70">Clarity in ownership, care in documentation and coordination across the permissions process. Each step is assessed against the requirements of the individual property and project.</p>
+            </div>
+            <ol className="grid gap-x-16 md:grid-cols-2">
+              {legal.map(([title, description], index) => <li key={title} className={`flex gap-5 border-b border-ivory/15 py-7 ${index === 6 ? "md:col-span-2 md:max-w-2xl" : ""}`}><span className="pt-1 text-xs tabular-nums text-gold">{String(index + 6).padStart(2, "0")}</span><div><h3 className="font-serif text-2xl leading-tight">{title}</h3><p className="mt-3 max-w-lg text-sm leading-7 text-ivory/65">{description}</p></div></li>)}
+            </ol>
+          </Reveal></Container>
+        </section>
+
+        <section id="financial" aria-labelledby="financial-heading" className="scroll-mt-28 py-20 sm:py-28">
+          <Container><Reveal>
+            <div className="mb-12 flex flex-col justify-between gap-6 sm:flex-row sm:items-end"><div><Landmark className="mb-6 text-gold-700" size={28} strokeWidth={1.2} aria-hidden="true" /><p className={`${eyebrow} mb-4 text-gold-700`}>03 / Understanding the opportunity</p><h2 id="financial-heading" className="font-serif text-4xl sm:text-5xl">Financial &amp; <span className="italic">Strategic</span></h2></div><p className="max-w-xs text-sm leading-7 text-charcoal/70">Balancing development potential with commercial realities and stakeholder priorities.</p></div>
+            <ol className="grid border-t border-l border-navy/15 md:grid-cols-12">
+              {financial.map(([title, description], index) => <li key={title} className={`group border-r border-b border-navy/15 p-7 sm:p-10 motion-safe:transition-colors hover:bg-white/60 ${index === 0 || index === 3 ? "md:col-span-5" : "md:col-span-7"}`}><span className="mb-8 block font-serif text-4xl text-gold-700">{index + 13}<span className="ml-2 text-lg">/</span></span><h3 className="max-w-md font-serif text-3xl leading-tight">{title}</h3><p className="mt-4 max-w-lg text-sm leading-7 text-charcoal/70">{description}</p></li>)}
+            </ol>
+          </Reveal></Container>
+        </section>
+
+        <section id="execution" aria-labelledby="execution-heading" className="scroll-mt-28 border-t border-navy/10 bg-white/50 py-20 sm:py-28">
+          <Container><Reveal><div className="grid gap-12 lg:grid-cols-12 lg:gap-20">
+            <div className="lg:col-span-5"><HardHat className="mb-6 text-gold-700" size={28} strokeWidth={1.2} aria-hidden="true" /><p className={`${eyebrow} mb-4 text-gold-700`}>04 / Following through</p><h2 id="execution-heading" className="font-serif text-4xl leading-tight sm:text-5xl">Project Execution<br />&amp; <span className="italic">Handover</span></h2><p className="mt-6 max-w-sm text-sm leading-7 text-charcoal/70">Attention to the details that connect project plans with on-site progress and the transition to possession.</p><span className="mt-10 block h-px w-20 bg-gold" /></div>
+            <ol className="ml-4 border-l border-gold/50 lg:col-span-7">
+              {execution.map(([title, description], index) => <li key={title} className="relative pb-10 pl-9 last:pb-0"><span className="absolute -left-4 top-0 flex size-8 items-center justify-center rounded-full border border-gold/50 bg-ivory text-[10px] text-gold-800">{index + 17}</span><h3 className="font-serif text-2xl leading-tight">{title}</h3><p className="mt-3 text-sm leading-7 text-charcoal/70">{description}</p></li>)}
+            </ol>
+          </div></Reveal></Container>
+        </section>
+
+        <section aria-labelledby="consultation-heading" className="bg-navy py-16 text-ivory sm:py-24">
+          <Container className="grid items-center gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-7"><p className={`${eyebrow} mb-5 text-gold`}>Your next chapter</p><h2 id="consultation-heading" className="font-serif text-4xl leading-tight sm:text-5xl">Every property has a context.<br /><span className="italic text-gold">Let&apos;s understand yours.</span></h2><p className="mt-5 max-w-lg text-sm leading-7 text-ivory/70">Discuss your society&apos;s priorities, your property and the stage of your redevelopment journey.</p></div>
+            <div className="flex flex-col items-start gap-5 lg:col-span-5 lg:items-end"><a href={`tel:${COMPANY_DETAILS.contact.phoneTel}`} className={`${focus} inline-flex min-h-12 items-center justify-center gap-3 bg-gold px-6 py-4 text-sm font-medium text-navy hover:bg-gold-300 motion-safe:transition-colors`}><Phone size={16} aria-hidden="true" />+91 70218 92236</a><Link href="/#contact" className={`${focus} inline-flex min-h-11 items-center gap-3 border-b border-gold/40 text-xs text-ivory hover:text-gold`}>Request a consultation <ArrowUpRight size={16} aria-hidden="true" /></Link></div>
+          </Container>
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
+}

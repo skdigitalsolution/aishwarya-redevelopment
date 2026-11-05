@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
+import { WHATSAPP_CONTACT } from "@/lib/contact";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -32,8 +34,13 @@ export default function RootLayout({
       lang="en"
       className={`${cormorant.variable} ${plusJakarta.variable} scroll-smooth antialiased`}
     >
-      <body className="min-h-screen bg-ivory font-sans text-charcoal flex flex-col">
+      {/* Extensions may inject body attributes such as cz-shortcut-listen before hydration. */}
+      <body
+        suppressHydrationWarning
+        className={`min-h-screen bg-ivory font-sans text-charcoal flex flex-col${WHATSAPP_CONTACT.confirmed ? " pb-24" : ""}`}
+      >
         {children}
+        <WhatsAppButton />
       </body>
     </html>
   );

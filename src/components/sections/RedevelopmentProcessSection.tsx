@@ -57,7 +57,7 @@ const processSteps: ProcessStep[] = [
     title: "Agreements & Approvals",
     subtitle: "Legal Safeguards & Sanctions",
     description:
-      "Structuring and negotiating airtight Development Agreements (DA), Power of Attorney (POA), and Individual Agreements with binding covenants and bank guarantees.",
+      "Structuring and negotiating Development Agreements (DA), Power of Attorney (POA), and Individual Agreements with project-specific covenants and negotiated security arrangements.",
     icon: FileSignature,
     deliverables: ["Development Agreement Vetting", "Bank Guarantee Structuring", "IOD / CC Tracking"],
   },

@@ -19,7 +19,7 @@ const expertiseHighlights = [
     number: "02",
     title: "Legal & Regulatory Guidance",
     description:
-      "Navigating Maharashtra cooperative frameworks (Section 79A), MOFA, RERA compliance, title due diligence, and crafting airtight Development Agreement covenants.",
+      "Navigating Maharashtra cooperative frameworks (Section 79A), MOFA, RERA compliance, title due diligence, and coordinating Development Agreement review.",
     icon: Scale,
   },
   {
@@ -80,14 +80,14 @@ export const AboutSection: React.FC = () => {
               />
 
               {/* Main Image Wrapper with Editorial Aspect Ratio */}
-              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-xs bg-navy-950 shadow-2xl border border-gold/30">
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-xs bg-navy-950 shadow-[0_12px_32px_rgba(11,29,58,0.08)] border border-gold/30">
                 <Image
                   src="/images/projects/about-redevelopment-study.jpg"
-                  alt="Contemporary architectural redevelopment facade showcasing urban refinement in Mumbai"
+                  alt="Illustrative residential facade with planted balconies and warm architectural lighting"
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 45vw, 520px"
                   quality={90}
-                  className="object-cover object-center transform hover:scale-105 transition-transform duration-700 ease-out"
+                  className="object-cover object-center motion-safe:transition-transform motion-safe:duration-700 motion-safe:hover:scale-[1.025]"
                 />
 
                 {/* Subtle Image Gradient Overlay for Warmth and Contrast */}
@@ -112,7 +112,7 @@ export const AboutSection: React.FC = () => {
 
               {/* Verified Status Note Under Image */}
               <p className="mt-3 text-[11px] font-sans text-charcoal/60 text-center sm:text-left">
-                Architectural Redevelopment Study • Official Society Portfolio Documentation in Review
+                Illustrative architectural study • Not a verified company project
               </p>
             </div>
           </motion.div>
@@ -142,9 +142,9 @@ export const AboutSection: React.FC = () => {
 
             {/* Accent Divider with Signature Gold Diamond Pivot */}
             <div className="flex items-center gap-2 mb-7" aria-hidden="true">
-              <span className="h-px w-14 bg-gradient-to-r from-gold-500 to-transparent" />
-              <span className="size-1.5 rotate-45 border border-gold-600 bg-gold-500/30" />
-              <span className="h-px w-24 bg-gradient-to-r from-gold-500/40 to-transparent" />
+              <span className="h-px w-20 bg-gold/70" />
+              <span className="hidden" />
+              <span className="hidden" />
             </div>
 
             {/* Company Introduction Narrative */}

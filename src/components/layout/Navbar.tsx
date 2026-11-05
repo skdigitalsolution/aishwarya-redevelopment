@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown, ArrowUpRight, Calendar, Phone } from "lucide-react";
 import { Container } from "./Container";
 import { BrandWordmark } from "@/components/brand";
@@ -20,30 +21,30 @@ const navItems: NavItem[] = [
   { label: "About Us", href: "/about" },
   {
     label: "Services",
-    href: "/#services",
+    href: "/services",
     children: [
       {
         label: "Services Overview",
-        href: "/#services",
+        href: "/services",
         description: "Comprehensive advisory solutions across society lifecycle",
       },
       {
         label: "Redevelopment",
-        href: "/#redevelopment",
+        href: "/redevelopment",
         description: "Fiduciary guidance for housing societies & landholders",
       },
       {
         label: "Land Banking",
-        href: "/#land-banking",
+        href: "/land-banking",
         description: "Strategic aggregation, title diligence & value realization",
       },
     ],
   },
-  { label: "Redevelopment", href: "/#redevelopment" },
-  { label: "Land Banking", href: "/#land-banking" },
-  { label: "Projects", href: "/#projects" },
-  { label: "Our Team", href: "/#team" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Redevelopment", href: "/redevelopment" },
+  { label: "Land Banking", href: "/land-banking" },
+  { label: "Projects", href: "/projects" },
+  { label: "Our Team", href: "/our-team" },
+  { label: "Contact", href: "/contact" },
 ];
 
 /**
@@ -55,37 +56,44 @@ const balancedDesktopItems: NavItem[] = [
   { label: "About Us", href: "/about" },
   {
     label: "Services & Capabilities",
-    href: "/#services",
+    href: "/services",
     children: [
       {
         label: "All Advisory Services",
-        href: "/#services",
+        href: "/services",
         description: "Full-lifecycle guidance for societies, committees and developers",
       },
       {
         label: "Society Redevelopment",
-        href: "/#redevelopment",
+        href: "/redevelopment",
         description: "Feasibility, DA structuring, tender selection & member consensus",
       },
       {
         label: "Land Banking & Aggregation",
-        href: "/#land-banking",
+        href: "/land-banking",
         description: "Strategic acquisition, title clearance & joint ventures",
       },
     ],
   },
-  { label: "Projects", href: "/#projects" },
-  { label: "Our Team", href: "/#team" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Projects", href: "/projects" },
+  { label: "Our Team", href: "/our-team" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const Navbar: React.FC = () => {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const dropdownRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const mobileToggleRef = useRef<HTMLButtonElement>(null);
+  const servicesToggleRef = useRef<HTMLButtonElement>(null);
+  const isLinkActive = (href: string) => {
+    if (href.includes("#")) return pathname === "/" && activeSection === href.split("#")[1];
+    return pathname === href;
+  };
 
   // Monitor scroll for header background styling
   useEffect(() => {
@@ -114,6 +122,7 @@ export const Navbar: React.FC = () => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
+        if (servicesDropdownOpen) servicesToggleRef.current?.focus();
         setMobileMenuOpen(false);
         setServicesDropdownOpen(false);
       }
@@ -134,7 +143,37 @@ export const Navbar: React.FC = () => {
       document.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [servicesDropdownOpen]);
+
+  // Keep keyboard focus in the modal drawer and return it to its trigger on close.
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const previousFocus = document.activeElement as HTMLElement | null;
+    const drawer = mobileMenuRef.current;
+    const selector = 'a[href], button:not([disabled]), [tabindex="0"]';
+    drawer?.querySelector<HTMLElement>(selector)?.focus();
+    const trapFocus = (event: KeyboardEvent) => {
+      if (event.key !== "Tab" || !drawer) return;
+      const controls = Array.from(drawer.querySelectorAll<HTMLElement>(selector));
+      const first = controls[0];
+      const last = controls[controls.length - 1];
+      if (event.shiftKey && (document.activeElement === first || !drawer.contains(document.activeElement))) {
+        event.preventDefault();
+        last?.focus();
+      } else if (!event.shiftKey && (document.activeElement === last || !drawer.contains(document.activeElement))) {
+        event.preventDefault();
+        first?.focus();
+      }
+    };
+    const closeAtDesktop = () => { if (window.innerWidth >= 1280) setMobileMenuOpen(false); };
+    document.addEventListener("keydown", trapFocus);
+    window.addEventListener("resize", closeAtDesktop);
+    return () => {
+      document.removeEventListener("keydown", trapFocus);
+      window.removeEventListener("resize", closeAtDesktop);
+      previousFocus?.focus();
+    };
+  }, [mobileMenuOpen]);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -152,10 +191,10 @@ export const Navbar: React.FC = () => {
     <>
       <header
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+          "fixed top-0 left-0 right-0 z-50 motion-safe:transition-[background-color,padding,border-color] duration-300",
           isScrolled
-            ? "bg-navy-950/95 backdrop-blur-md border-b border-gold/20 shadow-xl shadow-navy-950/30 py-3.5"
-            : "bg-navy-950/80 backdrop-blur-xs border-b border-gold/15 py-4 sm:py-5"
+            ? "bg-navy-950/95 backdrop-blur-md border-b border-gold/20 shadow-[0_4px_24px_rgba(6,15,30,0.12)] py-3.5"
+            : "bg-navy-950/90 backdrop-blur-xs border-b border-gold/15 py-4 sm:py-5"
         )}
       >
         <Container size="xl">
@@ -168,14 +207,14 @@ export const Navbar: React.FC = () => {
             {/* Center: Balanced Desktop Navigation (Balanced Mode for 1024px-1535px) */}
             <nav
               aria-label="Primary Navigation"
-              className="hidden lg:flex 2xl:hidden items-center space-x-1 xl:space-x-2"
+              className="hidden xl:flex 2xl:hidden items-center space-x-1"
             >
               {balancedDesktopItems.map((item) => {
                 const isActive =
-                  activeSection === item.href.replace("#", "") ||
+                  isLinkActive(item.href) ||
                   (item.children &&
                     item.children.some(
-                      (c) => activeSection === c.href.replace("#", "")
+                      (c) => isLinkActive(c.href)
                     ));
 
                 if (item.children) {
@@ -186,9 +225,13 @@ export const Navbar: React.FC = () => {
                       className="relative"
                       onMouseEnter={() => setServicesDropdownOpen(true)}
                       onMouseLeave={() => setServicesDropdownOpen(false)}
+                      onBlur={(event) => {
+                        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setServicesDropdownOpen(false);
+                      }}
                     >
                       <button
                         type="button"
+                        ref={servicesToggleRef}
                         onClick={() =>
                           setServicesDropdownOpen((prev) => !prev)
                         }
@@ -199,9 +242,9 @@ export const Navbar: React.FC = () => {
                           }
                         }}
                         aria-expanded={servicesDropdownOpen}
-                        aria-haspopup="true"
+                        aria-controls={servicesDropdownOpen ? "services-navigation-links" : undefined}
                         className={cn(
-                          "inline-flex items-center gap-1.5 px-3 py-2 text-xs xl:text-sm font-sans tracking-wide transition-colors rounded-xs focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-gold",
+                          "inline-flex items-center gap-1.5 px-3 py-2.5 text-xs font-sans tracking-wide transition-colors rounded-xs focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-gold",
                           isActive
                             ? "text-gold font-medium"
                             : "text-ivory-100/90 hover:text-gold"
@@ -220,8 +263,8 @@ export const Navbar: React.FC = () => {
                       {/* Dropdown Flyout */}
                       {servicesDropdownOpen && (
                         <div
-                          role="menu"
-                          className="absolute top-full left-0 mt-2 w-72 rounded-sm bg-navy-950/98 backdrop-blur-xl border border-gold/30 shadow-2xl p-2.5 space-y-1 animate-in fade-in zoom-in-95 duration-150"
+                          id="services-navigation-links"
+                          className="absolute top-full left-0 w-72 rounded-xs bg-navy-950 border border-gold/25 shadow-[0_18px_40px_rgba(6,15,30,0.2)] p-3 space-y-1"
                         >
                           <div className="px-3 py-1.5 border-b border-gold/15 mb-1">
                             <span className="text-[10px] font-sans uppercase tracking-[0.2em] text-gold-400 font-semibold">
@@ -232,7 +275,6 @@ export const Navbar: React.FC = () => {
                             <Link
                               key={sub.label}
                               href={sub.href}
-                              role="menuitem"
                               onClick={() => setServicesDropdownOpen(false)}
                               className="group block px-3 py-2 rounded-xs transition-colors hover:bg-navy-900/90 focus-visible:bg-navy-900 focus-visible:outline-hidden"
                             >
@@ -259,8 +301,9 @@ export const Navbar: React.FC = () => {
                   <Link
                     key={item.label}
                     href={item.href}
+                    aria-current={isActive ? "page" : undefined}
                     className={cn(
-                      "relative px-3 py-2 text-xs xl:text-sm font-sans tracking-wide transition-colors rounded-xs focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-gold",
+                      "relative px-3 py-2.5 text-xs font-sans tracking-wide transition-colors rounded-xs focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-gold",
                       isActive
                         ? "text-gold font-medium"
                         : "text-ivory-100/90 hover:text-gold"
@@ -292,7 +335,7 @@ export const Navbar: React.FC = () => {
                     ? [
                         {
                           label: "Services",
-                          href: "#services",
+                          href: "/services",
                         },
                       ]
                     : []
@@ -313,11 +356,12 @@ export const Navbar: React.FC = () => {
                   return order.indexOf(a.label) - order.indexOf(b.label);
                 })
                 .map((item) => {
-                  const isActive = activeSection === item.href.replace("#", "");
+                  const isActive = isLinkActive(item.href);
                   return (
                     <Link
                       key={item.label}
                       href={item.href}
+                      aria-current={isActive ? "page" : undefined}
                       className={cn(
                         "relative px-3 py-2 text-xs font-sans uppercase tracking-[0.12em] transition-colors rounded-xs focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-gold",
                         isActive
@@ -341,18 +385,20 @@ export const Navbar: React.FC = () => {
             <div className="flex items-center gap-3">
               {/* Consultation CTA Button */}
               <Link
-                href="/#contact"
+                href="/contact"
                 className="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-xs font-sans font-semibold uppercase tracking-[0.14em] text-navy bg-gold hover:bg-gold-300 transition-all duration-200 rounded-xs shadow-xs focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy active:scale-[0.98]"
               >
                 <Calendar className="size-3.5 text-navy-950" aria-hidden="true" />
-                <span>Schedule a Consultation</span>
+                <span className="xl:hidden">Schedule a Consultation</span>
+                <span className="hidden xl:inline">Consultation</span>
               </Link>
 
               {/* Mobile Menu Toggle Button */}
               <button
                 type="button"
+                ref={mobileToggleRef}
                 onClick={() => setMobileMenuOpen((prev) => !prev)}
-                className="lg:hidden inline-flex items-center justify-center p-2 rounded-xs text-ivory-100 hover:text-gold hover:bg-navy-900/60 border border-gold/25 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gold"
+                className="xl:hidden inline-flex items-center justify-center p-2 rounded-xs text-ivory-100 hover:text-gold hover:bg-navy-900/60 border border-gold/25 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gold"
                 aria-expanded={mobileMenuOpen}
                 aria-label={mobileMenuOpen ? "Close menu" : "Open navigation menu"}
                 aria-controls="mobile-navigation-drawer"
@@ -375,7 +421,7 @@ export const Navbar: React.FC = () => {
           role="dialog"
           aria-modal="true"
           aria-label="Mobile Navigation"
-          className="fixed inset-0 z-40 lg:hidden"
+          className="fixed inset-0 z-[60] xl:hidden"
         >
           {/* Backdrop overlay */}
           <div
@@ -411,18 +457,19 @@ export const Navbar: React.FC = () => {
                 {[
                   { label: "Home", href: "/", num: "01" },
                   { label: "About Us", href: "/about", num: "02" },
-                  { label: "Services", href: "/#services", num: "03" },
-                  { label: "Redevelopment", href: "/#redevelopment", num: "04" },
-                  { label: "Land Banking", href: "/#land-banking", num: "05" },
-                  { label: "Projects", href: "/#projects", num: "06" },
-                  { label: "Our Team", href: "/#team", num: "07" },
-                  { label: "Contact", href: "/#contact", num: "08" },
+                  { label: "Services", href: "/services", num: "03" },
+                  { label: "Redevelopment", href: "/redevelopment", num: "04" },
+                  { label: "Land Banking", href: "/land-banking", num: "05" },
+                  { label: "Projects", href: "/projects", num: "06" },
+                  { label: "Our Team", href: "/our-team", num: "07" },
+                  { label: "Contact", href: "/contact", num: "08" },
                 ].map((item) => {
-                  const isActive = activeSection === item.href.replace("#", "");
+                  const isActive = isLinkActive(item.href);
                   return (
                     <Link
                       key={item.label}
                       href={item.href}
+                      aria-current={isActive ? "page" : undefined}
                       onClick={() => setMobileMenuOpen(false)}
                       className={cn(
                         "group flex items-center justify-between px-3 py-3 rounded-xs transition-colors",
@@ -454,7 +501,7 @@ export const Navbar: React.FC = () => {
             {/* Mobile Footer / CTA Area */}
             <div className="pt-6 border-t border-gold/20 mt-8 space-y-4">
               <Link
-                href="/#contact"
+                href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full flex items-center justify-center gap-2 py-3 px-4 text-xs font-sans font-semibold uppercase tracking-[0.16em] text-navy bg-gold hover:bg-gold-300 rounded-xs transition-colors"
               >

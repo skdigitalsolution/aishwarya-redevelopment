@@ -36,7 +36,7 @@ const expertiseAreas = [
   },
   {
     title: "Self-Redevelopment Guidance",
-    description: "Empowering societies to retain 100% surplus equity, enhanced carpet area, and autonomy.",
+    description: "Helping societies evaluate self-redevelopment, including funding, area planning and governance responsibilities.",
     icon: Award,
   },
   {
@@ -46,7 +46,7 @@ const expertiseAreas = [
   },
   {
     title: "Legal Title Investigation",
-    description: "30-year search reports, deemed conveyance clearance, and airtight Development Agreement covenants.",
+    description: "Property-specific title investigations, deemed conveyance guidance and Development Agreement review.",
     icon: Scale,
   },
   {
@@ -79,7 +79,7 @@ const coreValues = [
     title: "Regulatory Compliance",
     subtitle: "Section 79A & RERA Discipline",
     description:
-      "Every procedural step is conducted in strict compliance with Maharashtra cooperative laws, Section 79A mandates, RERA provisions, and municipal circulars, shielding committees from statutory risk.",
+      "Our advisory supports coordination around applicable Maharashtra cooperative laws, Section 79A procedures, RERA provisions and municipal requirements, with professional review of project-specific obligations.",
   },
   {
     number: "03",
@@ -93,7 +93,7 @@ const coreValues = [
     title: "Long-Term Value Creation",
     subtitle: "Compounding Member Equity",
     description:
-      "We structure redevelopment agreements to maximize member carpet area, secure bank guarantees, optimize commercial corpus, and guarantee enduring architectural quality.",
+      "We structure redevelopment agreements to maximize member carpet area, secure bank guarantees, optimize commercial corpus, and define project-specific quality expectations.",
   },
   {
     number: "05",
@@ -115,7 +115,7 @@ export default function AboutPage() {
           <div className="absolute inset-0 z-0">
             <Image
               src="/images/hero/hero-architecture-fallback.jpg"
-              alt="Contemporary architectural redevelopment in Mumbai"
+              alt="Illustrative architectural facade used as a background image"
               fill
               priority
               quality={85}
@@ -133,7 +133,7 @@ export default function AboutPage() {
                 </span>
               </div>
 
-              <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-ivory-50 font-normal leading-[1.12] tracking-tight">
+              <h1 className="editorial-hero-title font-serif text-4xl sm:text-5xl md:text-6xl text-ivory-50 font-normal leading-[1.12] tracking-tight">
                 Built on Trust.{" "}
                 <br className="hidden sm:inline" />
                 <span className="italic font-light text-gold-300">Guided by Expertise.</span>
@@ -151,7 +151,7 @@ export default function AboutPage() {
           <Container size="xl">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
               <div className="lg:col-span-6 relative">
-                <div className="relative aspect-[4/5] w-full rounded-xs overflow-hidden border border-gold/30 shadow-xl bg-navy-950">
+                <div className="relative aspect-[4/5] w-full rounded-xs overflow-hidden editorial-image-frame border border-gold/25 shadow-none bg-navy-950">
                   <Image
                     src="/images/projects/about-redevelopment-study.jpg"
                     alt="Mumbai residential redevelopment facade study"
@@ -191,7 +191,7 @@ export default function AboutPage() {
                     The company&apos;s advisory work spans society redevelopment, techno-financial feasibility evaluation, developer due diligence, title and regulatory coordination, self-redevelopment guidance, and strategic land advisory across Mumbai.
                   </p>
                   <p className="text-charcoal/75 text-sm">
-                    Operating without commercial ties to construction contractors or speculative developers, our firm ensures that managing committees receive unbiased analysis, airtight legal documentation, and clear member consensus.
+                    Operating without commercial ties to construction contractors or speculative developers, our firm ensures that managing committees receive unbiased analysis, carefully reviewed legal documentation, and clear member consensus.
                   </p>
                 </div>
 
@@ -221,7 +221,7 @@ export default function AboutPage() {
               eyebrow="Guiding Philosophy"
               title={
                 <span>
-                  Clarity of Purpose. <span className="italic font-light text-gold-700">Certainty of Outcome.</span>
+                  Clarity of Purpose. <span className="italic font-light text-gold-700">Clarity of Direction.</span>
                 </span>
               }
               subtitle="Our advisory practice is anchored in safeguarding property equity while bridging society aspirations with technical realities."
@@ -239,7 +239,7 @@ export default function AboutPage() {
                     Our Advisory Vision
                   </h3>
                   <p className="font-sans text-sm sm:text-base text-charcoal/80 leading-relaxed font-light">
-                    To establish a benchmark of transparency and fiduciary rigor in Mumbai&apos;s redevelopment landscape — ensuring that every housing society navigates the redevelopment journey with complete legal protection, equitable financial returns, and architectural permanence.
+                    To establish a benchmark of transparency and fiduciary rigor in Mumbai&apos;s redevelopment landscape — ensuring that every housing society navigates the redevelopment journey with a clearer understanding of legal safeguards, commercial terms and long-term design considerations.
                   </p>
                 </div>
                 <div className="pt-6 mt-6 border-t border-gold/15 text-xs font-mono text-gold-700">
@@ -256,7 +256,7 @@ export default function AboutPage() {
                     Our Core Mission
                   </h3>
                   <p className="font-sans text-sm sm:text-base text-ivory-300/85 leading-relaxed font-light">
-                    To provide comprehensive, unbiased advisory services that demystify statutory procedures, scrutinize developer credentials, optimize FSI potential under DCPR 2034, and enforce binding contracts that protect member homes from delay and compromise.
+                    To provide comprehensive, unbiased advisory services that demystify statutory procedures, scrutinize developer credentials, optimize FSI potential under DCPR 2034, and coordinate agreement reviews that address member interests, project responsibilities and delay provisions.
                   </p>
                 </div>
                 <div className="pt-6 mt-6 border-t border-gold/20 text-xs font-mono text-gold-400">
@@ -357,7 +357,7 @@ export default function AboutPage() {
           <Container size="xl">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
               <div className="lg:col-span-5 relative">
-                <div className="relative aspect-[4/5] w-full rounded-xs bg-navy-950 p-8 flex flex-col justify-between border border-gold/35 shadow-2xl text-ivory">
+                <div className="relative aspect-[4/5] w-full rounded-xs bg-navy-950 p-8 flex flex-col justify-between border border-gold/30 shadow-none text-ivory">
                   <div className="flex items-center justify-between border-b border-gold/20 pb-4">
                     <span className="text-[10px] font-sans uppercase tracking-[0.2em] text-gold-400 font-semibold">
                       Founder Profile
@@ -366,7 +366,7 @@ export default function AboutPage() {
                   </div>
 
                   <div className="my-auto text-center py-6">
-                    <div className="size-24 mx-auto rounded-full border-2 border-gold/40 flex items-center justify-center bg-navy-900/90 mb-4">
+                    <div className="size-24 mx-auto border-y border-gold/40 flex items-center justify-center mb-6">
                       <span className="font-serif text-3xl font-semibold tracking-wider text-gold-300">
                         SM
                       </span>
@@ -379,7 +379,7 @@ export default function AboutPage() {
                     </p>
                     <div className="mt-4 px-3 py-1.5 rounded-xs bg-navy-900/80 border border-gold/20 max-w-xs mx-auto">
                       <p className="font-mono text-[10px] text-gold-300/80">
-                        Target: /images/founder/founder-portrait.jpg
+                        Official founder portrait forthcoming
                       </p>
                     </div>
                   </div>
