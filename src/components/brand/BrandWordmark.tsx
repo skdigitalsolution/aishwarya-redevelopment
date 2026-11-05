@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { NavbarLink } from "@/components/layout/NavbarLink";
 import { cn } from "@/lib/utils";
 
 interface BrandWordmarkProps {
@@ -30,7 +31,7 @@ export const BrandWordmark: React.FC<BrandWordmarkProps> = ({
 
   if (showLogo) {
     return (
-      <Link href="/" onClick={onClick}
+      <NavbarLink href="/" onClick={onClick}
         aria-label="Aishwarya Redevelopment Advisory Company - Home"
         className={cn("inline-flex min-w-0 items-center gap-3 rounded-xs focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold", className)}>
         <span className="flex size-12 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/10 bg-white sm:size-14 lg:size-16">
@@ -42,7 +43,7 @@ export const BrandWordmark: React.FC<BrandWordmarkProps> = ({
           <span className={cn("font-serif text-xl font-medium uppercase leading-tight tracking-[0.08em] sm:text-2xl", isDark ? "text-ivory-50" : "text-navy")}>Aishwarya</span>
           <span className={cn("mt-1 max-w-[190px] font-sans text-xs font-medium uppercase leading-4 tracking-[0.06em]", isDark ? "text-gold-400" : "text-gold-700")}>Redevelopment Advisory Company</span>
         </span>
-      </Link>
+      </NavbarLink>
     );
   }
 

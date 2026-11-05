@@ -93,7 +93,7 @@ export const ServicesSection: React.FC = () => {
           <p className="max-w-md text-sm leading-7 text-ivory/75 lg:col-span-5">Guiding managing committees, housing societies, and landowners through high-stakes urban redevelopment with rigorous fiduciary diligence and technical clarity.</p>
         </div>
         <div className="mt-12 grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
-          <motion.article initial={false} whileInView={reduced ? { opacity: 1 } : { opacity: [0.9, 1], y: [8, 0] }} viewport={{ once: true }} transition={{ duration: reduced ? 0 : 0.5 }} className="min-w-0 lg:col-span-5">
+          <motion.article data-motion-owned initial={false} whileInView={reduced ? { opacity: 1, y: 0 } : { opacity: [0, 1], y: [38, 0] }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: reduced ? 0 : 0.7, ease: [0.22, 1, 0.36, 1] }} className="min-w-0 lg:col-span-5">
             <h3 className="font-serif text-3xl leading-tight text-ivory">{featured.title}</h3>
             <p className="mt-5 text-sm leading-7 text-ivory/80">{featured.description}</p>
             <ClientImage id={2} dark aspect="aspect-[4/3]" className="mt-7" />

@@ -106,9 +106,9 @@ export default function AboutPage() {
     <>
       <Navbar />
 
-      <main id="main-content" tabIndex={-1} className="bg-ivory text-charcoal flex-1 pt-24 sm:pt-32">
+      <main id="main-content" tabIndex={-1} className="bg-ivory text-charcoal flex-1">
         {/* 1. ABOUT HERO */}
-        <section className="relative py-16 sm:py-24 bg-navy-950 text-ivory overflow-hidden">
+        <section className="relative pt-40 pb-16 sm:pt-56 sm:pb-24 bg-navy-950 text-ivory overflow-hidden">
           <div className="absolute inset-0 z-0">
             <Image
               src="/images/hero/hero-architecture-fallback.jpg"
@@ -116,9 +116,12 @@ export default function AboutPage() {
               fill
               quality={85}
               sizes="100vw"
-              className="object-cover object-center opacity-25"
+              className="object-cover object-center"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/85 to-navy-950/70" />
+            <div
+              className="absolute inset-0"
+              style={{ background: "linear-gradient(90deg, rgba(11, 29, 58, 0.8) 0%, rgba(11, 29, 58, 0.75) 30%, rgba(11, 29, 58, 0.48) 65%, rgba(11, 29, 58, 0.22) 100%)" }}
+            />
           </div>
 
           <Container size="xl" className="relative z-10">

@@ -63,7 +63,7 @@ export const WhyChooseUsSection: React.FC = () => {
             <ClientImage id={1} aspect="aspect-square" className="mt-8 max-w-sm" />
           </div>
           <div className="divide-y divide-navy/15 border-t border-navy/15 lg:col-span-7">
-            {differentiators.map((item, index) => { const Icon = item.icon; return <motion.article key={item.number} initial={false} whileInView={reduced ? { opacity: 1 } : { opacity: [0.9, 1], y: [6, 0] }} viewport={{ once: true }} transition={{ duration: reduced ? 0 : 0.45 }} className="flex items-start gap-5 py-7 sm:gap-6 sm:py-8">
+            {differentiators.map((item, index) => { const Icon = item.icon; return <motion.article data-motion-owned key={item.number} initial={false} whileInView={reduced ? { opacity: 1, y: 0 } : { opacity: [0, 1], y: [38, 0] }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: reduced ? 0 : 0.7, delay: reduced ? 0 : Math.min(index, 3) * 0.08, ease: [0.22, 1, 0.36, 1] }} className="flex items-start gap-5 py-7 sm:gap-6 sm:py-8">
               <Icon size={23} strokeWidth={1.3} aria-hidden="true" className="mt-1 shrink-0 text-gold-700" />
               <div><h3 className="font-serif text-2xl leading-tight sm:text-3xl">{item.title}</h3><p className="mt-3 max-w-xl text-sm leading-7 text-charcoal/80">{benefits[index]}</p></div>
             </motion.article>; })}

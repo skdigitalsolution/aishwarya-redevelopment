@@ -7,7 +7,6 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/layout/Container";
 import { COMPANY_DETAILS } from "@/lib/constants";
-import { Reveal } from "./Reveal";
 import type { ClientImageId } from "@/lib/client-images";
 
 export const metadata = pageMetadata("/services", "Our Services", "Explore 20 services from Aishwarya Redevelopment Advisory Company across redevelopment, legal and regulatory, financial and project execution advisory.");
@@ -62,7 +61,7 @@ function ServiceChapter({ id, title, introduction, services, start, images = [],
 }) {
   return (
     <section id={id} aria-labelledby={id + "-heading"} className={"scroll-mt-28 py-16 sm:py-24 " + (dark ? "bg-navy text-ivory" : "bg-ivory text-navy")}>
-      <Container><Reveal><div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-14">
+      <Container><div><div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-14">
         <div className="min-w-0 lg:col-span-5">
           <p className={eyebrow + " mb-4 " + (dark ? "text-gold" : "text-gold-700")}>{String(start).padStart(2, "0")}?{String(start + services.length - 1).padStart(2, "0")} / Advisory services</p>
           <h2 id={id + "-heading"} className="font-serif text-4xl leading-tight sm:text-5xl">{title}</h2>
@@ -75,7 +74,7 @@ function ServiceChapter({ id, title, introduction, services, start, images = [],
         <ol start={start} className={"min-w-0 divide-y border-t lg:col-span-7 " + (dark ? "divide-ivory/15 border-ivory/15" : "divide-navy/15 border-navy/15")}>
           {services.map(([name, description], index) => <li key={name} className="flex items-start gap-4 py-6 sm:gap-5 sm:py-7"><span data-motion-number aria-hidden="true" className={"w-6 shrink-0 pt-1 text-xs tabular-nums " + (dark ? "text-gold" : "text-gold-700")}>{String(start + index).padStart(2, "0")}</span><div className="min-w-0"><h3 className="font-serif text-2xl leading-tight sm:text-3xl">{name}</h3><p className={"mt-3 max-w-xl text-sm leading-7 " + (dark ? "text-ivory/80" : "text-charcoal/80")}>{description}</p></div></li>)}
         </ol>
-      </div></Reveal></Container>
+      </div></div></Container>
     </section>
   );
 }
@@ -84,8 +83,8 @@ export default function ServicesPage() {
   return (
     <>
       <Navbar />
-      <main tabIndex={-1} id="services-main" className="flex-1 bg-ivory pt-24 text-navy sm:pt-32">
-        <section aria-labelledby="services-heading" className="overflow-hidden bg-navy text-ivory">
+      <main tabIndex={-1} id="services-main" className="flex-1 bg-ivory text-navy">
+        <section aria-labelledby="services-heading" className="overflow-hidden bg-navy pt-24 text-ivory sm:pt-32">
           <Container className="grid gap-12 py-16 sm:py-24 lg:grid-cols-12 lg:gap-8 lg:py-28">
             <div className="relative z-10 self-center lg:col-span-7 lg:pr-8">
               <p className={`${eyebrow} mb-8 flex items-center gap-4 text-gold`}><span className="h-px w-10 bg-gold" />Our Services</p>

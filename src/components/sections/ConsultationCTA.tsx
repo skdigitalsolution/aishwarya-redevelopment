@@ -20,11 +20,11 @@ export const ConsultationCTA: React.FC<{ title?: React.ReactNode }> = ({ title }
   const fadeIn = {
     hidden: { opacity: 1, y: 0 },
     visible: (custom: number) => ({
-      opacity: shouldReduceMotion ? 1 : [0.94, 1],
-      y: shouldReduceMotion ? 0 : [4, 0],
+      opacity: shouldReduceMotion ? 1 : [0, 1],
+      y: shouldReduceMotion ? 0 : [38, 0],
       transition: {
-        duration: shouldReduceMotion ? 0 : 0.6,
-        delay: shouldReduceMotion ? 0 : Math.min(custom * 0.06, 0.12),
+        duration: shouldReduceMotion ? 0 : 0.7,
+        delay: shouldReduceMotion ? 0 : Math.min(Math.max(custom - 1, 0) * 0.08, 0.24),
         ease: [0.21, 0.47, 0.32, 0.98] as const,
       },
     }),
@@ -64,7 +64,7 @@ export const ConsultationCTA: React.FC<{ title?: React.ReactNode }> = ({ title }
       <Container size="xl" className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column: Editorial Headline & Narrative (7 cols) */}
-          <motion.div
+          <motion.div data-motion-owned
             initial={false}
             whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
@@ -126,7 +126,7 @@ export const ConsultationCTA: React.FC<{ title?: React.ReactNode }> = ({ title }
           </motion.div>
 
           {/* Right Column: Direct Consultation Inquiry Form (5 cols) */}
-          <motion.div
+          <motion.div data-motion-owned
             id="consultation-form"
             initial={false}
             whileInView="visible"

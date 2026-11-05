@@ -96,7 +96,7 @@ export const RedevelopmentProcessSection: React.FC = () => {
             <Link href="/redevelopment" className="mt-5 inline-flex min-h-12 items-center gap-3 border-b border-gold/60 text-sm text-gold-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold">Explore the redevelopment approach <ArrowRight size={16} aria-hidden="true" /></Link>
           </div>
           <ol className="lg:col-span-7">
-            {processSteps.map((step, index) => <motion.li key={step.step} initial={false} whileInView={reduced ? { opacity: 1 } : { opacity: [0.9, 1], y: [6, 0] }} viewport={{ once: true }} transition={{ duration: reduced ? 0 : 0.45 }} className="relative flex gap-5 pb-8 last:pb-0 sm:gap-7">
+            {processSteps.map((step, index) => <motion.li data-motion-owned key={step.step} initial={false} whileInView={reduced ? { opacity: 1, y: 0 } : { opacity: [0, 1], y: [38, 0] }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: reduced ? 0 : 0.7, delay: reduced ? 0 : Math.min(index, 3) * 0.08, ease: [0.22, 1, 0.36, 1] }} className="relative flex gap-5 pb-8 last:pb-0 sm:gap-7">
               {index < processSteps.length - 1 && <span data-motion-line aria-hidden="true" className="absolute top-12 bottom-0 left-5 w-px bg-gold/30" />}
               <span data-motion-number aria-hidden="true" className="relative flex size-10 shrink-0 items-center justify-center rounded-full border border-gold/45 bg-navy font-serif text-xl text-gold-300">{step.step}</span>
               <div className="min-w-0 pt-1"><h3 className="font-serif text-2xl leading-tight sm:text-3xl">{step.title}</h3><p className="mt-3 max-w-xl text-sm leading-7 text-ivory/80">{step.description}</p></div>

@@ -61,7 +61,7 @@ export const LandBankingSection: React.FC = () => {
           <div className="min-w-0 lg:col-span-6"><ClientImage id={5} dark aspect="aspect-[4/3]" /><p className="mt-3 text-xs leading-6 text-ivory/70">Urban context only. This image does not represent an available land parcel or verified company inventory.</p></div>
         </div>
         <div className="mt-12 grid gap-x-10 sm:grid-cols-2 lg:mt-14">
-          {landServices.map((service) => <motion.article key={service.number} initial={false} whileInView={reduced ? { opacity: 1 } : { opacity: [0.9, 1], y: [6, 0] }} viewport={{ once: true }} transition={{ duration: reduced ? 0 : 0.45 }} className="border-t border-ivory/15 py-7">
+          {landServices.map((service, index) => <motion.article data-motion-owned key={service.number} initial={false} whileInView={reduced ? { opacity: 1, y: 0 } : { opacity: [0, 1], y: [38, 0] }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: reduced ? 0 : 0.7, delay: reduced ? 0 : Math.min(index, 3) * 0.08, ease: [0.22, 1, 0.36, 1] }} className="border-t border-ivory/15 py-7">
             <h3 className="font-serif text-2xl leading-tight sm:text-3xl">{service.title}</h3><p className="mt-3 max-w-xl text-sm leading-7 text-ivory/75">{service.description}</p>
           </motion.article>)}
         </div>

@@ -22,8 +22,8 @@ export default function ProjectsPage() {
   return (
     <>
       <Navbar />
-      <main id="main-content" tabIndex={-1} className="flex-1 bg-ivory pt-24 text-navy sm:pt-32">
-        <section aria-labelledby="portfolio-heading" className="relative overflow-hidden bg-navy text-ivory">
+      <main id="main-content" tabIndex={-1} className="flex-1 bg-ivory text-navy">
+        <section aria-labelledby="portfolio-heading" className="relative overflow-hidden bg-navy pt-24 text-ivory sm:pt-32">
           <Container className="grid gap-12 py-16 sm:py-24 lg:grid-cols-12 lg:gap-14">
             <div className="self-center lg:col-span-7"><p className="mb-8 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.24em] text-gold"><span aria-hidden="true" className="h-px w-9 bg-gold" />Architectural Context</p><h1 id="portfolio-heading" className="editorial-hero-title font-serif text-5xl leading-[1.02] tracking-tight sm:text-7xl lg:text-8xl">Shaping Spaces.<br /><span className="font-light italic text-gold">Creating Possibilities.</span></h1><p className="mt-8 max-w-lg text-sm leading-7 text-ivory/75 sm:text-base">A considered perspective on the built environment, informed by redevelopment advisory, property evaluation and the possibilities of land.</p><a href="#showcase" className={`${focus} mt-10 inline-flex min-h-12 items-center gap-5 border-b border-gold/50 text-xs text-gold hover:text-ivory`}>Explore the advisory perspective <ArrowDown size={16} aria-hidden="true" /></a></div>
             <div className="min-w-0 lg:col-span-5"><ClientImage id={22} dark aspect="aspect-[4/3]" /><p className="mt-4 text-xs leading-6 text-ivory/75">Entrance design provides a starting point for discussing access, shared spaces and planning. This concept is not a verified Aishwarya project.</p></div>

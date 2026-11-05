@@ -39,11 +39,11 @@ export const AboutSection: React.FC = () => {
   const fadeIn = {
     hidden: { opacity: 1, y: 0 },
     visible: (delay: number) => ({
-      opacity: shouldReduceMotion ? 1 : [0.9, 1],
-      y: shouldReduceMotion ? 0 : [8, 0],
+      opacity: shouldReduceMotion ? 1 : [0, 1],
+      y: shouldReduceMotion ? 0 : [38, 0],
       transition: {
         duration: shouldReduceMotion ? 0 : 0.7,
-        delay: shouldReduceMotion ? 0 : Math.min(delay * 0.06, 0.12),
+        delay: shouldReduceMotion ? 0 : Math.min(Math.max(delay - 1, 0) * 0.08, 0.24),
         ease: [0.21, 0.47, 0.32, 0.98] as const,
       },
     }),
@@ -58,7 +58,7 @@ export const AboutSection: React.FC = () => {
       <Container size="xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 xl:gap-20 items-center">
           {/* Left Column: Asymmetrical Editorial Image Composition (5 Cols on Desktop) */}
-          <motion.div
+          <motion.div data-motion-owned
             initial={false}
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
@@ -77,7 +77,7 @@ export const AboutSection: React.FC = () => {
           </motion.div>
 
           {/* Right Column: Company Editorial Narrative & Expertise (7 Cols on Desktop) */}
-          <motion.div
+          <motion.div data-motion-owned
             initial={false}
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}

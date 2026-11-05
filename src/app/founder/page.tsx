@@ -33,8 +33,8 @@ export default function FounderPage() {
   return (
     <>
       <Navbar />
-      <main id="main-content" tabIndex={-1} className="flex-1 bg-ivory pt-24 text-navy sm:pt-32">
-        <section aria-labelledby="founder-name" className="overflow-hidden bg-navy text-ivory">
+      <main id="main-content" tabIndex={-1} className="flex-1 bg-ivory text-navy">
+        <section aria-labelledby="founder-name" className="overflow-hidden bg-navy pt-24 text-ivory sm:pt-32">
           <Container className="grid items-center gap-14 py-16 sm:py-24 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-7"><p className="mb-9 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.24em] text-gold"><span className="h-px w-9 bg-gold" aria-hidden="true" />Founder &amp; Director</p><p className="mb-3 font-serif text-2xl text-ivory/70">Mr.</p><h1 id="founder-name" className="editorial-portrait-title font-serif text-6xl leading-[0.98] tracking-tight sm:text-7xl lg:text-8xl">Sachin<br /><span className="font-light italic text-gold">Murudkar</span></h1><p className="mt-9 max-w-lg font-serif text-2xl leading-snug sm:text-3xl">Led by Vision. Built on Trust.<br />Focused on Informed Decisions.</p><p className="mt-6 max-w-md text-sm leading-7 text-ivory/65">Founder &amp; Director<br />Aishwarya Redevelopment Advisory Company</p><a href="#introduction" className={`${focus} mt-8 inline-flex min-h-12 items-center gap-5 border-b border-gold/50 text-xs text-gold hover:text-ivory`}>The leadership perspective <ArrowDown size={16} aria-hidden="true" /></a></div>
             <figure className="relative mx-auto w-full max-w-md lg:col-span-5"><div aria-hidden="true" className="pointer-events-none absolute inset-0 translate-x-2 translate-y-2 sm:translate-x-3 sm:translate-y-3 border border-gold/25" /><div className="editorial-image-frame relative aspect-[4/5] overflow-hidden border border-gold/25 bg-navy-950">

@@ -53,8 +53,8 @@ export default function RedevelopmentPage() {
   return (
     <>
       <Navbar />
-      <main id="main-content" tabIndex={-1} className="flex-1 bg-ivory pt-24 text-navy sm:pt-32">
-        <section aria-labelledby="redevelopment-title" className="relative overflow-hidden bg-navy text-ivory">
+      <main id="main-content" tabIndex={-1} className="flex-1 bg-ivory text-navy">
+        <section aria-labelledby="redevelopment-title" className="relative overflow-hidden bg-navy pt-24 text-ivory sm:pt-32">
           <Container className="grid gap-12 py-16 sm:py-24 lg:grid-cols-12 lg:gap-12">
             <div className="self-center lg:col-span-7">
               <p className={`${eyebrow} mb-8 flex items-center gap-3 text-gold`}><span className="h-px w-8 bg-gold" aria-hidden="true" />Society Redevelopment</p>

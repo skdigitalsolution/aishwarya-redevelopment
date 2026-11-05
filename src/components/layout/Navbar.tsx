@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import Link from "next/link";
+import { NavbarLink as Link, useNavbarScrollReset, hasNavbarPageNavigation } from "./NavbarLink";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown, ArrowUpRight, Calendar, Phone } from "lucide-react";
 import { Container } from "./Container";
@@ -16,39 +16,8 @@ interface NavItem {
   children?: { label: string; href: string; description?: string }[];
 }
 
-const navItems: NavItem[] = [
-  { label: "Home", href: "/" },
-  { label: "About Us", href: "/about" },
-  {
-    label: "Services",
-    href: "/services",
-    children: [
-      {
-        label: "Services Overview",
-        href: "/services",
-        description: "Comprehensive advisory solutions across society lifecycle",
-      },
-      {
-        label: "Redevelopment",
-        href: "/redevelopment",
-        description: "Fiduciary guidance for housing societies & landholders",
-      },
-      {
-        label: "Land Banking",
-        href: "/land-banking",
-        description: "Strategic aggregation, title diligence & value realization",
-      },
-    ],
-  },
-  { label: "Redevelopment", href: "/redevelopment" },
-  { label: "Land Banking", href: "/land-banking" },
-  { label: "Projects", href: "/projects" },
-  { label: "Our Team", href: "/our-team" },
-  { label: "Contact", href: "/contact" },
-];
-
 /**
- * Filtered list for balanced desktop viewports (1024px - 1440px)
+ * Desktop navigation shared across all viewports from 1024px
  * Groups Redevelopment and Land Banking under the Services dropdown to avoid crowding.
  */
 const balancedDesktopItems: NavItem[] = [
@@ -82,6 +51,7 @@ const balancedDesktopItems: NavItem[] = [
 
 export const Navbar: React.FC = () => {
   const pathname = usePathname();
+  useNavbarScrollReset();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
@@ -157,7 +127,7 @@ export const Navbar: React.FC = () => {
       document.removeEventListener("keydown", trapFocus);
       window.removeEventListener("resize", closeAtDesktop);
       requestAnimationFrame(() => {
-        if (previousFocus?.isConnected && previousFocus.getClientRects().length) previousFocus.focus();
+        if (previousFocus?.isConnected && previousFocus.getClientRects().length) previousFocus.focus({ preventScroll: true });
       });
     };
   }, [mobileMenuOpen]);
@@ -177,7 +147,7 @@ export const Navbar: React.FC = () => {
     return () => {
       Object.assign(body.style, previous);
       background.forEach((element, index) => { element.inert = previousInert[index]; });
-      window.scrollTo({ left: scroll.x, top: scroll.y, behavior: "instant" });
+      if (!hasNavbarPageNavigation()) window.scrollTo({ left: scroll.x, top: scroll.y, behavior: "instant" });
       window.removeEventListener("popstate", closeOnHistoryNavigation);
     };
   }, [mobileMenuOpen]);
@@ -200,10 +170,10 @@ export const Navbar: React.FC = () => {
               <BrandWordmark variant="dark" showLogo />
             </div>
 
-            {/* Center: Balanced Desktop Navigation (Balanced Mode for 1024px-1535px) */}
+            {/* Center: Approved six-item desktop navigation */}
             <nav
               aria-label="Primary Navigation"
-              className="hidden lg:flex 2xl:hidden items-center space-x-1"
+              className="hidden shrink-0 items-center space-x-1 whitespace-nowrap lg:flex"
             >
               {balancedDesktopItems.map((item) => {
                 const isActive =
@@ -317,68 +287,8 @@ export const Navbar: React.FC = () => {
               })}
             </nav>
 
-            {/* Center: Full 8-Item Desktop Navigation (Visible on 2xl screens: >= 1536px) */}
-            <nav
-              aria-label="Extended Primary Navigation"
-              className="hidden 2xl:flex items-center space-x-1.5"
-            >
-              {navItems
-                .filter((item) => item.label !== "Services" || !item.children)
-                .concat(
-                  navItems.filter(
-                    (item) => item.label === "Services" && item.children
-                  )[0]
-                    ? [
-                        {
-                          label: "Services",
-                          href: "/services",
-                        },
-                      ]
-                    : []
-                )
-                // Distinct 8 items in requested order:
-                // Home, About Us, Services, Redevelopment, Land Banking, Projects, Our Team, Contact
-                .sort((a, b) => {
-                  const order = [
-                    "Home",
-                    "About Us",
-                    "Services",
-                    "Redevelopment",
-                    "Land Banking",
-                    "Projects",
-                    "Our Team",
-                    "Contact",
-                  ];
-                  return order.indexOf(a.label) - order.indexOf(b.label);
-                })
-                .map((item) => {
-                  const isActive = isLinkActive(item.href);
-                  return (
-                    <Link
-                      key={item.label}
-                      href={item.href}
-                      aria-current={isActive ? "page" : undefined}
-                      className={cn(
-                        "relative inline-flex min-h-11 items-center px-3 py-2 text-xs font-sans uppercase tracking-[0.12em] transition-colors rounded-xs focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-gold",
-                        isActive
-                          ? "text-gold font-semibold"
-                          : "text-ivory-100/85 hover:text-gold"
-                      )}
-                    >
-                      <span>{item.label}</span>
-                      {isActive && (
-                        <span
-                          className="absolute bottom-0.5 left-2.5 right-2.5 h-0.5 bg-gold-400"
-                          aria-hidden="true"
-                        />
-                      )}
-                    </Link>
-                  );
-                })}
-            </nav>
-
             {/* Right: Consultation CTA & Mobile Toggle */}
-            <div className="flex items-center gap-3">
+            <div className="flex shrink-0 items-center gap-3 whitespace-nowrap">
               {/* Consultation CTA Button */}
               <Link
                 href="/contact"
