@@ -2,6 +2,8 @@
 
 Phase 17 review — 5 November 2026 (Asia/Calcutta).
 
+**Subsequent image update:** the 24 numbered client files and skyline have since been received and integrated. Image-absence and one-source-gallery statements below describe the earlier Phase 17 snapshot, not the current inventory. See [the current image integration report](docs/CLIENT-IMAGE-INTEGRATION.md) for usage and fresh build/image checks. Founder/team portraits, source documents, channel approvals and enquiry delivery remain pending.
+
 **Scope:** prepare the existing site for a restricted client preview. No deployment, domain purchase, DNS change, dependency installation or application redesign was performed. Only this document and `CLIENT_APPROVAL_CHECKLIST.md` are added in this phase.
 
 **Decision:** conditional client-preview candidate, not a completed public-launch release. The disabled delivery/WhatsApp channels and missing client material must be understood and accepted before preview publication. No hosted preview URL has been created.

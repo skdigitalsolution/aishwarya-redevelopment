@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
+import { ClientImage } from "@/components/ui/ClientImage";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -22,11 +23,7 @@ import { Container } from "@/components/layout/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { COMPANY_DETAILS } from "@/lib/constants";
 
-export const metadata: Metadata = {
-  title: "About Us | Aishwarya Redevelopment Advisory Company",
-  description:
-    "Learn about Aishwarya Redevelopment Advisory Company — Mumbai's independent real estate advisory firm specializing in society redevelopment, title diligence, and strategic land advisory.",
-};
+export const metadata = pageMetadata("/about", "About Us", "Learn about Aishwarya Redevelopment Advisory Company, its advisory approach and support for housing societies and property owners in Mumbai.");
 
 const expertiseAreas = [
   {
@@ -109,7 +106,7 @@ export default function AboutPage() {
     <>
       <Navbar />
 
-      <main className="bg-ivory text-charcoal flex-1 pt-24 sm:pt-32">
+      <main id="main-content" tabIndex={-1} className="bg-ivory text-charcoal flex-1 pt-24 sm:pt-32">
         {/* 1. ABOUT HERO */}
         <section className="relative py-16 sm:py-24 bg-navy-950 text-ivory overflow-hidden">
           <div className="absolute inset-0 z-0">
@@ -117,8 +114,8 @@ export default function AboutPage() {
               src="/images/hero/hero-architecture-fallback.jpg"
               alt="Illustrative architectural facade used as a background image"
               fill
-              priority
               quality={85}
+              sizes="100vw"
               className="object-cover object-center opacity-25"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/85 to-navy-950/70" />
@@ -150,27 +147,7 @@ export default function AboutPage() {
         <section className="py-20 sm:py-28 bg-ivory border-t border-gold/20">
           <Container size="xl">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-              <div className="lg:col-span-6 relative">
-                <div className="relative aspect-[4/5] w-full rounded-xs overflow-hidden editorial-image-frame border border-gold/25 shadow-none bg-navy-950">
-                  <Image
-                    src="/images/projects/about-redevelopment-study.jpg"
-                    alt="Mumbai residential redevelopment facade study"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover object-center"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent" />
-                  <div className="absolute bottom-5 left-5 right-5 p-4 rounded-xs bg-navy-950/90 backdrop-blur-md border border-gold/30 text-ivory">
-                    <span className="text-[10px] font-sans uppercase tracking-[0.2em] text-gold-400 font-semibold block mb-1">
-                      Fiduciary Governance
-                    </span>
-                    <p className="font-serif text-sm text-ivory-50">
-                      Independent society representation across Mumbai Metropolitan Region
-                    </p>
-                  </div>
-                </div>
-              </div>
-
+              <ClientImage id={7} aspect="aspect-[4/3]" className="min-w-0 lg:col-span-6" />
               <div className="lg:col-span-6 space-y-6">
                 <div className="inline-flex items-center gap-2.5">
                   <span className="h-px w-6 bg-gold-600" />
@@ -191,7 +168,7 @@ export default function AboutPage() {
                     The company&apos;s advisory work spans society redevelopment, techno-financial feasibility evaluation, developer due diligence, title and regulatory coordination, self-redevelopment guidance, and strategic land advisory across Mumbai.
                   </p>
                   <p className="text-charcoal/75 text-sm">
-                    Operating without commercial ties to construction contractors or speculative developers, our firm ensures that managing committees receive unbiased analysis, carefully reviewed legal documentation, and clear member consensus.
+                    Our advisory approach emphasizes clear analysis, carefully reviewed documentation and communication with managing committees and society members.
                   </p>
                 </div>
 
@@ -308,139 +285,33 @@ export default function AboutPage() {
           </Container>
         </section>
 
-        {/* 5. CORE VALUES */}
-        <section className="py-20 sm:py-28 bg-ivory border-t border-gold/20">
-          <Container size="xl">
-            <SectionHeading
-              eyebrow="The Standards We Uphold"
-              title={
-                <span>
-                  Our Five Core <span className="italic font-light text-gold-700">Values.</span>
-                </span>
-              }
-              subtitle="The non-negotiable operational principles that govern every advisory mandate we undertake."
-              align="center"
-              theme="light"
-            />
-
-            <div className="mt-14 space-y-4">
-              {coreValues.map((val) => (
-                <div
-                  key={val.number}
-                  className="p-6 sm:p-8 rounded-xs bg-white border border-gold/20 hover:border-gold/50 transition-colors flex flex-col md:flex-row md:items-center justify-between gap-6"
-                >
-                  <div className="flex items-start gap-5 max-w-xl">
-                    <span className="font-mono text-sm font-semibold text-gold-600 tracking-wider pt-1 shrink-0">
-                      {val.number}
-                    </span>
-                    <div>
-                      <h3 className="font-serif text-2xl text-navy font-medium">
-                        {val.title}
-                      </h3>
-                      <span className="text-[11px] font-sans uppercase tracking-[0.16em] text-gold-700 font-medium block mt-0.5">
-                        {val.subtitle}
-                      </span>
-                    </div>
-                  </div>
-
-                  <p className="font-sans text-xs sm:text-sm text-charcoal/75 leading-relaxed font-light max-w-xl">
-                    {val.description}
-                  </p>
-                </div>
-              ))}
+        <section aria-labelledby="values-heading" className="bg-ivory py-16 sm:py-24">
+          <Container className="grid items-start gap-10 lg:grid-cols-12 lg:gap-12">
+            <div className="lg:col-span-4">
+              <SectionHeading align="left" showDivider={false} eyebrow="The Standards We Uphold" title={<span id="values-heading">Five values.<br /><span className="italic text-gold-700">A practical approach.</span></span>} subtitle="The principles that shape how we discuss options, coordinate professional inputs and support property decisions." />
             </div>
+            <ol className="min-w-0 divide-y divide-navy/15 border-t border-navy/15 lg:col-span-8">
+              {coreValues.map((value) => <li key={value.number} className="grid gap-4 py-7 xl:grid-cols-12 xl:gap-7">
+                <div className="flex items-start gap-4 xl:col-span-5"><span aria-hidden="true" className="pt-1 text-xs text-gold-700">{value.number}</span><h3 className="font-serif text-2xl leading-tight sm:text-3xl">{value.title}</h3></div>
+                <p className="max-w-xl text-sm leading-7 text-charcoal/80 xl:col-span-7">{value.description}</p>
+              </li>)}
+            </ol>
           </Container>
         </section>
 
-        {/* 6. FOUNDER SPOTLIGHT */}
-        <section className="py-20 sm:py-28 bg-white border-t border-gold/20">
-          <Container size="xl">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-              <div className="lg:col-span-5 relative">
-                <div className="relative aspect-[4/5] w-full rounded-xs bg-navy-950 p-8 flex flex-col justify-between border border-gold/30 shadow-none text-ivory">
-                  <div className="flex items-center justify-between border-b border-gold/20 pb-4">
-                    <span className="text-[10px] font-sans uppercase tracking-[0.2em] text-gold-400 font-semibold">
-                      Founder Profile
-                    </span>
-                    <span className="size-1.5 rotate-45 bg-gold-400" />
-                  </div>
-
-                  <div className="my-auto text-center py-6">
-                    <div className="size-24 mx-auto border-y border-gold/40 flex items-center justify-center mb-6">
-                      <span className="font-serif text-3xl font-semibold tracking-wider text-gold-300">
-                        SM
-                      </span>
-                    </div>
-                    <h3 className="font-serif text-2xl text-ivory-50 font-medium">
-                      Mr. Sachin Murudkar
-                    </h3>
-                    <p className="font-sans text-xs uppercase tracking-[0.16em] text-gold-400 font-medium mt-1">
-                      Founder &amp; Director
-                    </p>
-                    <div className="mt-4 px-3 py-1.5 rounded-xs bg-navy-900/80 border border-gold/20 max-w-xs mx-auto">
-                      <p className="font-mono text-[10px] text-gold-300/80">
-                        Official founder portrait forthcoming
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="pt-4 border-t border-gold/20 flex items-center justify-between text-xs text-ivory-300/80 font-sans">
-                    <span>Aishwarya Advisory</span>
-                    <span className="text-gold-400 font-mono text-[11px]">Mumbai</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="lg:col-span-7 space-y-6">
-                <div className="inline-flex items-center gap-2.5">
-                  <span className="h-px w-6 bg-gold-600" />
-                  <span className="text-xs font-sans font-semibold uppercase tracking-[0.2em] text-gold-700">
-                    Executive Leadership
-                  </span>
-                </div>
-
-                <h2 className="font-serif text-3xl sm:text-4xl text-navy font-normal leading-tight">
-                  Mr. Sachin Murudkar
-                </h2>
-                <p className="font-sans text-xs uppercase tracking-[0.18em] text-gold-700 font-medium">
-                  Founder &amp; Director
-                </p>
-
-                <div className="space-y-4 font-sans text-sm sm:text-base text-charcoal/85 leading-relaxed font-light">
-                  <p>
-                    As the Founder &amp; Director of Aishwarya Redevelopment Advisory Company, Mr. Sachin Murudkar leads the firm with a deep commitment to protecting housing society interests across Mumbai.
-                  </p>
-                  <p>
-                    His professional practice encompasses comprehensive society redevelopment strategy, title due diligence, municipal regulatory coordination under Maharashtra Section 79A, and strategic land valuation for property owners and estates.
-                  </p>
-                  <p className="text-charcoal/75 text-sm">
-                    Under his leadership, Aishwarya has earned a reputation for technical precision, unbiased fiduciary loyalty, and structured stakeholder management.
-                  </p>
-                </div>
-
-                <div className="pt-4 flex flex-wrap items-center gap-4">
-                  <a
-                    href={`tel:${COMPANY_DETAILS.contact.phoneTel}`}
-                    className="inline-flex items-center gap-2 px-6 py-3 text-xs font-sans font-semibold uppercase tracking-[0.16em] text-ivory-50 bg-navy hover:bg-navy-900 border border-gold/40 rounded-xs transition-colors"
-                  >
-                    <Phone className="size-3.5 text-gold-400" />
-                    <span>Contact Leadership</span>
-                  </a>
-
-                  <span className="text-xs font-sans text-charcoal/60">
-                    Dedicated Founder Profile Route in Preparation
-                  </span>
-                </div>
-              </div>
-            </div>
+        <section aria-labelledby="about-leadership" className="border-t border-navy/10 bg-white/60 py-12 sm:py-16">
+          <Container className="grid items-center gap-7 lg:grid-cols-12 lg:gap-12">
+            <div className="lg:col-span-4"><p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-gold-700">Executive Leadership</p><h2 id="about-leadership" className="font-serif text-3xl sm:text-4xl">Mr. Sachin Murudkar</h2><p className="mt-3 text-xs text-charcoal/75">Founder &amp; Director</p></div>
+            <p className="max-w-xl text-sm leading-7 text-charcoal/80 lg:col-span-5">The founder profile introduces the leadership perspective behind the company&apos;s redevelopment and property advisory practice.</p>
+            <Link href="/founder" className="inline-flex min-h-12 items-center gap-3 text-sm text-navy hover:text-gold-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold lg:col-span-3 lg:justify-self-end">Meet our founder <ArrowRight size={16} aria-hidden="true" /></Link>
           </Container>
         </section>
 
         {/* 7. CONSULTATION CTA */}
         <section className="py-20 sm:py-28 bg-navy-950 text-ivory border-t border-gold/25 relative overflow-hidden">
           <Container size="xl">
-            <div className="p-8 sm:p-12 lg:p-16 rounded-xs bg-navy-900/90 border border-gold/30 flex flex-col lg:flex-row items-center justify-between gap-8">
-              <div className="max-w-2xl space-y-4 text-center lg:text-left">
+            <div className="p-8 sm:p-12 lg:p-16 rounded-xs bg-navy-900/90 border border-gold/30 grid grid-cols-1 xl:grid-cols-12 items-center gap-8">
+              <div className="max-w-2xl space-y-4 text-left xl:col-span-7">
                 <span className="text-xs font-sans font-semibold uppercase tracking-[0.22em] text-gold-400 block">
                   Begin Your Redevelopment Journey
                 </span>
@@ -452,7 +323,7 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 shrink-0 w-full sm:w-auto">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto xl:col-span-5 xl:flex-col xl:items-stretch">
                 <a
                   href={`tel:${COMPANY_DETAILS.contact.phoneTel}`}
                   className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 text-xs font-sans font-semibold uppercase tracking-[0.16em] text-navy-950 bg-gold hover:bg-gold-300 transition-colors rounded-xs shadow-md"
@@ -466,7 +337,7 @@ export default function AboutPage() {
                   className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 text-xs font-sans font-medium uppercase tracking-[0.16em] text-ivory-100 hover:text-gold border border-gold/40 hover:border-gold rounded-xs transition-colors"
                 >
                   <Calendar className="size-4 text-gold-400" />
-                  <span>Schedule Online</span>
+                  <span>Prepare Enquiry Details</span>
                   <ArrowRight className="size-3.5" />
                 </Link>
               </div>

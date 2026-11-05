@@ -55,7 +55,7 @@ const balancedDesktopItems: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
   {
-    label: "Services & Capabilities",
+    label: "Services",
     href: "/services",
     children: [
       {
@@ -85,32 +85,17 @@ export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
   const dropdownRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const mobileToggleRef = useRef<HTMLButtonElement>(null);
   const servicesToggleRef = useRef<HTMLButtonElement>(null);
-  const isLinkActive = (href: string) => {
-    if (href.includes("#")) return pathname === "/" && activeSection === href.split("#")[1];
-    return pathname === href;
-  };
+  const isLinkActive = (href: string) => pathname === href;
 
   // Monitor scroll for header background styling
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 24);
 
-      // Detect active in-view section
-      const sections = ["home", "about", "services", "redevelopment", "land-banking", "projects", "team", "contact"];
-      const scrollPosition = window.scrollY + 120;
-
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sections[i]);
-        if (el && el.offsetTop <= scrollPosition) {
-          setActiveSection(sections[i]);
-          break;
-        }
-      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -165,49 +150,60 @@ export const Navbar: React.FC = () => {
         first?.focus();
       }
     };
-    const closeAtDesktop = () => { if (window.innerWidth >= 1280) setMobileMenuOpen(false); };
+    const closeAtDesktop = () => { if (window.innerWidth >= 1024) setMobileMenuOpen(false); };
     document.addEventListener("keydown", trapFocus);
     window.addEventListener("resize", closeAtDesktop);
     return () => {
       document.removeEventListener("keydown", trapFocus);
       window.removeEventListener("resize", closeAtDesktop);
-      previousFocus?.focus();
+      requestAnimationFrame(() => {
+        if (previousFocus?.isConnected && previousFocus.getClientRects().length) previousFocus.focus();
+      });
     };
   }, [mobileMenuOpen]);
 
-  // Lock body scroll when mobile menu is open
+  // Preserve scroll position and isolate the modal from background controls.
   useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    if (!mobileMenuOpen) return;
+    const body = document.body;
+    const scroll = { x: window.scrollX, y: window.scrollY };
+    const previous = { overflow: body.style.overflow, position: body.style.position, top: body.style.top, left: body.style.left, width: body.style.width };
+    const background = Array.from(document.querySelectorAll<HTMLElement>("header, main, footer"));
+    const previousInert = background.map((element) => element.inert);
+    background.forEach((element) => { element.inert = true; });
+    Object.assign(body.style, { overflow: "hidden", position: "fixed", top: "-" + scroll.y + "px", left: "-" + scroll.x + "px", width: "100%" });
+    const closeOnHistoryNavigation = () => setMobileMenuOpen(false);
+    window.addEventListener("popstate", closeOnHistoryNavigation);
     return () => {
-      document.body.style.overflow = "";
+      Object.assign(body.style, previous);
+      background.forEach((element, index) => { element.inert = previousInert[index]; });
+      window.scrollTo({ left: scroll.x, top: scroll.y, behavior: "instant" });
+      window.removeEventListener("popstate", closeOnHistoryNavigation);
     };
   }, [mobileMenuOpen]);
 
   return (
     <>
+      <a href={pathname === "/services" ? "#services-main" : "#main-content"} className="fixed top-3 left-4 z-[70] -translate-y-32 bg-ivory px-5 py-3 text-sm font-semibold text-navy focus:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold">Skip to main content</a>
       <header
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 motion-safe:transition-[background-color,padding,border-color] duration-300",
+          "fixed top-0 left-0 right-0 z-50 py-3 motion-safe:transition-[background-color,border-color] duration-300",
           isScrolled
-            ? "bg-navy-950/95 backdrop-blur-md border-b border-gold/20 shadow-[0_4px_24px_rgba(6,15,30,0.12)] py-3.5"
-            : "bg-navy-950/90 backdrop-blur-xs border-b border-gold/15 py-4 sm:py-5"
+            ? "bg-navy-950/95 backdrop-blur-md border-b border-gold/20 shadow-[0_4px_24px_rgba(6,15,30,0.12)]"
+            : "bg-navy-950/90 backdrop-blur-xs border-b border-gold/15"
         )}
       >
-        <Container size="xl">
-          <div className="flex items-center justify-between gap-4">
-            {/* Left: Brand Typographic Wordmark */}
-            <div className="shrink-0">
-              <BrandWordmark variant="dark" />
+        <Container size="xl" className="lg:px-6 xl:px-8">
+          <div className="flex items-center justify-between gap-3">
+            {/* Original client logo and complete company name. */}
+            <div className="flex min-w-0 shrink-0 items-center">
+              <BrandWordmark variant="dark" showLogo />
             </div>
 
             {/* Center: Balanced Desktop Navigation (Balanced Mode for 1024px-1535px) */}
             <nav
               aria-label="Primary Navigation"
-              className="hidden xl:flex 2xl:hidden items-center space-x-1"
+              className="hidden lg:flex 2xl:hidden items-center space-x-1"
             >
               {balancedDesktopItems.map((item) => {
                 const isActive =
@@ -244,7 +240,7 @@ export const Navbar: React.FC = () => {
                         aria-expanded={servicesDropdownOpen}
                         aria-controls={servicesDropdownOpen ? "services-navigation-links" : undefined}
                         className={cn(
-                          "inline-flex items-center gap-1.5 px-3 py-2.5 text-xs font-sans tracking-wide transition-colors rounded-xs focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-gold",
+                          "inline-flex min-h-11 items-center gap-1.5 px-2 xl:px-3 py-2.5 text-xs font-sans tracking-wide transition-colors rounded-xs focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-gold",
                           isActive
                             ? "text-gold font-medium"
                             : "text-ivory-100/90 hover:text-gold"
@@ -267,7 +263,7 @@ export const Navbar: React.FC = () => {
                           className="absolute top-full left-0 w-72 rounded-xs bg-navy-950 border border-gold/25 shadow-[0_18px_40px_rgba(6,15,30,0.2)] p-3 space-y-1"
                         >
                           <div className="px-3 py-1.5 border-b border-gold/15 mb-1">
-                            <span className="text-[10px] font-sans uppercase tracking-[0.2em] text-gold-400 font-semibold">
+                            <span className="text-xs font-sans uppercase tracking-[0.2em] text-gold-400 font-semibold">
                               Advisory Capabilities
                             </span>
                           </div>
@@ -285,7 +281,7 @@ export const Navbar: React.FC = () => {
                                 <ArrowUpRight className="size-3 text-gold-400/50 group-hover:text-gold group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                               </div>
                               {sub.description && (
-                                <p className="text-[11px] text-ivory-300/70 font-sans leading-tight mt-0.5 line-clamp-1">
+                                <p className="text-xs text-ivory-300/70 font-sans leading-tight mt-0.5 line-clamp-1">
                                   {sub.description}
                                 </p>
                               )}
@@ -303,7 +299,7 @@ export const Navbar: React.FC = () => {
                     href={item.href}
                     aria-current={isActive ? "page" : undefined}
                     className={cn(
-                      "relative px-3 py-2.5 text-xs font-sans tracking-wide transition-colors rounded-xs focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-gold",
+                      "relative inline-flex min-h-11 items-center px-2 xl:px-3 py-2.5 text-xs font-sans tracking-wide transition-colors rounded-xs focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-gold",
                       isActive
                         ? "text-gold font-medium"
                         : "text-ivory-100/90 hover:text-gold"
@@ -363,7 +359,7 @@ export const Navbar: React.FC = () => {
                       href={item.href}
                       aria-current={isActive ? "page" : undefined}
                       className={cn(
-                        "relative px-3 py-2 text-xs font-sans uppercase tracking-[0.12em] transition-colors rounded-xs focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-gold",
+                        "relative inline-flex min-h-11 items-center px-3 py-2 text-xs font-sans uppercase tracking-[0.12em] transition-colors rounded-xs focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-gold",
                         isActive
                           ? "text-gold font-semibold"
                           : "text-ivory-100/85 hover:text-gold"
@@ -386,11 +382,11 @@ export const Navbar: React.FC = () => {
               {/* Consultation CTA Button */}
               <Link
                 href="/contact"
-                className="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-xs font-sans font-semibold uppercase tracking-[0.14em] text-navy bg-gold hover:bg-gold-300 transition-all duration-200 rounded-xs shadow-xs focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy active:scale-[0.98]"
+                className="hidden sm:inline-flex min-h-11 items-center gap-2 px-4 py-2 text-xs font-sans font-semibold uppercase tracking-[0.14em] text-navy bg-gold hover:bg-gold-300 transition-all duration-200 rounded-xs shadow-xs focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy active:scale-[0.98]"
               >
                 <Calendar className="size-3.5 text-navy-950" aria-hidden="true" />
-                <span className="xl:hidden">Schedule a Consultation</span>
-                <span className="hidden xl:inline">Consultation</span>
+                <span className="lg:hidden">Discuss a Consultation</span>
+                <span className="hidden lg:inline">Consultation</span>
               </Link>
 
               {/* Mobile Menu Toggle Button */}
@@ -398,7 +394,7 @@ export const Navbar: React.FC = () => {
                 type="button"
                 ref={mobileToggleRef}
                 onClick={() => setMobileMenuOpen((prev) => !prev)}
-                className="xl:hidden inline-flex items-center justify-center p-2 rounded-xs text-ivory-100 hover:text-gold hover:bg-navy-900/60 border border-gold/25 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gold"
+                className="lg:hidden inline-flex size-11 shrink-0 items-center justify-center p-2 rounded-xs text-ivory-100 hover:text-gold hover:bg-navy-900/60 border border-gold/25 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gold"
                 aria-expanded={mobileMenuOpen}
                 aria-label={mobileMenuOpen ? "Close menu" : "Open navigation menu"}
                 aria-controls="mobile-navigation-drawer"
@@ -421,11 +417,11 @@ export const Navbar: React.FC = () => {
           role="dialog"
           aria-modal="true"
           aria-label="Mobile Navigation"
-          className="fixed inset-0 z-[60] xl:hidden"
+          className="fixed inset-0 z-[60] lg:hidden"
         >
           {/* Backdrop overlay */}
           <div
-            className="fixed inset-0 bg-navy-950/80 backdrop-blur-md transition-opacity animate-in fade-in"
+            className="fixed inset-0 bg-navy-950/80 backdrop-blur-md transition-opacity motion-safe:animate-in motion-safe:fade-in"
             onClick={() => setMobileMenuOpen(false)}
             aria-hidden="true"
           />
@@ -433,19 +429,20 @@ export const Navbar: React.FC = () => {
           {/* Drawer container */}
           <div
             ref={mobileMenuRef}
-            className="fixed inset-y-0 right-0 w-full max-w-sm bg-navy-950 border-l border-gold/30 shadow-2xl p-6 flex flex-col justify-between overflow-y-auto z-50 animate-in slide-in-from-right duration-250"
+            className="fixed inset-y-0 right-0 w-full max-w-sm overscroll-contain bg-navy-950 border-l border-gold/30 shadow-2xl p-5 sm:p-6 flex flex-col justify-between overflow-y-auto z-50 motion-safe:animate-in motion-safe:slide-in-from-right motion-safe:duration-250"
           >
             {/* Header in Drawer */}
             <div>
               <div className="flex items-center justify-between pb-6 border-b border-gold/20">
                 <BrandWordmark
                   variant="dark"
+                  showLogo
                   onClick={() => setMobileMenuOpen(false)}
                 />
                 <button
                   type="button"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="p-1.5 rounded-xs text-ivory-100 hover:text-gold border border-gold/30 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gold"
+                  className="inline-flex size-11 shrink-0 items-center justify-center rounded-xs text-ivory-100 hover:text-gold border border-gold/30 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gold"
                   aria-label="Close menu"
                 >
                   <X className="size-5 text-gold" />
@@ -453,7 +450,7 @@ export const Navbar: React.FC = () => {
               </div>
 
               {/* Navigation Links (All 8 Items Explicitly Accessible) */}
-              <nav className="mt-8 space-y-1">
+              <nav aria-label="Mobile primary navigation" className="mt-6 space-y-1">
                 {[
                   { label: "Home", href: "/", num: "01" },
                   { label: "About Us", href: "/about", num: "02" },
@@ -506,14 +503,14 @@ export const Navbar: React.FC = () => {
                 className="w-full flex items-center justify-center gap-2 py-3 px-4 text-xs font-sans font-semibold uppercase tracking-[0.16em] text-navy bg-gold hover:bg-gold-300 rounded-xs transition-colors"
               >
                 <Calendar className="size-4 text-navy-950" />
-                <span>Schedule a Consultation</span>
+                <span>Discuss a Consultation</span>
               </Link>
 
-              <div className="text-center text-[11px] text-ivory-300/70 space-y-1">
-                <div className="flex items-center justify-center gap-1.5 text-gold-400">
+              <div className="text-center text-xs text-ivory-300/70 space-y-1">
+                <a href={`tel:${COMPANY_DETAILS.contact.phoneTel}`} className="inline-flex min-h-11 items-center justify-center gap-2 text-gold-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold">
                   <Phone className="size-3" />
                   <span>{COMPANY_DETAILS.contact.phone}</span>
-                </div>
+                </a>
                 <p>{COMPANY_DETAILS.location}</p>
               </div>
             </div>

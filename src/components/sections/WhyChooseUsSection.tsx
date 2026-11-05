@@ -1,6 +1,6 @@
-
 "use client";
 
+import { ClientImage } from "@/components/ui/ClientImage";
 import React from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { ShieldCheck, Scale, FileSearch, CheckCircle2, ArrowRight } from "lucide-react";
@@ -12,29 +12,29 @@ const differentiators = [
   {
     number: "01",
     title: "Transparent Advisory",
-    subtitle: "Unbiased Fiduciary Loyalty",
+    subtitle: "Clear Advisory Responsibilities",
     description:
-      "Independent representation dedicated solely to housing societies and landholders. We eliminate conflicting interests, ensuring full committee transparency and member consensus at every stage.",
+      "Advisory support for housing societies and landholders, with engagement scope, stakeholder interests and potential conflicts discussed before commitments.",
     icon: ShieldCheck,
-    highlights: ["Conflict-free guidance", "General body facilitation", "Clear member communication"],
+    highlights: ["Discussion of potential conflicts", "General body facilitation", "Clear member communication"],
   },
   {
     number: "02",
     title: "Legal & Regulatory Expertise",
     subtitle: "Project-Specific Statutory Review",
     description:
-      "Deep mastery of Maharashtra cooperative law, Section 79A guidelines, MOFA, and RERA frameworks to safeguard member rights, title clarity, and enforce binding covenants.",
+      "Coordination of documentation and professional review around applicable cooperative society procedures, title matters and regulatory requirements.",
     icon: Scale,
-    highlights: ["Section 79A mastery", "Deemed conveyance clearance", "RERA & municipal compliance"],
+    highlights: ["Society procedure coordination", "Conveyance documentation", "Regulatory review support"],
   },
   {
     number: "03",
     title: "Developer Due Diligence",
     subtitle: "Rigorous Financial & Track Record Vetting",
     description:
-      "Exhaustive audits of prospective developers' financial liquidity, balance sheets, past project delivery timelines, and evaluating proposed security arrangements before contractual commitments.",
+      "Review of available developer financial information, past project records and proposed security arrangements, with specialist input where required.",
     icon: FileSearch,
-    highlights: ["Balance sheet audits", "Delivery timeline verification", "Bank guarantee structuring"],
+    highlights: ["Financial information review", "Past delivery record review", "Bank guarantee structuring"],
   },
   {
     number: "04",
@@ -48,121 +48,30 @@ const differentiators = [
 ];
 
 export const WhyChooseUsSection: React.FC = () => {
-  const shouldReduceMotion = useReducedMotion();
-
-  const fadeIn = {
-    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 20 },
-    visible: (idx: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: shouldReduceMotion ? 0 : 0.6,
-        delay: shouldReduceMotion ? 0 : idx * 0.1,
-        ease: [0.21, 0.47, 0.32, 0.98] as const,
-      },
-    }),
-  };
-
+  const reduced = useReducedMotion();
+  const benefits = [
+    "Understand the scope of advice, who is responsible and which interests need to be discussed before committing.",
+    "Bring property records and approval questions together for review by the relevant professionals.",
+    "Compare the information behind developer proposals, including past delivery and proposed security arrangements.",
+    "Keep agreed milestones, outstanding questions and member priorities in view as the project moves forward.",
+  ];
   return (
-    <section
-      id="why-choose-us"
-      aria-label="Why Choose Aishwarya Redevelopment Advisory"
-      className="relative py-24 sm:py-32 lg:py-36 bg-ivory text-charcoal overflow-hidden border-t border-gold/20"
-    >
-      <Container size="xl">
-        {/* Section Heading */}
-        <SectionHeading
-          eyebrow="Why Choose Aishwarya"
-          title={
-            <span>
-              Uncompromising Integrity.{" "}
-              <span className="italic font-light text-gold-700">Protected Equity.</span>
-            </span>
-          }
-          subtitle="Distinguished by fiduciary discipline, legal precision, and technical rigor across Mumbai's premier cooperative housing societies."
-          align="center"
-          theme="light"
-        />
-
-        {/* 4-Pillar Premium Editorial Grid */}
-        <div className="mt-16 sm:mt-20 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-          {differentiators.map((item, index) => {
-            const Icon = item.icon;
-            return (
-              <motion.div
-                key={item.number}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-60px" }}
-                custom={index + 1}
-                variants={fadeIn}
-                className="group p-8 sm:p-10 rounded-xs bg-white border border-gold/25 hover:border-gold/60 shadow-none transition-colors duration-200 relative flex flex-col justify-between"
-              >
-                <div>
-                  {/* Top Bar with Numbering and Icon */}
-                  <div className="flex items-center justify-between pb-6 border-b border-gold/15 mb-6">
-                    <span className="font-mono text-sm font-semibold text-gold-600 tracking-widest">
-                      {item.number}
-                    </span>
-                    <div className="p-2.5 rounded-xs bg-gold/10 border border-gold/20 text-gold-600 group-hover:border-gold/50 transition-colors duration-300">
-                      <Icon className="size-5" aria-hidden="true" />
-                    </div>
-                  </div>
-
-                  {/* Title & Subtitle */}
-                  <h3 className="font-serif text-2xl sm:text-3xl text-navy font-medium leading-tight mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="font-sans text-xs uppercase tracking-[0.16em] text-gold-700 font-medium mb-4">
-                    {item.subtitle}
-                  </p>
-
-                  {/* Narrative Body */}
-                  <p className="font-sans text-sm sm:text-base text-charcoal/75 leading-relaxed font-light mb-6">
-                    {item.description}
-                  </p>
-                </div>
-
-                {/* Key Points */}
-                <div className="pt-6 border-t border-gold/15">
-                  <div className="flex flex-wrap gap-2">
-                    {item.highlights.map((point) => (
-                      <span
-                        key={point}
-                        className="inline-flex items-center gap-1.5 pl-3 py-1 text-xs font-sans border-l border-gold/40 text-charcoal/80"
-                      >
-                        <span className="size-1 rounded-full bg-gold-600" aria-hidden="true" />
-                        <span>{point}</span>
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {/* Section Bottom Assurance Banner */}
-        <div className="mt-14 sm:mt-18 p-6 sm:p-8 rounded-xs bg-navy text-ivory border border-gold/30 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="space-y-1 text-center sm:text-left">
-            <h4 className="font-serif text-xl sm:text-2xl font-medium text-ivory-50">
-              Guiding Housing Society Committees Across Mumbai
-            </h4>
-            <p className="font-sans text-xs sm:text-sm text-ivory-300/80 font-light">
-              Independent representation aligned with Section 79A statutory guidelines.
-            </p>
+    <section id="why-choose-us" style={{ scrollMarginTop: "7rem" }} aria-labelledby="home-benefits-heading" className="bg-ivory py-16 text-navy sm:py-20 lg:py-24">
+      <Container>
+        <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-5"><SectionHeading align="left" showDivider={false} eyebrow="Why Choose Aishwarya" title={<span id="home-benefits-heading">Clarity for your society.<br /><span className="italic text-gold-700">At every decision.</span></span>} subtitle="Practical support to help committees understand the options, ask informed questions and agree the next step." />
+            <ClientImage id={1} aspect="aspect-square" className="mt-8 max-w-sm" />
           </div>
-          <Link
-            href="#contact"
-            className="group inline-flex items-center gap-2.5 px-6 py-3 text-xs font-sans font-semibold uppercase tracking-[0.16em] text-navy bg-gold hover:bg-gold-300 transition-colors rounded-xs shrink-0"
-          >
-            <span>Consult Our Advisors</span>
-            <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
-          </Link>
+          <div className="divide-y divide-navy/15 border-t border-navy/15 lg:col-span-7">
+            {differentiators.map((item, index) => { const Icon = item.icon; return <motion.article key={item.number} initial={false} whileInView={reduced ? { opacity: 1 } : { opacity: [0.9, 1], y: [6, 0] }} viewport={{ once: true }} transition={{ duration: reduced ? 0 : 0.45 }} className="flex items-start gap-5 py-7 sm:gap-6 sm:py-8">
+              <Icon size={23} strokeWidth={1.3} aria-hidden="true" className="mt-1 shrink-0 text-gold-700" />
+              <div><h3 className="font-serif text-2xl leading-tight sm:text-3xl">{item.title}</h3><p className="mt-3 max-w-xl text-sm leading-7 text-charcoal/80">{benefits[index]}</p></div>
+            </motion.article>; })}
+            <Link href="#contact" className="inline-flex min-h-12 items-center gap-3 py-5 text-sm text-navy hover:text-gold-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold">Discuss your society&apos;s priorities <ArrowRight size={16} aria-hidden="true" /></Link>
+          </div>
         </div>
       </Container>
     </section>
   );
 };
-
 export default WhyChooseUsSection;

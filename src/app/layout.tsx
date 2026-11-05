@@ -3,6 +3,8 @@ import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { WHATSAPP_CONTACT } from "@/lib/contact";
+import { companyName, organization, siteConfig } from "@/lib/seo";
+import { EditorialMotion } from "@/components/ui/EditorialMotion";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -19,9 +21,9 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Aishwarya Redevelopment Advisory | Strategic Real Estate Advisory",
-  description:
-    "Distinguished redevelopment advisory and strategic consulting for premier housing societies and landowners.",
+  metadataBase: new URL(siteConfig.siteUrl ?? "http://localhost:3000"),
+  title: { default: companyName, template: `%s | ${companyName}` },
+  robots: { index: siteConfig.indexable, follow: siteConfig.indexable },
 };
 
 export default function RootLayout({
@@ -39,7 +41,9 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`min-h-screen bg-ivory font-sans text-charcoal flex flex-col${WHATSAPP_CONTACT.confirmed ? " pb-24" : ""}`}
       >
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organization).replace(/</g, "\\u003c") }} />
         {children}
+        <EditorialMotion />
         <WhatsAppButton />
       </body>
     </html>

@@ -66,6 +66,7 @@
 html {
   background-color: var(--background);
   color: var(--foreground);
+  scroll-padding-top: 7rem;
 }
 
 body {
@@ -137,9 +138,10 @@ main .grid > * {
   }
 }
 
-:where(a, button, input, select, textarea):focus-visible {
+:where(a, button, input, select, textarea, summary):focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 4px;
+  scroll-margin-block: 8rem 2rem;
 }
 
 /* Editorial & Luxury Utility Classes */
@@ -160,6 +162,45 @@ main .grid > * {
   background: linear-gradient(135deg, #DFCA9E 0%, #C6A66B 50%, #A8864E 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* Editorial interactions preserve layout and never gate content visibility. */
+[data-motion-line] {
+  transform-origin: top;
+}
+
+[data-motion-line="x"] {
+  transform-origin: left;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :where(input, select, textarea) {
+    transition: border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+  }
+
+  :where(header nav a, main a:not([class*="bg-"])) {
+    text-decoration-line: underline;
+    text-decoration-color: transparent;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.3em;
+    transition: color 200ms ease, text-decoration-color 250ms ease;
+  }
+
+  :where(header nav a, main a:not([class*="bg-"])):is(:hover, :focus-visible) {
+    text-decoration-color: currentColor;
+  }
+
+  main a :is(.lucide-arrow-right, .lucide-arrow-up-right) {
+    transition: transform 220ms ease;
+  }
+
+  main a:is(:hover, :focus-visible) .lucide-arrow-right {
+    transform: translateX(3px);
+  }
+
+  main a:is(:hover, :focus-visible) .lucide-arrow-up-right {
+    transform: translate(2px, -2px);
+  }
 }
 
 /* Prestigious deep navy advisory gradient */

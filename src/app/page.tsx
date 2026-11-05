@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/seo";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
@@ -8,16 +9,25 @@ import { RedevelopmentProcessSection } from "@/components/sections/Redevelopment
 import { FounderSection } from "@/components/sections/FounderSection";
 import { LandBankingSection } from "@/components/sections/LandBankingSection";
 import { ConsultationCTA } from "@/components/sections/ConsultationCTA";
+import { existsSync } from "node:fs";
+import path from "node:path";
+
+export const metadata = pageMetadata("/", "Redevelopment Advisory in Mumbai", "Aishwarya Redevelopment Advisory Company supports Mumbai housing societies and property owners with redevelopment, feasibility, title review and land advisory.");
+
+const clientSkylinePath = "/images/hero/mumbai-skyline.jpg";
 
 export default function Home() {
+  const skylineImage = existsSync(path.join(process.cwd(), "public", clientSkylinePath))
+    ? clientSkylinePath
+    : undefined;
   return (
     <>
       {/* Premium Luxury Navigation Header */}
       <Navbar />
 
-      <main className="bg-ivory text-charcoal flex-1">
+      <main id="main-content" tabIndex={-1} className="bg-ivory text-charcoal flex-1">
         {/* Phase 2: Editorial Luxury Hero Section */}
-        <Hero />
+        <Hero skylineImage={skylineImage} />
 
         {/* Phase 3: Premium Editorial About Aishwarya Section */}
         <AboutSection />

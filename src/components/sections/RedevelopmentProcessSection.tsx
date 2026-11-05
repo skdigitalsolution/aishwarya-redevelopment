@@ -1,5 +1,7 @@
 "use client";
 
+import { ClientImage } from "@/components/ui/ClientImage";
+
 import React from "react";
 import { motion, useReducedMotion } from "motion/react";
 import {
@@ -82,127 +84,27 @@ const processSteps: ProcessStep[] = [
 ];
 
 export const RedevelopmentProcessSection: React.FC = () => {
-  const shouldReduceMotion = useReducedMotion();
-
-  const fadeIn = {
-    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 20 },
-    visible: (idx: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: shouldReduceMotion ? 0 : 0.6,
-        delay: shouldReduceMotion ? 0 : idx * 0.1,
-        ease: [0.21, 0.47, 0.32, 0.98] as const,
-      },
-    }),
-  };
-
+  const reduced = useReducedMotion();
   return (
-    <section
-      id="redevelopment"
-      aria-label="Six-Step Redevelopment Advisory Process"
-      className="relative py-24 sm:py-32 lg:py-36 bg-navy-950 text-ivory overflow-hidden border-t border-gold/20"
-    >
-      {/* Background Architectural Grid and Scrim */}
-      <div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none select-none bg-[radial-gradient(#C6A66B_1px,transparent_1px)] [background-size:32px_32px]"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(198,166,107,0.06),transparent_70%)] pointer-events-none select-none"
-        aria-hidden="true"
-      />
-
-      <Container size="xl" className="relative z-10">
-        {/* Section Heading */}
-        <SectionHeading
-          eyebrow="The Redevelopment Roadmap"
-          title={
-            <span>
-              A Disciplined Six-Step <span className="italic font-light text-gold-300">Methodology.</span>
-            </span>
-          }
-          subtitle="From early committee consultations to final OC handover, our structured advisory protects society equity and accelerates execution."
-          align="center"
-          theme="dark"
-        />
-
-        {/* 6-Step Editorial Process Grid with Timeline Accents */}
-        <div className="mt-16 sm:mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
-          {processSteps.map((step, index) => {
-            const Icon = step.icon;
-            return (
-              <motion.div
-                key={step.step}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-50px" }}
-                custom={index + 1}
-                variants={fadeIn}
-                className="group p-8 rounded-xs bg-navy-900/70 hover:bg-navy-900 border border-gold/20 hover:border-gold/50 transition-all duration-300 relative flex flex-col justify-between"
-              >
-                <div>
-                  {/* Step Header with Step Badge & Icon */}
-                  <div className="flex items-center justify-between pb-5 border-b border-gold/15 mb-6">
-                    <span className="font-mono text-2xl font-light text-gold-400 group-hover:text-gold transition-colors tracking-tight">
-                      {step.step}
-                    </span>
-                    <div className="p-2 rounded-xs bg-gold/10 border border-gold/20 text-gold-400 group-hover:bg-gold group-hover:text-navy transition-colors duration-300">
-                      <Icon className="size-4" aria-hidden="true" />
-                    </div>
-                  </div>
-
-                  {/* Title & Subtitle */}
-                  <h3 className="font-serif text-2xl text-ivory-50 font-medium leading-snug mb-1 group-hover:text-gold transition-colors">
-                    {step.title}
-                  </h3>
-                  <p className="font-sans text-xs uppercase tracking-[0.14em] text-gold-400/80 font-medium mb-4">
-                    {step.subtitle}
-                  </p>
-
-                  {/* Description */}
-                  <p className="font-sans text-sm text-ivory-300/80 leading-relaxed font-light mb-6">
-                    {step.description}
-                  </p>
-                </div>
-
-                {/* Key Deliverables Pills */}
-                <div className="pt-5 border-t border-gold/15">
-                  <div className="flex flex-wrap gap-1.5">
-                    {step.deliverables.map((item) => (
-                      <span
-                        key={item}
-                        className="px-2 py-0.5 text-[11px] font-sans rounded-xs bg-navy-950/80 border border-gold/15 text-ivory-300/75"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {/* Section Footer Call-to-Action */}
-        <div className="mt-14 sm:mt-18 pt-8 border-t border-gold/20 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="text-xs sm:text-sm font-sans text-ivory-300/80 font-light flex items-center gap-2.5">
-            <span className="size-1.5 rounded-full bg-gold-400 animate-pulse" aria-hidden="true" />
-            <span>Structured advisory governance safeguarding member rights from inception to completion</span>
+    <section id="redevelopment" style={{ scrollMarginTop: "7rem" }} aria-labelledby="home-process-heading" className="bg-navy py-20 text-ivory sm:py-24 lg:py-28">
+      <Container>
+        <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-5">
+            <SectionHeading align="left" showDivider={false} theme="dark" eyebrow="The Redevelopment Roadmap" title={<span id="home-process-heading">Six steps.<br /><span className="font-light italic text-gold-300">One considered journey.</span></span>} subtitle="From early committee consultations to completion and handover coordination, our advisory supports informed decisions and project-specific follow-up." />
+            <ClientImage id={9} dark aspect="aspect-[4/3]" className="mt-8" />
+            <p className="mt-5 text-xs leading-6 text-ivory/70">The starting point is your building and your society&apos;s priorities. Scope and sequence depend on the property and applicable requirements.</p>
+            <Link href="/redevelopment" className="mt-5 inline-flex min-h-12 items-center gap-3 border-b border-gold/60 text-sm text-gold-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold">Explore the redevelopment approach <ArrowRight size={16} aria-hidden="true" /></Link>
           </div>
-
-          <Link
-            href="#contact"
-            className="group inline-flex items-center gap-2.5 px-6 py-3.5 text-xs font-sans font-semibold uppercase tracking-[0.16em] text-navy-950 bg-gold hover:bg-gold-300 transition-colors rounded-xs shadow-md shrink-0"
-          >
-            <span>Begin Step 01 Consultation</span>
-            <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
-          </Link>
+          <ol className="lg:col-span-7">
+            {processSteps.map((step, index) => <motion.li key={step.step} initial={false} whileInView={reduced ? { opacity: 1 } : { opacity: [0.9, 1], y: [6, 0] }} viewport={{ once: true }} transition={{ duration: reduced ? 0 : 0.45 }} className="relative flex gap-5 pb-8 last:pb-0 sm:gap-7">
+              {index < processSteps.length - 1 && <span data-motion-line aria-hidden="true" className="absolute top-12 bottom-0 left-5 w-px bg-gold/30" />}
+              <span data-motion-number aria-hidden="true" className="relative flex size-10 shrink-0 items-center justify-center rounded-full border border-gold/45 bg-navy font-serif text-xl text-gold-300">{step.step}</span>
+              <div className="min-w-0 pt-1"><h3 className="font-serif text-2xl leading-tight sm:text-3xl">{step.title}</h3><p className="mt-3 max-w-xl text-sm leading-7 text-ivory/80">{step.description}</p></div>
+            </motion.li>)}
+          </ol>
         </div>
       </Container>
     </section>
   );
 };
-
 export default RedevelopmentProcessSection;
-

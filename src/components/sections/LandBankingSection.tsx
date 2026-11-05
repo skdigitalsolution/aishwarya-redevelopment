@@ -1,7 +1,8 @@
 "use client";
 
+import { ClientImage } from "@/components/ui/ClientImage";
+
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
 import { Landmark, Handshake, FileSearch2, Compass, ArrowRight } from "lucide-react";
@@ -48,176 +49,24 @@ const landServices = [
 ];
 
 export const LandBankingSection: React.FC = () => {
-  const shouldReduceMotion = useReducedMotion();
-
-  const fadeIn = {
-    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 20 },
-    visible: (idx: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: shouldReduceMotion ? 0 : 0.6,
-        delay: shouldReduceMotion ? 0 : idx * 0.1,
-        ease: [0.21, 0.47, 0.32, 0.98] as const,
-      },
-    }),
-  };
-
+  const reduced = useReducedMotion();
   return (
-    <section
-      id="land-banking"
-      aria-label="Strategic Land Banking and Advisory"
-      className="relative py-24 sm:py-32 lg:py-36 bg-navy-950 text-ivory overflow-hidden border-t border-gold/20"
-    >
-      {/* Background Architectural Scrim */}
-      <div
-        className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(198,166,107,0.08),transparent_65%)] pointer-events-none select-none"
-        aria-hidden="true"
-      />
-
-      <Container size="xl" className="relative z-10">
-        <SectionHeading
-          eyebrow="Strategic Land Advisory"
-          title={
-            <span>
-              Unlocking the Potential of <span className="italic font-light text-gold-300">Every Acre.</span>
-            </span>
-          }
-          subtitle="Connecting strategic landholdings with institutional capital, property-specific title diligence, and high-value joint development structures across Mumbai and MMR."
-          align="center"
-          theme="dark"
-        />
-
-        {/* Asymmetrical Editorial Composition with Image Backdrop Anchor */}
-        <div className="mt-16 sm:mt-20 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
-          {/* Left Column: Image-Led Strategic Overview (5 cols) */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-            custom={1}
-            variants={fadeIn}
-            className="lg:col-span-5 relative rounded-xs overflow-hidden border border-gold/30 flex flex-col justify-between p-8 sm:p-10 bg-navy-900/90 shadow-2xl min-h-[420px]"
-          >
-            {/* Background Image Overlay */}
-            <div className="absolute inset-0 z-0">
-              <Image
-                src="/images/hero/hero-architecture-fallback.jpg"
-                alt="Illustrative architectural facade used as a visual backdrop for land advisory"
-                fill
-                sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover object-center opacity-20"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/85 to-navy-950/60" />
-            </div>
-
-            <div className="relative z-10">
-              <div className="flex items-center justify-between pb-5 border-b border-gold/20 mb-6">
-                <span className="text-[10px] font-sans uppercase tracking-[0.2em] text-gold-400 font-semibold">
-                  Institutional Land Mandate
-                </span>
-                <span className="size-2 rotate-45 bg-gold-400" />
-              </div>
-
-              <h3 className="font-serif text-2xl sm:text-3xl text-ivory-50 font-normal leading-tight mb-4">
-                Strategic Aggregation &amp; High-Yield Monetisation
-              </h3>
-
-              <p className="font-sans text-xs sm:text-sm text-ivory-300/85 leading-relaxed font-light mb-6">
-                Navigating complex regulatory frameworks, DP reservations, and multi-party ownership to unlock liquidity and premium valuation for estates and institutions.
-              </p>
-
-              <div className="space-y-2 pt-4 border-t border-gold/15">
-                {[
-                  "Mumbai Metropolitan Region (MMR) Focus",
-                  "Joint Development Agreements (JDA)",
-                  "Complete 7/12 Title Diligence & Rectification",
-                ].map((item) => (
-                  <div key={item} className="flex items-center gap-2 text-xs font-sans text-ivory-200">
-                    <span className="size-1 rounded-full bg-gold-400" />
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="relative z-10 pt-6 mt-8 border-t border-gold/20">
-              <p className="text-[11px] font-mono text-gold-400/70">
-                Land Advisory Practice • Fiduciary Mandate
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Right Column: 4 Distinct Strategic Pillars Grid (7 cols) */}
-          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {landServices.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <motion.div
-                  key={service.number}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, margin: "-50px" }}
-                  custom={index + 2}
-                  variants={fadeIn}
-                  className="group p-6 sm:p-7 rounded-xs bg-navy-900/60 hover:bg-navy-900 border border-gold/20 hover:border-gold/45 transition-all duration-300 flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="flex items-center justify-between pb-4 border-b border-gold/15 mb-4">
-                      <span className="font-mono text-xs text-gold-400/80 font-semibold tracking-wider">
-                        {service.number}
-                      </span>
-                      <Icon className="size-4 text-gold-400 group-hover:text-gold transition-colors" />
-                    </div>
-
-                    <h4 className="font-serif text-xl text-ivory-50 font-medium mb-1 group-hover:text-gold transition-colors">
-                      {service.title}
-                    </h4>
-                    <p className="font-sans text-[11px] uppercase tracking-[0.14em] text-gold-400/80 font-medium mb-3">
-                      {service.subtitle}
-                    </p>
-                    <p className="font-sans text-xs text-ivory-300/80 leading-relaxed font-light mb-4">
-                      {service.description}
-                    </p>
-                  </div>
-
-                  <div className="pt-4 border-t border-gold/15">
-                    <div className="flex flex-wrap gap-1.5">
-                      {service.deliverables.map((deliv) => (
-                        <span
-                          key={deliv}
-                          className="px-2 py-0.5 text-[10px] font-sans rounded-xs bg-navy-950/80 border border-gold/15 text-ivory-300/70"
-                        >
-                          {deliv}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
+    <section id="land-banking" style={{ scrollMarginTop: "7rem" }} aria-labelledby="home-land-heading" className="bg-navy-950 py-20 text-ivory sm:py-24 lg:py-28">
+      <Container>
+        <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-6"><SectionHeading align="left" showDivider={false} theme="dark" eyebrow="Strategic Land Advisory" title={<span id="home-land-heading">A wider view of land.<br /><span className="italic text-gold-300">A clear next step.</span></span>} subtitle="Understand the ownership, development potential and transaction options for your property across the Mumbai Metropolitan Region." />
+            <p className="mt-6 max-w-lg text-sm leading-7 text-ivory/75">Whether you are considering a sale, joint development or a longer-term holding, the conversation begins with your property records and objectives.</p>
+            <Link href="/land-banking" className="mt-7 inline-flex min-h-12 items-center gap-3 bg-gold px-6 py-3 text-xs font-semibold text-navy hover:bg-gold-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold">Explore Land Banking <ArrowRight size={16} aria-hidden="true" /></Link>
           </div>
+          <div className="min-w-0 lg:col-span-6"><ClientImage id={5} dark aspect="aspect-[4/3]" /><p className="mt-3 text-xs leading-6 text-ivory/70">Urban context only. This image does not represent an available land parcel or verified company inventory.</p></div>
         </div>
-
-        {/* Bottom CTA Row */}
-        <div className="mt-14 sm:mt-18 pt-8 border-t border-gold/20 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="text-xs sm:text-sm font-sans text-ivory-300/80 font-light flex items-center gap-2.5">
-            <span className="size-1.5 rounded-full bg-gold-400 animate-pulse" aria-hidden="true" />
-            <span>Confidential transaction structuring for corporate landowners and private family estates</span>
-          </div>
-
-          <Link
-            href="#contact"
-            className="group inline-flex items-center gap-2.5 px-6 py-3.5 text-xs font-sans font-semibold uppercase tracking-[0.16em] text-navy-950 bg-gold hover:bg-gold-300 transition-colors rounded-xs shadow-md shrink-0"
-          >
-            <span>Explore Land Banking</span>
-            <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
-          </Link>
+        <div className="mt-12 grid gap-x-10 sm:grid-cols-2 lg:mt-14">
+          {landServices.map((service) => <motion.article key={service.number} initial={false} whileInView={reduced ? { opacity: 1 } : { opacity: [0.9, 1], y: [6, 0] }} viewport={{ once: true }} transition={{ duration: reduced ? 0 : 0.45 }} className="border-t border-ivory/15 py-7">
+            <h3 className="font-serif text-2xl leading-tight sm:text-3xl">{service.title}</h3><p className="mt-3 max-w-xl text-sm leading-7 text-ivory/75">{service.description}</p>
+          </motion.article>)}
         </div>
       </Container>
     </section>
   );
 };
-
 export default LandBankingSection;
-

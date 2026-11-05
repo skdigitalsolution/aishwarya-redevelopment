@@ -60,7 +60,7 @@ export const Footer: React.FC = () => {
           <div className="lg:col-span-5 space-y-5">
             <BrandWordmark variant="dark" />
 
-            <p className="font-sans text-xs sm:text-sm text-ivory-300/80 leading-relaxed font-light max-w-sm">
+            <p className="font-sans text-sm text-ivory-300/80 leading-relaxed font-light max-w-sm">
               Aishwarya Redevelopment Advisory Company is an independent real estate and redevelopment advisory firm providing fiduciary guidance, legal compliance, and strategic valuation for cooperative housing societies and landowners in Mumbai.
             </p>
 
@@ -75,12 +75,12 @@ export const Footer: React.FC = () => {
             <h2 className="font-serif text-xl text-ivory-50 font-normal tracking-wide">
               Navigation
             </h2>
-            <ul className="space-y-3">
+            <ul className="space-y-1">
               {navLinks.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-xs font-sans text-ivory-300/75 hover:text-gold transition-colors inline-block decoration-gold/50 underline-offset-4 hover:underline focus-visible:underline"
+                    className="text-sm font-sans text-ivory-300/80 hover:text-gold transition-colors inline-flex min-h-11 items-center decoration-gold/50 underline-offset-4 hover:underline focus-visible:underline"
                   >
                     {link.label}
                   </Link>
@@ -99,7 +99,7 @@ export const Footer: React.FC = () => {
                 <li key={item.label}>
                   <Link
                     href={item.href}
-                    className="text-xs font-sans text-ivory-300/75 hover:text-gold transition-colors inline-block decoration-gold/50 underline-offset-4 hover:underline focus-visible:underline"
+                    className="text-sm font-sans text-ivory-300/80 hover:text-gold transition-colors inline-flex min-h-11 items-center decoration-gold/50 underline-offset-4 hover:underline focus-visible:underline"
                   >
                     {item.label}
                   </Link>
@@ -115,12 +115,12 @@ export const Footer: React.FC = () => {
             </h2>
             <div className="space-y-3 text-xs font-sans text-ivory-300/80">
               <div>
-                <span className="block text-[10px] uppercase tracking-wider text-gold-400/80 font-medium mb-1">
+                <span className="block text-xs uppercase tracking-wider text-gold-400/80 font-medium mb-1">
                   Advisory Helpline
                 </span>
                 <a
                   href={`tel:${COMPANY_DETAILS.contact.phoneTel}`}
-                  className="inline-flex items-center gap-2 text-ivory-100 hover:text-gold font-medium transition-colors"
+                  className="inline-flex min-h-11 items-center gap-2 text-ivory-100 hover:text-gold font-medium transition-colors"
                 >
                   <Phone className="size-3.5 text-gold-400" />
                   <span>{COMPANY_DETAILS.contact.phone}</span>
@@ -128,7 +128,7 @@ export const Footer: React.FC = () => {
               </div>
 
               <div>
-                <span className="block text-[10px] uppercase tracking-wider text-gold-400/80 font-medium mb-1">
+                <span className="block text-xs uppercase tracking-wider text-gold-400/80 font-medium mb-1">
                   Location
                 </span>
                 <div className="flex items-start gap-2 text-ivory-200/90">
@@ -147,13 +147,13 @@ export const Footer: React.FC = () => {
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-6">
-            <span className="text-[11px] text-ivory-300/65">
+            <span className="text-xs text-ivory-300/65">
               Fiduciary Real Estate &amp; Redevelopment Advisory
             </span>
             <button
               type="button"
               onClick={scrollToTop}
-              className="inline-flex items-center gap-1.5 text-xs text-gold-400 hover:text-gold transition-colors focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-gold px-2 py-1 rounded-xs"
+              className="inline-flex min-h-11 items-center gap-1.5 text-xs text-gold-400 hover:text-gold transition-colors focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-gold px-2 py-1 rounded-xs"
               aria-label="Back to top of page"
             >
               <span>Back to Top</span>

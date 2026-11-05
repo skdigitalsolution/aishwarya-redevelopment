@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { Phone, Calendar, ArrowRight, ShieldCheck, CheckCircle2 } from "lucide-react";
 import { Container } from "@/components/layout/Container";
@@ -8,6 +8,7 @@ import { COMPANY_DETAILS } from "@/lib/constants";
 
 export const ConsultationCTA: React.FC<{ title?: React.ReactNode }> = ({ title }) => {
   const shouldReduceMotion = useReducedMotion();
+  const reviewRef = useRef<HTMLDivElement>(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -17,13 +18,13 @@ export const ConsultationCTA: React.FC<{ title?: React.ReactNode }> = ({ title }
   });
 
   const fadeIn = {
-    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 20 },
+    hidden: { opacity: 1, y: 0 },
     visible: (custom: number) => ({
-      opacity: 1,
-      y: 0,
+      opacity: shouldReduceMotion ? 1 : [0.94, 1],
+      y: shouldReduceMotion ? 0 : [4, 0],
       transition: {
         duration: shouldReduceMotion ? 0 : 0.6,
-        delay: shouldReduceMotion ? 0 : custom * 0.1,
+        delay: shouldReduceMotion ? 0 : Math.min(custom * 0.06, 0.12),
         ease: [0.21, 0.47, 0.32, 0.98] as const,
       },
     }),
@@ -41,6 +42,7 @@ export const ConsultationCTA: React.FC<{ title?: React.ReactNode }> = ({ title }
     );
     if (!form.reportValidity()) return;
     setFormSubmitted(true);
+    requestAnimationFrame(() => reviewRef.current?.focus());
   };
 
   return (
@@ -63,7 +65,7 @@ export const ConsultationCTA: React.FC<{ title?: React.ReactNode }> = ({ title }
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column: Editorial Headline & Narrative (7 cols) */}
           <motion.div
-            initial="hidden"
+            initial={false}
             whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
             custom={1}
@@ -92,9 +94,9 @@ export const ConsultationCTA: React.FC<{ title?: React.ReactNode }> = ({ title }
             {/* Trust Assurances */}
             <div className="pt-4 space-y-2.5">
               {[
-                "Strict compliance with Section 79A and Maharashtra Co-operative Societies Act",
-                "Independent fiduciary representation protecting member carpet area and corpus",
-                "Zero conflict of interest with developers or commercial contracting agencies",
+                "Coordination of applicable society procedures and professional review",
+                "Review of proposed carpet area, corpus terms and member priorities",
+                "Clear discussion of advisory scope, assumptions and stakeholder interests",
               ].map((assurance) => (
                 <div key={assurance} className="flex items-start gap-2.5 text-xs sm:text-sm text-ivory-300/80 font-light">
                   <ShieldCheck className="size-4 text-gold-400 shrink-0 mt-0.5" aria-hidden="true" />
@@ -118,7 +120,7 @@ export const ConsultationCTA: React.FC<{ title?: React.ReactNode }> = ({ title }
                 className="group inline-flex items-center justify-center gap-2.5 px-6 py-4 text-xs sm:text-sm font-sans font-medium uppercase tracking-[0.16em] text-ivory-100 hover:text-gold border border-gold/40 hover:border-gold hover:bg-navy-900/60 transition-all duration-300 rounded-xs focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gold"
               >
                 <Calendar className="size-4 text-gold-400" aria-hidden="true" />
-                <span>Schedule a Consultation</span>
+                <span>Prepare Your Details</span>
               </a>
             </div>
           </motion.div>
@@ -126,7 +128,7 @@ export const ConsultationCTA: React.FC<{ title?: React.ReactNode }> = ({ title }
           {/* Right Column: Direct Consultation Inquiry Form (5 cols) */}
           <motion.div
             id="consultation-form"
-            initial="hidden"
+            initial={false}
             whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
             custom={2}
@@ -136,15 +138,15 @@ export const ConsultationCTA: React.FC<{ title?: React.ReactNode }> = ({ title }
             <div className="p-6 sm:p-10 rounded-xs bg-navy border border-gold/30 shadow-none relative">
               <div className="pb-5 border-b border-gold/20 mb-6">
                 <h3 className="font-serif text-2xl text-ivory-50 font-medium">
-                  Request an Advisory Session
+                  Prepare Consultation Details
                 </h3>
-                <p className="font-sans text-xs text-ivory-300/70 mt-1">
+                <p id="consultation-delivery-note" className="font-sans text-sm leading-6 text-ivory-300/80 mt-2">
                   Online delivery is unavailable. Prepare your details, then call our team. Nothing is sent or stored.
                 </p>
               </div>
 
               {formSubmitted ? (
-                <div role="status" className="py-8 text-center space-y-3">
+                <div ref={reviewRef} tabIndex={-1} role="status" className="focus-visible:outline-2 focus-visible:outline-gold py-8 text-center space-y-3">
                   <div className="size-12 mx-auto rounded-full bg-gold/20 border border-gold/40 flex items-center justify-center text-gold-400">
                     <CheckCircle2 className="size-6" />
                   </div>
@@ -154,13 +156,21 @@ export const ConsultationCTA: React.FC<{ title?: React.ReactNode }> = ({ title }
                   <p className="font-sans text-xs text-ivory-300/80 leading-relaxed max-w-xs mx-auto">
                     Your details have not been delivered. Please call our team to discuss your consultation.
                   </p>
+                  <dl className="space-y-2 break-words text-left text-xs leading-6 text-ivory-300/80">
+                    {[
+                      ["Representative", formData.name],
+                      ["Phone", formData.phone],
+                      ["Society or estate", formData.societyName],
+                      ["Location", formData.location],
+                    ].map(([label, value]) => <div key={label}><dt className="font-medium text-gold-400">{label}</dt><dd>{value.trim() || "Not provided"}</dd></div>)}
+                  </dl>
                   <a href={`tel:${COMPANY_DETAILS.contact.phoneTel}`} className="inline-flex min-h-11 items-center font-mono text-xs text-gold-400 focus-visible:outline-2 focus-visible:outline-gold">
                     Call: {COMPANY_DETAILS.contact.phone}
                   </a>
-                  <button type="button" onClick={() => setFormSubmitted(false)} className="block mx-auto min-h-11 text-xs underline focus-visible:outline-2 focus-visible:outline-gold">Edit your details</button>
+                  <button type="button" onClick={() => { setFormSubmitted(false); requestAnimationFrame(() => document.getElementById("contact-name")?.focus()); }} className="block mx-auto min-h-11 text-xs underline focus-visible:outline-2 focus-visible:outline-gold">Edit your details</button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form aria-describedby="consultation-delivery-note" onSubmit={handleSubmit} className="space-y-4">
                   <div>
                     <label
                       htmlFor="contact-name"
@@ -178,7 +188,7 @@ export const ConsultationCTA: React.FC<{ title?: React.ReactNode }> = ({ title }
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="e.g. Secretary / Chairman / Landowner"
-                      className="w-full px-3.5 py-2.5 rounded-xs bg-navy-950/80 border border-gold/25 text-ivory-100 placeholder:text-ivory-300/40 text-xs sm:text-sm font-sans focus-visible:outline-hidden focus-visible:border-gold focus-visible:ring-1 focus-visible:ring-gold transition-colors"
+                      className="w-full px-3.5 py-2.5 rounded-xs bg-navy-950/80 min-h-12 border border-gold/60 text-ivory-100 placeholder:text-ivory-300/70 text-base sm:text-sm font-sans focus-visible:outline-hidden focus-visible:border-gold focus-visible:ring-1 focus-visible:ring-gold transition-colors"
                     />
                   </div>
 
@@ -199,7 +209,7 @@ export const ConsultationCTA: React.FC<{ title?: React.ReactNode }> = ({ title }
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="+91 98765 43210"
-                      className="w-full px-3.5 py-2.5 rounded-xs bg-navy-950/80 border border-gold/25 text-ivory-100 placeholder:text-ivory-300/40 text-xs sm:text-sm font-sans focus-visible:outline-hidden focus-visible:border-gold focus-visible:ring-1 focus-visible:ring-gold transition-colors"
+                      className="w-full px-3.5 py-2.5 rounded-xs bg-navy-950/80 min-h-12 border border-gold/60 text-ivory-100 placeholder:text-ivory-300/70 text-base sm:text-sm font-sans focus-visible:outline-hidden focus-visible:border-gold focus-visible:ring-1 focus-visible:ring-gold transition-colors"
                     />
                   </div>
 
@@ -212,11 +222,12 @@ export const ConsultationCTA: React.FC<{ title?: React.ReactNode }> = ({ title }
                     </label>
                     <input
                       id="contact-society"
+                      maxLength={240}
                       type="text"
                       value={formData.societyName}
                       onChange={(e) => setFormData({ ...formData, societyName: e.target.value })}
                       placeholder="e.g. Navjeevan CHS / Private Land"
-                      className="w-full px-3.5 py-2.5 rounded-xs bg-navy-950/80 border border-gold/25 text-ivory-100 placeholder:text-ivory-300/40 text-xs sm:text-sm font-sans focus-visible:outline-hidden focus-visible:border-gold focus-visible:ring-1 focus-visible:ring-gold transition-colors"
+                      className="w-full px-3.5 py-2.5 rounded-xs bg-navy-950/80 min-h-12 border border-gold/60 text-ivory-100 placeholder:text-ivory-300/70 text-base sm:text-sm font-sans focus-visible:outline-hidden focus-visible:border-gold focus-visible:ring-1 focus-visible:ring-gold transition-colors"
                     />
                   </div>
 
@@ -229,11 +240,12 @@ export const ConsultationCTA: React.FC<{ title?: React.ReactNode }> = ({ title }
                     </label>
                     <input
                       id="contact-location"
+                      maxLength={240}
                       type="text"
                       value={formData.location}
                       onChange={(e) => setFormData({ ...formData, location: e.target.value })}
                       placeholder="e.g. Bandra, Dadar, Borivali, Thane"
-                      className="w-full px-3.5 py-2.5 rounded-xs bg-navy-950/80 border border-gold/25 text-ivory-100 placeholder:text-ivory-300/40 text-xs sm:text-sm font-sans focus-visible:outline-hidden focus-visible:border-gold focus-visible:ring-1 focus-visible:ring-gold transition-colors"
+                      className="w-full px-3.5 py-2.5 rounded-xs bg-navy-950/80 min-h-12 border border-gold/60 text-ivory-100 placeholder:text-ivory-300/70 text-base sm:text-sm font-sans focus-visible:outline-hidden focus-visible:border-gold focus-visible:ring-1 focus-visible:ring-gold transition-colors"
                     />
                   </div>
 
@@ -245,7 +257,7 @@ export const ConsultationCTA: React.FC<{ title?: React.ReactNode }> = ({ title }
                     <ArrowRight className="size-3.5 text-navy-950" />
                   </button>
 
-                  <p className="text-[10px] text-center text-ivory-300/60 font-sans pt-1">
+                  <p className="text-sm leading-6 text-center text-ivory-300/80 font-sans pt-1">
                     Your details stay in this page and are not sent or saved.
                   </p>
                 </form>

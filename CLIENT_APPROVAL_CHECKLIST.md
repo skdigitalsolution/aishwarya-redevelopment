@@ -37,9 +37,9 @@ This is an approval record, not confirmation that the items below have been appr
 ## Images and verified project details
 
 - [ ] Confirm ownership/licensing and permission to publish both existing photographs/visuals: `/images/hero/hero-architecture-fallback.jpg` and `/images/projects/about-redevelopment-study.jpg`.
-- [ ] Supply the requested 24-image client set. `public/images/client` currently contains only its README; the original set is not available for verification.
-- [ ] Approve continued use of the hero fallback during private review or supply the official replacement. Its README marks the official hero asset as pending.
-- [ ] Confirm whether the architectural study is a render, concept or photograph, and approve its description. The portfolio intentionally presents one source image with detail crops as an illustrative showcase, not completed, ongoing or owned Aishwarya projects.
+- [ ] Approve the delivered 24-image client set, now present as `public/images/1.jpeg` through `24.jpeg`. All images are integrated contextually; review [the image mapping and subject notes](docs/CLIENT-IMAGE-INTEGRATION.md), including the third-party signage in `13.jpeg`.
+- [ ] Approve the delivered `/images/hero/mumbai-skyline.jpg` and its desktop/mobile crops. It now replaces the homepage hero fallback; the root-level skyline copy is byte-identical. Confirm usage rights and final visual approval.
+- [ ] Confirm whether each architectural visual is a render, concept or photograph, and approve its description. The portfolio now pairs `21.jpeg`, `22.jpeg` and `24.jpeg` with advisory content; none is presented as a completed, ongoing or owned Aishwarya project.
 - [ ] Supply approved project names, locations, project types, statuses, areas, descriptions, gallery images and the company's verified role before publishing actual project records. `verifiedPortfolioProjects` remains empty.
 - [ ] Supply verified land listing details before any inventory is presented as active. The current portfolio CTA links to advisory categories with an explicit no-live-listings note.
 

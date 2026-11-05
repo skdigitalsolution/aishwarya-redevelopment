@@ -43,7 +43,7 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
       {eyebrow && (
         <div
           className={cn(
-            "inline-flex items-center gap-3 text-[10px] sm:text-[11px] leading-5 font-semibold uppercase tracking-[0.22em] font-sans",
+            "inline-flex items-center gap-3 text-xs sm:text-xs leading-5 font-semibold uppercase tracking-[0.22em] font-sans",
             isDark ? "text-gold-400" : "text-gold-700"
           )}
         >
@@ -92,7 +92,7 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
           )}
           aria-hidden="true"
         >
-          <span className={cn("h-px w-16 sm:w-20", isDark ? "bg-gold/60" : "bg-gold/70")} />
+          <span data-motion-line="x" className={cn("h-px w-16 sm:w-20", isDark ? "bg-gold/60" : "bg-gold/70")} />
         </div>
       )}
 

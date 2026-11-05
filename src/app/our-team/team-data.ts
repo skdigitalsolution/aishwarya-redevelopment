@@ -24,7 +24,7 @@ export const teamRoles: readonly TeamRole[] = [
     id: "founder", order: 1, group: "leadership",
     proposedDesignation: "Founder & Managing Director", publicDesignation: "Founder & Director",
     name: "Mr. Sachin Murudkar",
-    portrait: { src: "/images/founder/founder-portrait.jpg", alt: "Mr. Sachin Murudkar, Founder and Director of Aishwarya Redevelopment Advisory Company" },
+    portrait: { src: "/images/founder-portrait.jpeg", alt: "Mr. Sachin Murudkar, Founder and Director of Aishwarya Redevelopment Advisory Company" },
     biography: "Mr. Sachin Murudkar is the Founder & Director of Aishwarya Redevelopment Advisory Company. The existing company profile describes an advisory focus spanning society redevelopment, title due diligence, municipal coordination and land valuation.",
     draftDescription: "Provide organizational direction and strategic guidance while maintaining a focus on client priorities.",
     draftResponsibilities: ["Shape organizational vision and advisory priorities", "Guide leadership decisions and major client relationships", "Support stakeholder alignment on strategic matters"],
