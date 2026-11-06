@@ -1,7 +1,7 @@
 import Image, { type ImageProps } from "next/image";
 
 /** Include the deployment subpath for public images on GitHub Pages. */
-export default function SiteImage({ src, ...props }: ImageProps) {
+export default function SiteImage({ src, alt, ...props }: ImageProps) {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
   const resolvedSrc =
     typeof src === "string" &&
@@ -12,5 +12,5 @@ export default function SiteImage({ src, ...props }: ImageProps) {
       ? `${basePath}${src}`
       : src;
 
-  return <Image {...props} src={resolvedSrc} />;
+  return <Image {...props} src={resolvedSrc} alt={alt} />;
 }

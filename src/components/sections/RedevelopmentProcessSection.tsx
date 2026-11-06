@@ -27,60 +27,12 @@ interface ProcessStep {
 }
 
 const processSteps: ProcessStep[] = [
-  {
-    step: "01",
-    title: "Initial Consultation",
-    subtitle: "Alignment & Stakeholder Orientation",
-    description:
-      "Meeting with the society managing committee and members to understand aspirations, identify existing property challenges, and establish advisory scope.",
-    icon: MessageSquare,
-    deliverables: ["Committee Alignment", "Preliminary Needs Audit", "Redevelopment Roadmap"],
-  },
-  {
-    step: "02",
-    title: "Feasibility Assessment",
-    subtitle: "DCPR 2034 & Financial Modeling",
-    description:
-      "Comprehensive architectural and financial analysis calculating potential FSI, TDR utilization, fungible area, projected member carpet area enhancement, and corpus funds.",
-    icon: BarChart3,
-    deliverables: ["Techno-Financial Report", "FSI & TDR Modeling", "Member Benefit Projections"],
-  },
-  {
-    step: "03",
-    title: "Developer Evaluation",
-    subtitle: "Tendering & Rigorous Diligence",
-    description:
-      "Drafting transparent tender documents, inviting qualified developer bids, conducting balance sheet audits, and presenting comparative analytical matrices to the General Body.",
-    icon: FileCheck2,
-    deliverables: ["Tender Document Preparation", "Comparative Bid Analysis", "Developer Financial Audits"],
-  },
-  {
-    step: "04",
-    title: "Agreements & Approvals",
-    subtitle: "Legal Safeguards & Sanctions",
-    description:
-      "Structuring and negotiating Development Agreements (DA), Power of Attorney (POA), and Individual Agreements with project-specific covenants and negotiated security arrangements.",
-    icon: FileSignature,
-    deliverables: ["Development Agreement Vetting", "Bank Guarantee Structuring", "IOD / CC Tracking"],
-  },
-  {
-    step: "05",
-    title: "Project Monitoring",
-    subtitle: "Execution Quality & Timeline Auditing",
-    description:
-      "Independent technical audits during construction. Reviewing milestones, monitoring rent/corpus disbursement schedules, and ensuring architectural compliance.",
-    icon: Activity,
-    deliverables: ["Milestone Velocity Audits", "Disbursement Oversight", "Structural Quality Checks"],
-  },
-  {
-    step: "06",
-    title: "OC & Possession Handover",
-    subtitle: "Final Certification & Move-in",
-    description:
-      "Ensuring all municipal conditions are fulfilled, Occupancy Certificate (OC) is issued, final accounts settled, and members receive keys to their new landmark homes.",
-    icon: KeyRound,
-    deliverables: ["OC Verification", "Defect Liability Oversight", "Society Handover Clearance"],
-  },
+ {step:"01",title:"Society Redevelopment Advisory",subtitle:"",description:"Client-listed professional service.",icon:MessageSquare,deliverables:[]},
+ {step:"02",title:"Redevelopment Feasibility Study",subtitle:"",description:"Client-listed professional service.",icon:BarChart3,deliverables:[]},
+ {step:"03",title:"Developer Due Diligence",subtitle:"",description:"MahaRERA track record, financial solvency and existing society feedback.",icon:FileCheck2,deliverables:[]},
+ {step:"04",title:"Bank Guarantee Capability",subtitle:"",description:"Developer due diligence criterion; not a promised guarantee.",icon:FileSignature,deliverables:[]},
+ {step:"05",title:"DCPR 2034 Feasibility",subtitle:"",description:"Developer due diligence criterion.",icon:Activity,deliverables:[]},
+ {step:"06",title:"Self-Redevelopment",subtitle:"",description:"Identified area of founder expertise.",icon:KeyRound,deliverables:[]},
 ];
 
 export const RedevelopmentProcessSection: React.FC = () => {
@@ -90,9 +42,9 @@ export const RedevelopmentProcessSection: React.FC = () => {
       <Container>
         <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
-            <SectionHeading align="left" showDivider={false} theme="dark" eyebrow="The Redevelopment Roadmap" title={<span id="home-process-heading">Six steps.<br /><span className="font-light italic text-gold-300">One considered journey.</span></span>} subtitle="From early committee consultations to completion and handover coordination, our advisory supports informed decisions and project-specific follow-up." />
+            <SectionHeading align="left" showDivider={false} theme="dark" eyebrow="Redevelopment Advisory Topics" title={<span id="home-process-heading">Advisory topics.<br /><span className="font-light italic text-gold-300">Mumbai redevelopment.</span></span>} subtitle="The topics supplied in the task are listed here; they do not establish an approved process sequence." />
             <ClientImage id={9} dark aspect="aspect-[4/3]" className="mt-8" />
-            <p className="mt-5 text-xs leading-6 text-ivory/70">The starting point is your building and your society&apos;s priorities. Scope and sequence depend on the property and applicable requirements.</p>
+            <p className="mt-5 text-xs leading-6 text-ivory/70">The detailed redevelopment process awaits the original company profile presentation.</p>
             <Link href="/redevelopment" className="mt-5 inline-flex min-h-12 items-center gap-3 border-b border-gold/60 text-sm text-gold-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold">Explore the redevelopment approach <ArrowRight size={16} aria-hidden="true" /></Link>
           </div>
           <ol className="lg:col-span-7">

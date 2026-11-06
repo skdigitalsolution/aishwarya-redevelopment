@@ -82,21 +82,21 @@ export const ConsultationCTA: React.FC<{ title?: React.ReactNode }> = ({ title }
 
             {/* Heading */}
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-ivory-50 tracking-tight leading-[1.12]">
-              {title ?? <>Your Property Deserves the{" "}
-              <span className="italic font-light text-gold-300">Right Guidance.</span></>}
+              {title ?? <>Contact Aishwarya for{" "}
+              <span className="italic font-light text-gold-300">Redevelopment Advisory.</span></>}
             </h2>
 
             {/* Description */}
             <p className="font-sans text-base sm:text-lg text-ivory-200/90 font-light leading-relaxed max-w-xl">
-              Take the first step towards a transparent and well-planned redevelopment journey.
+              Contact Aishwarya Redevelopment Advisory Company about redevelopment advisory.
             </p>
 
             {/* Trust Assurances */}
             <div className="pt-4 space-y-2.5">
               {[
-                "Coordination of applicable society procedures and professional review",
-                "Review of proposed carpet area, corpus terms and member priorities",
-                "Clear discussion of advisory scope, assumptions and stakeholder interests",
+                "Society Redevelopment Advisory",
+                "Redevelopment Feasibility Study",
+                "Title Resolution & Due Diligence",
               ].map((assurance) => (
                 <div key={assurance} className="flex items-start gap-2.5 text-xs sm:text-sm text-ivory-300/80 font-light">
                   <ShieldCheck className="size-4 text-gold-400 shrink-0 mt-0.5" aria-hidden="true" />

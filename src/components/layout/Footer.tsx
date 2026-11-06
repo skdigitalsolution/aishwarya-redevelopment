@@ -21,10 +21,10 @@ const navLinks = [
 const serviceQuickLinks = [
   { label: "Society Redevelopment Advisory", href: "/services#redevelopment" },
   { label: "Self-Redevelopment Guidance", href: "/services#redevelopment" },
-  { label: "Legal & Title Due Diligence", href: "/services#legal" },
-  { label: "Architectural Feasibility & FSI", href: "/services#financial" },
-  { label: "Developer Due Diligence & Tendering", href: "/services#redevelopment" },
-  { label: "Strategic Land Banking & JDA", href: "/land-banking" },
+  { label: "Title Resolution & Due Diligence", href: "/services#legal" },
+  { label: "Architectural & Design Consultation", href: "/services#financial" },
+  { label: "Builder / Developer Selection & Tendering", href: "/services#redevelopment" },
+  { label: "Strategic Land Banking Vault", href: "/land-banking" },
 ];
 
 // Read browser time after hydration, keeping the server and initial client output equal.
@@ -60,13 +60,11 @@ export const Footer: React.FC = () => {
           <div className="lg:col-span-5 space-y-5">
             <BrandWordmark variant="dark" />
 
-            <p className="font-sans text-sm text-ivory-300/80 leading-relaxed font-light max-w-sm">
-              Aishwarya Redevelopment Advisory Company is an independent real estate and redevelopment advisory firm providing fiduciary guidance, legal compliance, and strategic valuation for cooperative housing societies and landowners in Mumbai.
-            </p>
+            <p className="font-sans text-sm text-ivory-300/80 leading-relaxed font-light max-w-sm">Aishwarya Redevelopment Advisory Company. Mumbai redevelopment advisory. Mr. Sachin Murudkar — Founder &amp; Director.</p>
 
             <div className="pt-2 flex items-center gap-2 text-xs font-sans text-gold-400/90">
               <ShieldCheck className="size-4 text-gold-400 shrink-0" aria-hidden="true" />
-              <span>Independent Fiduciary Representation • Section 79A Mandate</span>
+              <span>Client&apos;s Profit is Our Success</span>
             </div>
           </div>
 
@@ -148,7 +146,7 @@ export const Footer: React.FC = () => {
 
           <div className="flex flex-wrap items-center justify-center gap-6">
             <span className="text-xs text-ivory-300/65">
-              Fiduciary Real Estate &amp; Redevelopment Advisory
+              Mumbai Redevelopment Advisory
             </span>
             <button
               type="button"

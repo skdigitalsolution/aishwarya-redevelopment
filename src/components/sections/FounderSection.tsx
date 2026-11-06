@@ -8,26 +8,10 @@ import Image from "@/components/ui/SiteImage";
 import { Container } from "@/components/layout/Container";
 
 const leadershipExpertise = [
-  {
-    icon: Building,
-    title: "Redevelopment Strategy",
-    detail: "Structuring society consensus & financial feasibility models",
-  },
-  {
-    icon: Scale,
-    title: "Title Due Diligence",
-    detail: "Comprehensive title search & deemed conveyance guidance",
-  },
-  {
-    icon: FileCheck2,
-    title: "Municipal Coordination",
-    detail: "Navigating DCPR 2034, Section 79A & statutory sanctions",
-  },
-  {
-    icon: Shield,
-    title: "Land Valuation & JDA",
-    detail: "Equitable development rights & joint venture structuring",
-  },
+ {icon:Building,title:"Society Redevelopment Strategy",detail:"Self-redevelopment"},
+ {icon:Scale,title:"Title Resolution & Due Diligence",detail:"Identified area of founder expertise"},
+ {icon:FileCheck2,title:"Municipal & Administrative Procedures",detail:"Identified area of founder expertise"},
+ {icon:Shield,title:"Land Amalgamation & Land Valuation",detail:"Identified areas of founder expertise"},
 ];
 
 export const FounderSection: React.FC = () => {
@@ -100,12 +84,8 @@ export const FounderSection: React.FC = () => {
 
             {/* Factual Biography */}
             <div className="space-y-4 font-sans text-sm sm:text-base text-charcoal/85 leading-relaxed font-light mb-8">
-              <p>
-                Mr. Sachin Murudkar is the Founder &amp; Director of Aishwarya Redevelopment Advisory Company. The advisory focus spans society redevelopment strategy, title due diligence, municipal coordination and land valuation.
-              </p>
-              <p className="text-charcoal/75 text-sm sm:text-base">
-                The firm supports housing societies, landowners and developers in assessing property decisions, feasibility and proposed transaction terms. Advisory scope and professional responsibilities are agreed for each engagement.
-              </p>
+              <p>Mr. Sachin Murudkar is the Founder &amp; Director of Aishwarya Redevelopment Advisory Company. His stated expertise includes Mumbai redevelopment advisory.</p>
+              <p className="text-charcoal/75 text-sm sm:text-base">His stated expertise also includes society redevelopment strategy, self-redevelopment, municipal and administrative procedures, title resolution and due diligence, land amalgamation and land valuation.</p>
             </div>
 
             {/* 4 Small Expertise Highlights */}

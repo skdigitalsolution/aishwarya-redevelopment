@@ -9,27 +9,9 @@ import { ArrowRight, Building2, Scale, Compass, CheckCircle2 } from "lucide-reac
 import { Container } from "@/components/layout/Container";
 
 const expertiseHighlights = [
-  {
-    number: "01",
-    title: "Society Redevelopment Advisory",
-    description:
-      "Guiding cooperative housing societies through techno-financial feasibility, member consensus facilitation, developer tender structuring, and contractual negotiations.",
-    icon: Building2,
-  },
-  {
-    number: "02",
-    title: "Legal & Regulatory Guidance",
-    description:
-      "Navigating Maharashtra cooperative frameworks (Section 79A), MOFA, RERA compliance, title due diligence, and coordinating Development Agreement review.",
-    icon: Scale,
-  },
-  {
-    number: "03",
-    title: "Strategic Land Advisory",
-    description:
-      "Structuring high-value land aggregation, title clearance, joint ventures, and optimizing land development potential for estates and institutional landowners.",
-    icon: Compass,
-  },
+ {number:"01", title:"Society Redevelopment Advisory", description:"Mumbai redevelopment advisory and society redevelopment strategy.", icon:Building2},
+ {number:"02", title:"Title Resolution & Due Diligence", description:"Municipal and administrative procedures; title resolution and due diligence.", icon:Scale},
+ {number:"03", title:"Land Amalgamation & Land Valuation", description:"Both are identified areas of founder expertise.", icon:Compass},
 ];
 
 export const AboutSection: React.FC = () => {
@@ -101,16 +83,8 @@ export const AboutSection: React.FC = () => {
 
             {/* Company introduction */}
             <div className="space-y-4 font-sans text-base sm:text-lg text-charcoal/85 leading-relaxed font-normal mb-8">
-              <p>
-                Aishwarya Redevelopment Advisory Company is a Mumbai-based real estate and
-                redevelopment advisory firm supporting cooperative housing societies, property owners
-                and stakeholders through complex redevelopment decisions.
-              </p>
-              <p className="text-charcoal/75 text-sm sm:text-base leading-relaxed">
-                The company&apos;s advisory work includes society redevelopment, feasibility evaluation,
-                developer due diligence, title and regulatory coordination, self-redevelopment guidance
-                and strategic land advisory.
-              </p>
+              <p>Aishwarya Redevelopment Advisory Company is led by Mr. Sachin Murudkar, Founder &amp; Director. His stated expertise includes Mumbai redevelopment advisory.</p>
+              <p className="text-charcoal/75 text-sm sm:text-base leading-relaxed">The stated expertise includes society redevelopment strategy, self-redevelopment, municipal and administrative procedures, title resolution and due diligence, land amalgamation and land valuation.</p>
             </div>
 
             {/* Expertise Highlights (Refined Editorial List with Fine Dividers) */}
@@ -150,7 +124,7 @@ export const AboutSection: React.FC = () => {
               {/* Supporting Fiduciary Assurance */}
               <div className="inline-flex items-center gap-2 text-xs font-sans text-charcoal/70">
                 <CheckCircle2 className="size-4 text-gold-600 shrink-0" aria-hidden="true" />
-                <span>Guidance shaped around society priorities</span>
+                <span>Client&apos;s Profit is Our Success</span>
               </div>
             </div>
           </motion.div>

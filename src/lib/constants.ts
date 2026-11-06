@@ -34,12 +34,12 @@ export const BRAND_TOKENS = {
 } as const;
 
 export const COMPANY_DETAILS = {
-  name: "Aishwarya Redevelopment Advisory",
+  name: "Aishwarya Redevelopment Advisory Company",
   shortName: "Aishwarya Advisory",
   legalName: "Aishwarya Redevelopment Advisory Company",
-  tagline: "Strategic Real Estate Advisory for Landmark Redevelopment",
+  tagline: "Mumbai Redevelopment Advisory",
   subTagline:
-    "Guiding housing societies, landlord estates, and developers through fiduciary diligence, master planning, and value realization.",
+    "Society redevelopment strategy, self-redevelopment, title resolution and due diligence, land amalgamation and land valuation.",
   location: "Mumbai, Maharashtra, India",
   contact: {
     phone: "+91 70218 92236",

@@ -26,79 +26,46 @@ import { COMPANY_DETAILS } from "@/lib/constants";
 export const metadata = pageMetadata("/about", "About Us", "Learn about Aishwarya Redevelopment Advisory Company, its advisory approach and support for housing societies and property owners in Mumbai.");
 
 const expertiseAreas = [
-  {
-    title: "Society Redevelopment Advisory",
-    description: "End-to-end fiduciary guidance for cooperative housing societies navigating developer-led transformation.",
-    icon: Building2,
-  },
-  {
-    title: "Self-Redevelopment Guidance",
-    description: "Helping societies evaluate self-redevelopment, including funding, area planning and governance responsibilities.",
-    icon: Award,
-  },
-  {
-    title: "Developer Due Diligence & Tendering",
-    description: "Auditing developer balance sheets, past project velocity, and structuring binding competitive tenders.",
-    icon: FileCheck2,
-  },
-  {
-    title: "Legal Title Investigation",
-    description: "Property-specific title investigations, deemed conveyance guidance and Development Agreement review.",
-    icon: Scale,
-  },
-  {
-    title: "Municipal Coordination",
-    description: "Navigating Maharashtra Section 79A, MOFA, RERA, and statutory municipal sanction procedures.",
-    icon: Shield,
-  },
-  {
-    title: "Feasibility & FSI Optimization",
-    description: "Techno-commercial modeling calculating base FSI, TDR loading, and member carpet area gains under DCPR 2034.",
-    icon: Compass,
-  },
-  {
-    title: "Strategic Land Advisory",
-    description: "High-value land parcel aggregation, joint development agreements (JDA), and institutional valuations.",
-    icon: Landmark,
-  },
+ {title: "Society Redevelopment Advisory", description: "Mumbai redevelopment advisory.", icon: Building2},
+ {title: "Self-Redevelopment", description: "Self-redevelopment is an identified area of founder expertise.", icon: Award},
+ {title: "Developer Due Diligence", description: "MahaRERA track record, financial solvency and existing society feedback.", icon: FileCheck2},
+ {title: "Title Resolution & Due Diligence", description: "Title resolution and due diligence are identified areas of founder expertise.", icon: Scale},
+ {title: "Municipal & Administrative Procedures", description: "Municipal and administrative procedures are identified areas of founder expertise.", icon: Shield},
+ {title: "Redevelopment Feasibility Study", description: "DCPR 2034 feasibility is a listed developer review criterion.", icon: Compass},
+ {title: "Land Amalgamation & Land Valuation", description: "Land amalgamation and land valuation are identified areas of founder expertise.", icon: Landmark},
 ];
 
 const coreValues = [
   {
-    number: "01",
-    title: "Transparency",
-    subtitle: "Conflict-Free Alignment",
-    description:
-      "We operate exclusively as an independent fiduciary advocate for housing societies and property owners. Complete clarity is maintained at every general body meeting, tender opening, and commercial review.",
+    "number": "01",
+    "title": "MahaRERA track record",
+    "subtitle": "Developer review",
+    "description": "Developer due diligence criterion."
   },
   {
-    number: "02",
-    title: "Regulatory Compliance",
-    subtitle: "Section 79A & RERA Discipline",
-    description:
-      "Our advisory supports coordination around applicable Maharashtra cooperative laws, Section 79A procedures, RERA provisions and municipal requirements, with professional review of project-specific obligations.",
+    "number": "02",
+    "title": "Financial solvency",
+    "subtitle": "Developer review",
+    "description": "Developer due diligence criterion."
   },
   {
-    number: "03",
-    title: "Strategic Planning",
-    subtitle: "Techno-Financial Feasibility",
-    description:
-      "Our advisory is anchored in rigorous financial modeling, micro-market pricing analysis, and realistic execution timelines, ensuring decisions are grounded in commercial viability.",
+    "number": "03",
+    "title": "Existing society feedback",
+    "subtitle": "Developer review",
+    "description": "Developer due diligence criterion."
   },
   {
-    number: "04",
-    title: "Long-Term Value Creation",
-    subtitle: "Compounding Member Equity",
-    description:
-      "We structure redevelopment agreements to maximize member carpet area, secure bank guarantees, optimize commercial corpus, and define project-specific quality expectations.",
+    "number": "04",
+    "title": "Bank guarantee capability",
+    "subtitle": "Developer review",
+    "description": "A capability review criterion; no guarantee is promised."
   },
   {
-    number: "05",
-    title: "Client-Centric Guidance",
-    subtitle: "Empowered Decision-Making",
-    description:
-      "We view our role as educators and guardians of society equity, demystifying complex architectural, legal, and financial jargon so members vote with complete confidence.",
-  },
+    "number": "05",
+    "title": "DCPR 2034 feasibility",
+    "subtitle": "Developer review",
+    "description": "Developer due diligence criterion."
+  }
 ];
 
 export default function AboutPage() {
@@ -134,14 +101,12 @@ export default function AboutPage() {
               </div>
 
               <h1 className="editorial-hero-title font-serif text-4xl sm:text-5xl md:text-6xl text-ivory-50 font-normal leading-[1.12] tracking-tight">
-                Built on Trust.{" "}
+                Redevelopment Advisory.{" "}
                 <br className="hidden sm:inline" />
-                <span className="italic font-light text-gold-300">Guided by Expertise.</span>
+                <span className="italic font-light text-gold-300">Mumbai.</span>
               </h1>
 
-              <p className="font-sans text-base sm:text-lg text-ivory-200/90 leading-relaxed font-light">
-                Aishwarya Redevelopment Advisory Company is an independent Mumbai-based real estate advisory practice providing fiduciary guidance, legal safeguards, and technical clarity for cooperative housing societies and landowners.
-              </p>
+              <p className="font-sans text-base sm:text-lg text-ivory-200/90 leading-relaxed font-light">Aishwarya Redevelopment Advisory Company: Mumbai redevelopment advisory, led by Mr. Sachin Murudkar, Founder &amp; Director.</p>
             </div>
           </Container>
         </section>
@@ -160,29 +125,23 @@ export default function AboutPage() {
                 </div>
 
                 <h2 className="font-serif text-3xl sm:text-4xl text-navy font-normal leading-tight">
-                  Independent Advisory Protecting Society Equity
+                  Aishwarya Redevelopment Advisory Company
                 </h2>
 
                 <div className="space-y-4 font-sans text-sm sm:text-base text-charcoal/85 leading-relaxed font-light">
-                  <p>
-                    Aishwarya Redevelopment Advisory Company is a Mumbai-based real estate and redevelopment advisory firm supporting cooperative housing societies, property owners, and stakeholders through complex redevelopment decisions.
-                  </p>
-                  <p>
-                    The company&apos;s advisory work spans society redevelopment, techno-financial feasibility evaluation, developer due diligence, title and regulatory coordination, self-redevelopment guidance, and strategic land advisory across Mumbai.
-                  </p>
-                  <p className="text-charcoal/75 text-sm">
-                    Our advisory approach emphasizes clear analysis, carefully reviewed documentation and communication with managing committees and society members.
-                  </p>
+                  <p>Mr. Sachin Murudkar is the Founder &amp; Director of Aishwarya Redevelopment Advisory Company.</p>
+                  <p>The stated areas of expertise include society redevelopment strategy, self-redevelopment, title resolution and due diligence, municipal and administrative procedures, land amalgamation and land valuation.</p>
+                  <p className="text-charcoal/75 text-sm">Further company profile information awaits the original client presentation.</p>
                 </div>
 
                 <div className="pt-4 border-t border-gold/20 flex flex-wrap gap-4 text-xs font-sans text-charcoal/80">
                   <span className="inline-flex items-center gap-1.5">
                     <CheckCircle2 className="size-4 text-gold-600" />
-                    Section 79A Compliance
+                    MahaRERA track record
                   </span>
                   <span className="inline-flex items-center gap-1.5">
                     <CheckCircle2 className="size-4 text-gold-600" />
-                    RERA &amp; MOFA Alignment
+                    Financial solvency
                   </span>
                   <span className="inline-flex items-center gap-1.5">
                     <CheckCircle2 className="size-4 text-gold-600" />
@@ -204,7 +163,7 @@ export default function AboutPage() {
                   Clarity of Purpose. <span className="italic font-light text-gold-700">Clarity of Direction.</span>
                 </span>
               }
-              subtitle="Our advisory practice is anchored in safeguarding property equity while bridging society aspirations with technical realities."
+              subtitle="Client's Profit is Our Success."
               align="center"
               theme="light"
             />
@@ -216,14 +175,12 @@ export default function AboutPage() {
                     <Eye className="size-6" />
                   </div>
                   <h3 className="font-serif text-2xl text-navy font-medium mb-3">
-                    Our Advisory Vision
+                    Corporate Philosophy
                   </h3>
-                  <p className="font-sans text-sm sm:text-base text-charcoal/80 leading-relaxed font-light">
-                    To establish a benchmark of transparency and fiduciary rigor in Mumbai&apos;s redevelopment landscape — ensuring that every housing society navigates the redevelopment journey with a clearer understanding of legal safeguards, commercial terms and long-term design considerations.
-                  </p>
+                  <p className="font-sans text-sm sm:text-base text-charcoal/80 leading-relaxed font-light">Client&apos;s Profit is Our Success.</p>
                 </div>
                 <div className="pt-6 mt-6 border-t border-gold/15 text-xs font-mono text-gold-700">
-                  Principle: Fiduciary Transparency
+                  Corporate philosophy
                 </div>
               </div>
 
@@ -233,14 +190,12 @@ export default function AboutPage() {
                     <Target className="size-6" />
                   </div>
                   <h3 className="font-serif text-2xl text-ivory-50 font-medium mb-3">
-                    Our Core Mission
+                    Developer Review Criteria
                   </h3>
-                  <p className="font-sans text-sm sm:text-base text-ivory-300/85 leading-relaxed font-light">
-                    To provide comprehensive, unbiased advisory services that demystify statutory procedures, scrutinize developer credentials, optimize FSI potential under DCPR 2034, and coordinate agreement reviews that address member interests, project responsibilities and delay provisions.
-                  </p>
+                  <p className="font-sans text-sm sm:text-base text-ivory-300/85 leading-relaxed font-light">The developer due diligence criteria include MahaRERA track record, financial solvency, existing society feedback, bank guarantee capability and DCPR 2034 feasibility.</p>
                 </div>
                 <div className="pt-6 mt-6 border-t border-gold/20 text-xs font-mono text-gold-400">
-                  Principle: Uncompromising Due Diligence
+                  Developer due diligence
                 </div>
               </div>
             </div>
@@ -254,10 +209,10 @@ export default function AboutPage() {
               eyebrow="Comprehensive Practice"
               title={
                 <span>
-                  Specialized Advisory <span className="italic font-light text-gold-300">Capabilities.</span>
+                  Redevelopment Advisory <span className="italic font-light text-gold-300">Capabilities.</span>
                 </span>
               }
-              subtitle="Structured advisory solutions covering the complete redevelopment and real estate lifecycle across Mumbai."
+              subtitle="The advisory topics explicitly identified in the client task."
               align="center"
               theme="dark"
             />
@@ -291,7 +246,7 @@ export default function AboutPage() {
         <section aria-labelledby="values-heading" className="bg-ivory py-16 sm:py-24">
           <Container className="grid items-start gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-4">
-              <SectionHeading align="left" showDivider={false} eyebrow="The Standards We Uphold" title={<span id="values-heading">Five values.<br /><span className="italic text-gold-700">A practical approach.</span></span>} subtitle="The principles that shape how we discuss options, coordinate professional inputs and support property decisions." />
+              <SectionHeading align="left" showDivider={false} eyebrow="Developer due diligence" title={<span id="values-heading">Five criteria.<br /><span className="italic text-gold-700">Developer review.</span></span>} subtitle="The five developer due diligence criteria identified in the client task." />
             </div>
             <ol className="min-w-0 divide-y divide-navy/15 border-t border-navy/15 lg:col-span-8">
               {coreValues.map((value) => <li key={value.number} className="grid gap-4 py-7 xl:grid-cols-12 xl:gap-7">
@@ -321,9 +276,7 @@ export default function AboutPage() {
                 <h2 className="font-serif text-3xl sm:text-4xl text-ivory-50 font-normal leading-tight">
                   Consult With Aishwarya Redevelopment Advisory
                 </h2>
-                <p className="font-sans text-sm sm:text-base text-ivory-200/80 font-light leading-relaxed">
-                  Connect with our senior advisory team for an independent, confidential feasibility orientation for your cooperative housing society or land parcel.
-                </p>
+                <p className="font-sans text-sm sm:text-base text-ivory-200/80 font-light leading-relaxed">Contact Aishwarya Redevelopment Advisory Company about redevelopment or land advisory.</p>
               </div>
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto xl:col-span-5 xl:flex-col xl:items-stretch">

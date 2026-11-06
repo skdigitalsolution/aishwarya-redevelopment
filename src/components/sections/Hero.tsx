@@ -7,10 +7,10 @@ import { ArrowDown, ArrowRight, Calendar, ShieldCheck, FileCheck, Building2, Lan
 import { Container } from "@/components/layout/Container";
 
 const advisoryPillars = [
-  { icon: ShieldCheck, title: "Fiduciary Alignment", detail: "Independent advisory safeguarding housing society interests" },
-  { icon: FileCheck, title: "Feasibility & Consensus", detail: "Transparent financial modeling & member alignment" },
-  { icon: Building2, title: "Tender & DA Structuring", detail: "Rigorous developer selection & carefully reviewed legal covenants" },
-  { icon: Landmark, title: "Land & Title Diligence", detail: "Strategic land aggregation & regulatory navigation" },
+ {icon:ShieldCheck,title:"Society Redevelopment Advisory",detail:"Client-listed professional service"},
+ {icon:FileCheck,title:"Redevelopment Feasibility Study",detail:"Client-listed professional service"},
+ {icon:Building2,title:"Developer Due Diligence",detail:"MahaRERA track record, financial solvency and society feedback"},
+ {icon:Landmark,title:"Land Amalgamation & Land Valuation",detail:"Identified areas of founder expertise"},
 ];
 
 /** Only the designated, original client skyline may be supplied by the homepage server. */
@@ -53,7 +53,7 @@ export function Hero({ skylineImage }: { skylineImage?: string }) {
             transition={{ duration: reducedMotion ? 0 : 1.1, delay: reducedMotion ? 0 : 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="mt-9 max-w-2xl font-serif text-3xl leading-[1.18] sm:mt-11 sm:text-4xl lg:text-5xl"
           >
-            Your Development Partner.<br /><span className="font-light italic text-ivory/90">Building Mumbai&apos;s Future Together.</span>
+            Mumbai Redevelopment Advisory.<br /><span className="font-light italic text-ivory/90">Society Redevelopment Strategy.</span>
           </motion.p>
 
           {/* CTAs stay visible throughout the single entrance animation. */}
@@ -70,7 +70,7 @@ export function Hero({ skylineImage }: { skylineImage?: string }) {
           <div className="grid grid-cols-2 gap-x-5 gap-y-6 lg:grid-cols-4 lg:gap-8">
             {advisoryPillars.map(({ icon: Icon, title, detail }) => <div key={title} className="border-l border-gold/35 pl-4"><div className="mb-2 flex items-center gap-2"><Icon size={16} strokeWidth={1.4} className="shrink-0 text-gold" aria-hidden="true" /><p className="font-serif text-lg leading-tight text-ivory">{title}</p></div><p className="hidden max-w-xs text-xs leading-6 text-ivory/75 sm:block">{detail}</p></div>)}
           </div>
-          <p className="mt-6 border-t border-ivory/10 pt-4 text-xs leading-5 tracking-wide text-ivory/65">Independent Fiduciary Counsel for Cooperative Housing Societies &amp; Landowners</p>
+          <p className="mt-6 border-t border-ivory/10 pt-4 text-xs leading-5 tracking-wide text-ivory/65">Mumbai Redevelopment Advisory</p>
         </Container>
       </div>
     </section>
