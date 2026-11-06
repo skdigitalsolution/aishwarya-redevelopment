@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import { COMPANY_DETAILS } from "@/lib/constants";
 import { getSiteConfig } from "@/lib/site-config";
 
-export const publicRoutes = ["/", "/about", "/services", "/redevelopment", "/land-banking", "/projects", "/founder", "/our-team", "/contact"] as const;
+export const publicRoutes = ["/", "/about", "/services", "/redevelopment", "/land-banking", "/projects", "/knowledge-centre", "/founder", "/our-team", "/contact"] as const;
 export type PublicRoute = typeof publicRoutes[number];
 export const siteConfig = getSiteConfig();
 export const companyName = COMPANY_DETAILS.legalName;
 
-export function pageMetadata(route: PublicRoute, title: string, description: string): Metadata {
+export function pageMetadata(route: PublicRoute | `/knowledge-centre/${string}`, title: string, description: string): Metadata {
   const fullTitle = `${title} | ${companyName}`;
   const url = siteConfig.siteUrl ? new URL(route, siteConfig.siteUrl).href : undefined;
   return {

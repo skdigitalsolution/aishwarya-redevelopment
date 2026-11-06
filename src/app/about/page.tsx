@@ -1,3 +1,6 @@
+import { CompanyReveal } from "@/components/company/CompanyReveal";
+import { PerspectiveCard } from "@/components/ui/PerspectiveCard";
+import "@/components/company/company-pages.css";
 import { pageMetadata } from "@/lib/seo";
 import { ClientImage } from "@/components/ui/ClientImage";
 import Image from "@/components/ui/SiteImage";
@@ -73,26 +76,27 @@ export default function AboutPage() {
     <>
       <Navbar />
 
-      <main id="main-content" tabIndex={-1} className="bg-ivory text-charcoal flex-1">
+      <main id="main-content" tabIndex={-1} className="company-page company-about bg-ivory text-charcoal flex-1" data-motion-owned>
         {/* 1. ABOUT HERO */}
-        <section className="relative pt-40 pb-16 sm:pt-56 sm:pb-24 bg-navy-950 text-ivory overflow-hidden">
+        <section className="company-aboutHero relative pt-40 pb-16 sm:pt-56 sm:pb-24 bg-navy-950 text-ivory overflow-hidden">
           <div className="absolute inset-0 z-0">
             <Image
-              src="/images/hero/hero-architecture-fallback.jpg"
-              alt="Illustrative architectural facade used as a background image"
+              src="/images/22.jpeg"
+              alt="Client-supplied architectural concept of a residential entrance and towers; not a verified company project"
               fill
-              quality={85}
+              quality={88}
+              preload
               sizes="100vw"
               className="object-cover object-center"
             />
             <div
               className="absolute inset-0"
-              style={{ background: "linear-gradient(90deg, rgba(11, 29, 58, 0.8) 0%, rgba(11, 29, 58, 0.75) 30%, rgba(11, 29, 58, 0.48) 65%, rgba(11, 29, 58, 0.22) 100%)" }}
+              style={{ background: "linear-gradient(90deg, rgba(6, 15, 30, 0.94) 0%, rgba(11, 29, 58, 0.82) 35%, rgba(11, 29, 58, 0.35) 70%, rgba(11, 29, 58, 0.12) 100%)" }}
             />
           </div>
 
           <Container size="xl" className="relative z-10">
-            <div className="max-w-3xl space-y-6">
+            <CompanyReveal className="max-w-3xl space-y-6">
               <div className="inline-flex items-center gap-3">
                 <span className="h-px w-8 bg-gold-400" aria-hidden="true" />
                 <span className="text-xs font-sans font-semibold uppercase tracking-[0.24em] text-gold-400">
@@ -107,15 +111,17 @@ export default function AboutPage() {
               </h1>
 
               <p className="font-sans text-base sm:text-lg text-ivory-200/90 leading-relaxed font-light">Aishwarya Redevelopment Advisory Company: Mumbai redevelopment advisory, led by Mr. Sachin Murudkar, Founder &amp; Director.</p>
-            </div>
+            </CompanyReveal>
+            <p className="company-heroCaption">Residential architecture <span>Client-supplied concept. Not a verified company project.</span></p>
           </Container>
         </section>
 
         {/* 2. WHO WE ARE */}
-        <section className="py-20 sm:py-28 bg-ivory border-t border-gold/20">
+        <section className="company-aboutIntro py-20 sm:py-28 bg-ivory border-t border-gold/20">
+<CompanyReveal>
           <Container size="xl">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-              <ClientImage id={7} aspect="aspect-[4/3]" className="min-w-0 lg:col-span-6" />
+              <PerspectiveCard className="company-imageFrame min-w-0 lg:col-span-6"><ClientImage id={7} aspect="aspect-video" /></PerspectiveCard>
               <div className="lg:col-span-6 space-y-6">
                 <div className="inline-flex items-center gap-2.5">
                   <span className="h-px w-6 bg-gold-600" />
@@ -134,6 +140,7 @@ export default function AboutPage() {
                   <p className="text-charcoal/75 text-sm">Further company profile information awaits the original client presentation.</p>
                 </div>
 
+                <p className="company-criteriaLabel">Developer review criteria</p>
                 <div className="pt-4 border-t border-gold/20 flex flex-wrap gap-4 text-xs font-sans text-charcoal/80">
                   <span className="inline-flex items-center gap-1.5">
                     <CheckCircle2 className="size-4 text-gold-600" />
@@ -151,10 +158,12 @@ export default function AboutPage() {
               </div>
             </div>
           </Container>
-        </section>
+        </CompanyReveal>
+</section>
 
         {/* 3. VISION & PHILOSOPHY */}
-        <section className="py-20 sm:py-28 bg-white border-t border-gold/20">
+        <section className="company-aboutPhilosophy py-20 sm:py-28 bg-white border-t border-gold/20">
+<CompanyReveal>
           <Container size="xl">
             <SectionHeading
               eyebrow="Guiding Philosophy"
@@ -200,10 +209,12 @@ export default function AboutPage() {
               </div>
             </div>
           </Container>
-        </section>
+        </CompanyReveal>
+</section>
 
         {/* 4. OUR EXPERTISE */}
-        <section className="py-20 sm:py-28 bg-navy-950 text-ivory border-t border-gold/20">
+        <section className="company-aboutExpertise py-20 sm:py-28 bg-navy-950 text-ivory border-t border-gold/20">
+<CompanyReveal>
           <Container size="xl">
             <SectionHeading
               eyebrow="Comprehensive Practice"
@@ -221,7 +232,7 @@ export default function AboutPage() {
               {expertiseAreas.map((item) => {
                 const Icon = item.icon;
                 return (
-                  <div
+                  <PerspectiveCard
                     key={item.title}
                     className="p-7 rounded-xs bg-navy-900/70 border border-gold/20 hover:border-gold/45 transition-colors flex flex-col justify-between"
                   >
@@ -236,14 +247,16 @@ export default function AboutPage() {
                         {item.description}
                       </p>
                     </div>
-                  </div>
+                  </PerspectiveCard>
                 );
               })}
             </div>
           </Container>
-        </section>
+        </CompanyReveal>
+</section>
 
-        <section aria-labelledby="values-heading" className="bg-ivory py-16 sm:py-24">
+        <section aria-labelledby="values-heading" className="company-aboutValues bg-ivory py-16 sm:py-24">
+<CompanyReveal>
           <Container className="grid items-start gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-4">
               <SectionHeading align="left" showDivider={false} eyebrow="Developer due diligence" title={<span id="values-heading">Five criteria.<br /><span className="italic text-gold-700">Developer review.</span></span>} subtitle="The five developer due diligence criteria identified in the client task." />
@@ -255,18 +268,19 @@ export default function AboutPage() {
               </li>)}
             </ol>
           </Container>
-        </section>
+        </CompanyReveal>
+</section>
 
-        <section aria-labelledby="about-leadership" className="border-t border-navy/10 bg-white/60 py-12 sm:py-16">
-          <Container className="grid items-center gap-7 lg:grid-cols-12 lg:gap-12">
-            <div className="lg:col-span-4"><p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-gold-700">Executive Leadership</p><h2 id="about-leadership" className="font-serif text-3xl sm:text-4xl">Mr. Sachin Murudkar</h2><p className="mt-3 text-xs text-charcoal/75">Founder &amp; Director</p></div>
-            <p className="max-w-xl text-sm leading-7 text-charcoal/80 lg:col-span-5">The founder profile introduces the leadership perspective behind the company&apos;s redevelopment and property advisory practice.</p>
-            <Link href="/founder" className="inline-flex min-h-12 items-center gap-3 text-sm text-navy hover:text-gold-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold lg:col-span-3 lg:justify-self-end">Meet our founder <ArrowRight size={16} aria-hidden="true" /></Link>
-          </Container>
+        <section aria-labelledby="about-leadership" className="company-aboutLeadership border-t border-navy/10 bg-white/60 py-16 sm:py-24">
+          <CompanyReveal><Container className="company-aboutLeadershipGrid">
+            <figure className="company-leadershipPortrait"><div className="relative aspect-[516/564]"><Image src="/images/founder-portrait.jpeg" alt="Mr. Sachin Murudkar, Founder and Director of Aishwarya Redevelopment Advisory Company" fill loading="lazy" sizes="(max-width: 639px) 240px, 280px" className="object-contain" /></div><figcaption>Original founder portrait</figcaption></figure>
+            <div><p className="company-eyebrow">Executive Leadership</p><h2 id="about-leadership" className="font-serif text-3xl sm:text-4xl">Mr. Sachin Murudkar</h2><p className="mt-3 text-sm text-gold-800">Founder &amp; Director</p><p className="mt-6 max-w-xl text-sm leading-7 text-charcoal/80">The founder profile introduces the leadership perspective behind the company&apos;s redevelopment and property advisory practice.</p><Link href="/founder" className="company-textLink">Meet our founder <ArrowRight size={16} aria-hidden="true" /></Link></div>
+          </Container></CompanyReveal>
         </section>
 
         {/* 7. CONSULTATION CTA */}
-        <section className="py-20 sm:py-28 bg-navy-950 text-ivory border-t border-gold/25 relative overflow-hidden">
+        <section className="company-aboutClosing py-20 sm:py-28 bg-navy-950 text-ivory border-t border-gold/25 relative overflow-hidden">
+<CompanyReveal>
           <Container size="xl">
             <div className="p-8 sm:p-12 lg:p-16 rounded-xs bg-navy-900/90 border border-gold/30 grid grid-cols-1 xl:grid-cols-12 items-center gap-8">
               <div className="max-w-2xl space-y-4 text-left xl:col-span-7">
@@ -299,7 +313,8 @@ export default function AboutPage() {
               </div>
             </div>
           </Container>
-        </section>
+        </CompanyReveal>
+</section>
       </main>
 
       <Footer />

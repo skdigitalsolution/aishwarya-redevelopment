@@ -1,0 +1,6 @@
+@media (prefers-reduced-motion: reduce) {
+  .premium-scroll-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

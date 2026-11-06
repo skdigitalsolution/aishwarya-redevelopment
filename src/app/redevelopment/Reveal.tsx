@@ -1,1 +1,1 @@
-export { Reveal } from "@/components/ui/Reveal";
+export { ScrollReveal as Reveal } from "@/components/ui/ScrollReveal";

@@ -5,8 +5,9 @@ import { motion, useReducedMotion } from "motion/react";
 import { Phone, Calendar, ArrowRight, ShieldCheck, CheckCircle2 } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { COMPANY_DETAILS } from "@/lib/constants";
+import Image from "@/components/ui/SiteImage";
 
-export const ConsultationCTA: React.FC<{ title?: React.ReactNode }> = ({ title }) => {
+export const ConsultationCTA: React.FC<{ title?: React.ReactNode; homepage?: boolean }> = ({ title, homepage = false }) => {
   const shouldReduceMotion = useReducedMotion();
   const reviewRef = useRef<HTMLDivElement>(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -21,7 +22,7 @@ export const ConsultationCTA: React.FC<{ title?: React.ReactNode }> = ({ title }
     hidden: { opacity: 1, y: 0 },
     visible: (custom: number) => ({
       opacity: shouldReduceMotion ? 1 : [0, 1],
-      y: shouldReduceMotion ? 0 : [38, 0],
+      y: shouldReduceMotion ? 0 : [homepage ? 32 : 38, 0],
       transition: {
         duration: shouldReduceMotion ? 0 : 0.7,
         delay: shouldReduceMotion ? 0 : Math.min(Math.max(custom - 1, 0) * 0.08, 0.24),
@@ -51,6 +52,9 @@ export const ConsultationCTA: React.FC<{ title?: React.ReactNode }> = ({ title }
       aria-label="Consultation and Inquiries"
       className="relative py-24 sm:py-32 lg:py-36 bg-navy-950 text-ivory overflow-hidden border-t border-gold/25"
     >
+      {homepage && <div className="home-consultation-backdrop" aria-hidden="true">
+        <Image src="/images/5.jpeg" alt="" fill loading="lazy" sizes="100vw" className="object-cover" />
+      </div>}
       {/* Background Architectural Patterns & Subtle Radial Scrim */}
       <div
         className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(198,166,107,0.09),transparent_70%)] pointer-events-none select-none"

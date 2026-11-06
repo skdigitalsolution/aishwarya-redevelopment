@@ -1,0 +1,49 @@
+/* Only the six advisory topics; other redevelopment sections are unchanged. */
+.advisory-topics .advisory-topics-grid { display: grid; gap: 2.5rem; align-items: start; }
+.advisory-topics .advisory-topics-main, .advisory-topics .advisory-topics-sidebar { min-width: 0; }
+.advisory-topics .redevelopment-heading em { color: #c6a66b; }
+.advisory-topics-list { margin-top: 2.5rem; }
+.advisory-topics-item { position: relative; }
+.advisory-topics-item:not(:last-child)::before { content: ""; position: absolute; left: 19px; top: 40px; bottom: 0; width: 1px; background: rgb(198 166 107 / 45%); }
+.advisory-topics-row { display: grid; grid-template-columns: 40px minmax(0,1fr); gap: 1rem; padding-bottom: 1.75rem; }
+.advisory-topics-item + .advisory-topics-item .advisory-topics-row { padding-top: 1.75rem; }
+.advisory-topics-item + .advisory-topics-item::before { top: 0; }
+.advisory-topics-number { position: relative; z-index: 1; display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid #c6a66b; border-radius: 50%; background: #f8f6f1; color: #85693c; font-family: var(--font-cormorant),serif; font-size: 1.4rem; transition: background-color .4s ease, color .4s ease, box-shadow .4s ease; }
+.advisory-topics-visual { position: relative; min-width: 0; width: 100%; aspect-ratio: 3 / 2; overflow: hidden; border-radius: 13px; border: 1px solid rgb(198 166 107 / 35%); box-shadow: 0 10px 25px -18px rgb(11 29 58 / 35%); transition: transform .5s cubic-bezier(.22,1,.36,1), border-color .4s ease, box-shadow .4s ease; }
+.advisory-topics-visual img { object-fit: cover; object-position: center; transition: transform .6s cubic-bezier(.22,1,.36,1); }
+.advisory-topics-copy { grid-column: 2; min-width: 0; border-bottom: 1px solid rgb(11 29 58 / 13%); padding-bottom: 1.5rem; }
+.advisory-topics-copy h3 { font-family: var(--font-cormorant),serif; font-size: 1.65rem; line-height: 1.12; font-weight: 400; }
+.advisory-topics-copy p { margin-top: .75rem; font-size: .8rem; line-height: 1.85; color: #4b5260; }
+.advisory-topics-note { max-width: 27rem; font-size: .8rem; line-height: 1.9; color: #4b5260; margin-bottom: 1.75rem; border-left: 1px solid #c6a66b; padding-left: 1.25rem; }
+.advisory-topics aside.advisory-topics-card { padding: 1rem; background: #f8f6f1; border: 1px solid rgb(198 166 107 / 65%); box-shadow: .5rem .5rem 0 rgb(198 166 107 / 7%),0 18px 40px -30px rgb(11 29 58 / 30%); }
+.advisory-topics-building { overflow: hidden; border-radius: 13px; }
+.advisory-topics-building img { display: block; width: 100%; height: auto; }
+.advisory-topics-building figcaption { padding-block: .85rem; font-size: .6rem; line-height: 1.7; text-transform: uppercase; letter-spacing: .12em; color: #85693c; }
+.advisory-topics-card h3 { margin-top: .75rem; font-family: var(--font-cormorant),serif; font-size: 1.9rem; font-weight: 400; line-height: 1.15; }
+.advisory-topics-card > p { margin-top: 1rem; font-size: .75rem; line-height: 1.9; color: #4b5260; }
+.advisory-topics-card details { margin-top: 1.5rem; padding-block: .75rem; border-block: 1px solid rgb(11 29 58 / 15%); }
+.advisory-topics-card summary { padding-block: .5rem; cursor: pointer; font-size: .75rem; line-height: 1.8; color: #0b1d3a; }
+.advisory-topics-card summary:focus-visible { outline: 2px solid #c6a66b; outline-offset: 4px; }
+@media (min-width: 640px) {
+  .advisory-topics-row { grid-template-columns: 40px 210px minmax(0,1fr); align-items: start; gap: 1.25rem; }
+  .advisory-topics-copy { grid-column: 3; align-self: stretch; }
+}
+@media (min-width: 1024px) {
+  .advisory-topics .advisory-topics-grid { grid-template-columns: minmax(0,1.85fr) minmax(0,1fr); gap: 2.5rem; }
+  .advisory-topics-sidebar { position: sticky; top: 8rem; }
+  .advisory-topics-row { grid-template-columns: 40px 150px minmax(0,1fr); gap: 1rem; }
+  .advisory-topics-copy h3 { font-size: 1.6rem; }
+}
+@media (min-width: 1280px) {
+  .advisory-topics .advisory-topics-grid { gap: 3.5rem; }
+  .advisory-topics-row { grid-template-columns: 40px 190px minmax(0,1fr); gap: 1.25rem; }
+}
+@media (min-width: 1024px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .advisory-topics-row:hover .advisory-topics-visual { transform: perspective(1000px) rotateY(-2deg); border-color: #c6a66b; box-shadow: 0 14px 28px -18px rgb(11 29 58 / 40%); }
+  .advisory-topics-row:hover .advisory-topics-visual img { transform: scale(1.025); }
+  .advisory-topics-row:hover .advisory-topics-number { color: #0b1d3a; background: #e9dfcb; box-shadow: 0 0 0 4px rgb(198 166 107 / 10%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .advisory-topics-visual, .advisory-topics-visual img { transform: none !important; transition: none !important; }
+}
+

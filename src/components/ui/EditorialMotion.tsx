@@ -2,18 +2,18 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { useReducedMotion } from "motion/react";
+import { premiumMotion, usePremiumMotion } from "./premium-motion";
 
 /** Enhance server-rendered content without wrappers or pre-hydration style writes. */
 export function EditorialMotion() {
   const pathname = usePathname();
-  const reduced = useReducedMotion();
+  const { reducedMotion: reduced } = usePremiumMotion();
 
   useEffect(() => {
     const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (reduced || preference.matches) return;
     const main = document.querySelector("main");
-    if (!main || !("IntersectionObserver" in window) || typeof Element.prototype.animate !== "function") return;
+    if (!main || main.hasAttribute("data-motion-owned") || !("IntersectionObserver" in window) || typeof Element.prototype.animate !== "function") return;
     const observed = new WeakSet<Element>();
     const running = new Map<Element, Animation>();
     const observer = new IntersectionObserver((entries) => {
@@ -28,12 +28,12 @@ export function EditorialMotion() {
           // Native keyframes avoid mutating React-owned style attributes while
           // other client islands hydrate. Motion owns the explicit reveal blocks.
           const animation = element.animate([
-            { opacity: 0, transform: "translateY(38px)" },
+            { opacity: 0, transform: `translateY(${premiumMotion.revealDistance}px)` },
             { opacity: 1, transform: "translateY(0px)" },
           ], {
-            duration: 700,
-            delay: grouped ? Math.min(Math.max(index, 0), 3) * 80 : 0,
-            easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+            duration: premiumMotion.fadeDuration * 1000,
+            delay: grouped ? Math.min(Math.max(index, 0), 3) * premiumMotion.stagger * 1000 : 0,
+            easing: `cubic-bezier(${premiumMotion.ease.join(",")})`,
             fill: "none",
           });
           running.set(element, animation);
@@ -65,11 +65,15 @@ export function EditorialMotion() {
       }
     };
     scan();
-    const mutations = new MutationObserver(scan);
+    let scanFrame = 0;
+    const mutations = new MutationObserver(() => {
+      if (!scanFrame) scanFrame = requestAnimationFrame(() => { scanFrame = 0; scan(); });
+    });
     mutations.observe(main, { childList: true, subtree: true });
     return () => {
       observer.disconnect();
       mutations.disconnect();
+      cancelAnimationFrame(scanFrame);
       running.forEach((animation) => animation.cancel());
       running.clear();
     };

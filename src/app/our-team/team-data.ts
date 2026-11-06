@@ -10,6 +10,7 @@ export interface TeamRole {
   group: "leadership" | "functional";
   proposedDesignation: string;
   publicDesignation: string;
+  designationNote?: string;
   name: string | null;
   portrait: TeamPortrait | null;
   biography: string | null;
@@ -22,7 +23,8 @@ export interface TeamRole {
 export const teamRoles: readonly TeamRole[] = [
   {
     id: "founder", order: 1, group: "leadership",
-    proposedDesignation: "Founder & Director", publicDesignation: "Founder & Director",
+    proposedDesignation: "Founder & Managing Director", publicDesignation: "Founder & Director",
+    designationNote: "The client structure lists Founder & Managing Director. This conflicts with the approved public designation Founder & Director and remains pending client approval.",
     name: "Mr. Sachin Murudkar",
     portrait: { src: "/images/founder-portrait.jpeg", alt: "Mr. Sachin Murudkar, Founder and Director of Aishwarya Redevelopment Advisory Company" },
     biography: "Mr. Sachin Murudkar is the Founder & Director of Aishwarya Redevelopment Advisory Company. His stated expertise includes Mumbai redevelopment advisory, municipal and administrative procedures, title resolution and due diligence, society redevelopment strategy, self-redevelopment, land amalgamation and land valuation.",

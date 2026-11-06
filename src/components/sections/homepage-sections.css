@@ -1,0 +1,122 @@
+/* Homepage-only presentation. Shared route components keep their existing styling. */
+.homepage-sections {
+  --home-border: rgb(198 166 107 / 32%);
+  overflow: clip;
+}
+
+.homepage-sections section { scroll-margin-top: 7rem; }
+.homepage-sections .home-section { padding-block: clamp(4.5rem, 8vw, 8rem); }
+.homepage-sections .home-dark { background: var(--color-navy-950, #060f1e); color: #f8f6f1; }
+.homepage-sections .home-heading { font-family: var(--font-cormorant), serif; font-size: clamp(2.3rem, 4.4vw, 4rem); line-height: 1.08; letter-spacing: -.025em; }
+.homepage-sections .home-heading em { font-weight: 300; color: #c6a66b; }
+.homepage-sections .home-eyebrow { display: flex; align-items: center; gap: .8rem; margin-bottom: 1.25rem; color: #c6a66b; font-size: .68rem; font-weight: 600; text-transform: uppercase; letter-spacing: .2em; }
+.homepage-sections .home-eyebrow::before { content: ""; width: 2rem; height: 1px; background: currentColor; flex-shrink: 0; }
+.homepage-sections .home-section-intro { display: grid; gap: 1.75rem; align-items: end; }
+.homepage-sections .home-body { max-width: 28rem; font-size: .875rem; line-height: 1.9; color: rgb(248 246 241 / 75%); }
+.homepage-sections .home-text-link { display: inline-flex; align-items: center; gap: .8rem; min-height: 44px; color: #c6a66b; font-size: .8rem; }
+.homepage-sections .home-button { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: 1rem; padding: .9rem 1.4rem; background: #c6a66b; color: #0b1d3a; font-size: .72rem; font-weight: 600; letter-spacing: .05em; }
+.homepage-sections .home-section-end { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--home-border); }
+.homepage-sections .home-section-end > p { max-width: 32rem; font-size: .75rem; line-height: 1.8; opacity: .72; }
+.homepage-sections a:focus-visible { outline: 2px solid #c6a66b; outline-offset: 5px; }
+
+/* An original architectural reference, with the original society artwork inset. */
+.homepage-sections #about { padding-block: clamp(4.5rem, 8vw, 8rem); }
+.homepage-sections .home-about-composition { position: relative; padding: 0 1.5rem 3rem 0; }
+.homepage-sections .home-about-building { padding: .8rem; border: 1px solid var(--home-border); background: #fffdf8; box-shadow: 1rem 1.25rem 0 rgb(198 166 107 / 10%), 0 18px 45px -26px rgb(11 29 58 / 35%); }
+.homepage-sections .home-about-inset { position: relative; z-index: 2; width: 60%; margin: 1.25rem -1.5rem 0 auto; padding: .65rem; background: #f8f6f1; box-shadow: 0 14px 35px -18px rgb(11 29 58 / 35%); }
+.homepage-sections .home-about-inset figcaption { font-size: .65rem; line-height: 1.5; }
+.homepage-sections #about h2::after { content: ""; display: block; width: 4.5rem; height: 1px; background: #c6a66b; margin-top: 1.5rem; }
+
+/* A small set of architectural service surfaces; no whole-page tilt. */
+.homepage-sections .home-service-grid { display: grid; gap: 1.5rem; margin-top: 3.25rem; }
+.homepage-sections .home-service-reveal { display: flex; min-width: 0; }
+.homepage-sections .home-service-card { display: flex; flex-direction: column; width: 100%; background: #0b1d3a; border: 1px solid rgb(198 166 107 / 18%); }
+.homepage-sections .home-service-card > figure { padding: .75rem .75rem 0; }
+.homepage-sections .home-service-card figcaption { margin-top: .6rem; padding-top: .55rem; font-size: .65rem; line-height: 1.65; }
+.homepage-sections .home-service-copy { display: flex; flex-direction: column; flex: 1; padding: 1.5rem; }
+.homepage-sections .home-card-number { color: #c6a66b; font-size: .7rem; letter-spacing: .15em; margin-bottom: 1rem; }
+.homepage-sections .home-service-copy h3 { font-family: var(--font-cormorant), serif; font-size: 1.75rem; line-height: 1.15; }
+.homepage-sections .home-service-copy h3 a { display: flex; align-items: start; justify-content: space-between; gap: 1rem; }
+.homepage-sections .home-service-copy h3 svg { flex-shrink: 0; margin-top: .3rem; color: #c6a66b; }
+.homepage-sections .home-service-copy > p { margin-block: .8rem 1rem; font-size: .75rem; line-height: 1.8; color: rgb(248 246 241 / 72%); }
+.homepage-sections .home-service-copy > .home-text-link { margin-top: auto; border-top: 1px solid var(--home-border); padding-top: .8rem; }
+
+/* Due diligence highlights retain the supplied criteria and qualifications. */
+.homepage-sections #why-choose-us { padding-block: clamp(4.5rem, 8vw, 8rem); }
+.homepage-sections .home-diligence-image { max-width: 29rem; }
+.homepage-sections .home-diligence-image .editorial-image-frame { box-shadow: 0 18px 40px -25px rgb(11 29 58 / 35%); }
+.homepage-sections .home-focus-topics { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; max-width: 28rem; }
+.homepage-sections .home-focus-topics span { padding: .5rem .65rem; border: 1px solid var(--home-border); font-size: .65rem; color: #0b1d3a; }
+.homepage-sections .home-benefit-grid { display: grid; gap: 1rem; }
+.homepage-sections .home-benefit-grid article { flex-direction: column; padding: 1.5rem; gap: 1.25rem; background: #fffdf8; border: 1px solid rgb(11 29 58 / 10%); border-top-color: #c6a66b; box-shadow: 0 12px 32px -27px rgb(11 29 58 / 30%); transition: border-color 350ms ease, box-shadow 350ms ease; }
+.homepage-sections .home-benefit-grid h3 { font-size: 1.6rem; }
+.homepage-sections .home-benefit-grid article p { font-size: .8rem; line-height: 1.85; }
+.homepage-sections .home-benefit-link { grid-column: 1 / -1; }
+
+/* Conceptual progression: horizontal on desktop; a connected vertical list on mobile. */
+.homepage-sections .home-journey { background: #0b1d3a; }
+.homepage-sections .home-journey-grid { display: grid; gap: 2rem; margin-top: 3rem; }
+.homepage-sections .home-journey-grid > li { position: relative; display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); gap: 1rem; }
+.homepage-sections .home-journey-marker { position: relative; }
+.homepage-sections .home-journey-marker > span:first-child { position: relative; z-index: 1; display: grid; place-items: center; width: 2.5rem; height: 2.5rem; background: #0b1d3a; border: 1px solid #c6a66b; color: #c6a66b; font-family: var(--font-cormorant), serif; font-size: 1.15rem; }
+.homepage-sections .home-journey-line { position: absolute; top: 2.5rem; bottom: -2rem; left: 1.25rem; width: 1px; background: rgb(198 166 107 / 55%); transform-origin: top left; }
+.homepage-sections .home-journey-stage h3 { font-family: var(--font-cormorant), serif; font-size: 1.7rem; line-height: 1.2; margin-top: 1.25rem; }
+.homepage-sections .home-journey-stage > p { font-size: .75rem; line-height: 1.8; opacity: .7; margin-top: .5rem; }
+.homepage-sections .home-journey-stage figure { padding: .5rem; border: 1px solid var(--home-border); }
+.homepage-sections .home-journey-stage figcaption { font-size: .65rem; line-height: 1.6; }
+.homepage-sections .home-advisory-topics { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--home-border); display: grid; gap: 2rem; }
+.homepage-sections .home-advisory-topics h3 { font-family: var(--font-cormorant), serif; font-size: 2rem; line-height: 1.2; }
+.homepage-sections .home-advisory-topics h3 em { color: #c6a66b; }
+.homepage-sections .home-advisory-topics p { font-size: .75rem; line-height: 1.9; opacity: .72; margin-top: .65rem; }
+.homepage-sections .home-advisory-topics ul { display: grid; gap: 1.5rem; }
+.homepage-sections .home-advisory-topics h4 { font-family: var(--font-cormorant), serif; font-size: 1.3rem; }
+
+/* Executive portrait remains uncropped and unaltered. */
+.homepage-sections #team { padding-block: clamp(4.5rem, 8vw, 8rem); background: #f8f6f1; }
+.homepage-sections #team figure { padding: 1rem; background: #fffdf8; border: 1px solid var(--home-border); box-shadow: 1.25rem 1.25rem 0 rgb(198 166 107 / 10%), 0 22px 45px -30px rgb(11 29 58 / 35%); }
+.homepage-sections #team h2 { max-width: 34rem; }
+.homepage-sections #team h2::after { content: ""; display: block; width: 4rem; height: 1px; margin-top: 1.5rem; background: #c6a66b; }
+
+/* Urban context only; the frame never implies a parcel or available inventory. */
+.homepage-sections #land-banking { position: relative; padding-block: clamp(4.5rem, 8vw, 8rem); }
+.homepage-sections .home-land-frame { padding: 1rem; border: 1px solid var(--home-border); box-shadow: 1rem 1rem 0 rgb(198 166 107 / 8%); }
+.homepage-sections #land-banking article { padding-inline: 1.5rem; margin-top: 1rem; border: 1px solid var(--home-border); background: rgb(248 246 241 / 3%); }
+.homepage-sections #land-banking article h3 { font-size: 1.7rem; }
+
+/* The shared form keeps its existing local-only review and disclosures. */
+.homepage-sections #contact { background: #0b1d3a; }
+.homepage-sections .home-consultation-backdrop { position: absolute; inset: 0; pointer-events: none; }
+.homepage-sections .home-consultation-backdrop img { opacity: .2; }
+.homepage-sections .home-consultation-backdrop::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgb(11 29 58 / 70%), rgb(11 29 58 / 95%)), linear-gradient(0deg, #0b1d3a, transparent); }
+.homepage-sections #consultation-form > div { box-shadow: 0 28px 60px -25px rgb(0 0 0 / 45%); background: #0b1d3a; border-color: rgb(198 166 107 / 55%); }
+
+@media (min-width: 640px) {
+  .homepage-sections .home-service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .homepage-sections .home-benefit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .homepage-sections .home-advisory-topics ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+  .homepage-sections .home-section-intro { grid-template-columns: 1.3fr 1fr; gap: 4rem; }
+  .homepage-sections .home-section-intro > .home-body { justify-self: end; }
+  .homepage-sections .home-service-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; }
+  .homepage-sections .home-journey-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; }
+  .homepage-sections .home-journey-grid > li { display: block; }
+  .homepage-sections .home-journey-marker { margin-bottom: 1.5rem; }
+  .homepage-sections .home-journey-line { top: 1.25rem; bottom: auto; left: 2.5rem; height: 1px; width: calc(100% - 1rem); }
+  .homepage-sections .home-advisory-topics { grid-template-columns: 1fr 2fr; gap: 4rem; }
+  .homepage-sections .home-advisory-topics ul { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .homepage-sections .home-service-card h3 a:hover { color: #c6a66b; }
+  .homepage-sections .home-service-card { transition: translate 350ms ease, box-shadow 350ms ease; }
+  .homepage-sections .home-service-card:hover { translate: 0 -3px; }
+  .homepage-sections .home-benefit-grid article:hover { border-color: #c6a66b; box-shadow: 0 18px 35px -25px rgb(11 29 58 / 35%); }
+  .homepage-sections .home-service-copy > .home-text-link:hover svg { transform: translateX(3px); }
+  .homepage-sections .home-button { transition: translate 350ms ease, box-shadow 350ms ease; }
+  .homepage-sections .home-button:hover { translate: 0 -3px; box-shadow: 0 12px 24px -15px rgb(0 0 0 / 40%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .homepage-sections [data-motion-owned],
+  .homepage-sections .home-journey-line { opacity: 1 !important; transform: none !important; }
+  .homepage-sections *, .homepage-sections *::before, .homepage-sections *::after { transition: none !important; }
+}

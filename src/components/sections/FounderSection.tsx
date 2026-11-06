@@ -1,7 +1,9 @@
 "use client";
 
+import { premiumMotion, usePremiumMotion } from "@/components/ui/premium-motion";
+
 import React from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import { Shield, FileCheck2, Building, Scale, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "@/components/ui/SiteImage";
@@ -15,17 +17,17 @@ const leadershipExpertise = [
 ];
 
 export const FounderSection: React.FC = () => {
-  const shouldReduceMotion = useReducedMotion();
+  const { reducedMotion: shouldReduceMotion } = usePremiumMotion();
 
   const fadeIn = {
     hidden: { opacity: 1, y: 0 },
     visible: (idx: number) => ({
       opacity: shouldReduceMotion ? 1 : [0, 1],
-      y: shouldReduceMotion ? 0 : [38, 0],
+      y: shouldReduceMotion ? 0 : [premiumMotion.revealDistance, 0],
       transition: {
-        duration: shouldReduceMotion ? 0 : 0.7,
-        delay: shouldReduceMotion ? 0 : Math.min(Math.max(idx - 1, 0) * 0.08, 0.24),
-        ease: [0.21, 0.47, 0.32, 0.98] as const,
+        duration: shouldReduceMotion ? 0 : premiumMotion.fadeDuration,
+        delay: shouldReduceMotion ? 0 : Math.min(Math.max(idx - 1, 0) * premiumMotion.stagger, 0.24),
+        ease: premiumMotion.ease,
       },
     }),
   };

@@ -1,13 +1,19 @@
 import { pageMetadata } from "@/lib/seo";
 import { ClientImage } from "@/components/ui/ClientImage";
 import Link from "next/link";
-import { ArrowDown, ArrowUpRight, Phone, Scale, ScanLine, Users, ShieldCheck } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Phone, Scale, ScanLine, Users, ShieldCheck, Building2, Wallet, MessageSquare } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/layout/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { COMPANY_DETAILS } from "@/lib/constants";
 import { Reveal } from "./Reveal";
+import Image from "@/components/ui/SiteImage";
+import { PerspectiveCard } from "@/components/ui/PerspectiveCard";
+import { BeforeAfterComparison } from "./BeforeAfterComparison";
+import { RedevelopmentJourney } from "./RedevelopmentJourney";
+import { AdvisoryTopics } from "./AdvisoryTopics";
+import "./redevelopment.css";
 
 export const metadata = pageMetadata("/redevelopment", "Society Redevelopment", "Society redevelopment advisory and the five developer due diligence criteria supplied by the client.");
 
@@ -19,26 +25,27 @@ const advisory = [
 ];
 const diligence = [
   [
-    "MahaRERA track record",
+    "MahaRERA Track Record",
     "Developer due diligence criterion."
   ],
   [
-    "Financial solvency",
+    "Financial Solvency",
     "Developer due diligence criterion."
   ],
   [
-    "Existing society feedback",
+    "Existing Society Feedback",
     "Developer due diligence criterion."
   ],
   [
-    "Bank guarantee capability",
+    "Bank Guarantee Capability",
     "Capability is a review criterion, not a promised guarantee."
   ],
   [
-    "DCPR 2034 feasibility",
+    "DCPR 2034 Feasibility",
     "Developer due diligence criterion."
   ]
 ];
+const diligenceIcons = [Building2, Wallet, MessageSquare, ShieldCheck, ScanLine];
 const journey = [
   [
     "Society Redevelopment Advisory",
@@ -120,63 +127,53 @@ export default function RedevelopmentPage() {
   return (
     <>
       <Navbar />
-      <main id="main-content" tabIndex={-1} className="flex-1 bg-ivory text-navy">
-        <section aria-labelledby="redevelopment-title" className="relative overflow-hidden bg-navy pt-24 text-ivory sm:pt-32">
-          <Container className="grid gap-12 py-16 sm:py-24 lg:grid-cols-12 lg:gap-12">
-            <div className="self-center lg:col-span-7">
-              <p className={`${eyebrow} mb-8 flex items-center gap-3 text-gold`}><span className="h-px w-8 bg-gold" aria-hidden="true" />Society Redevelopment</p>
-              <h1 id="redevelopment-title" className="editorial-hero-title font-serif text-5xl leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">Society <span className="font-light italic text-gold">Redevelopment.</span></h1>
-              <p className="mt-8 max-w-lg text-sm leading-7 text-ivory/75 sm:text-base">Mumbai redevelopment advisory and society redevelopment strategy.</p>
-              <div className="mt-10 flex flex-wrap items-center gap-6"><a href="#consultation" className={`${focus} inline-flex min-h-12 items-center gap-3 bg-gold px-6 py-4 text-xs font-semibold text-navy hover:bg-gold-300 motion-safe:transition-colors`}>Discuss Your Society <ArrowUpRight size={16} aria-hidden="true" /></a><a href="#journey" className={`${focus} inline-flex min-h-12 items-center gap-3 border-b border-gold/50 text-xs text-ivory hover:text-gold`}>Explore Advisory Topics <ArrowDown size={16} aria-hidden="true" /></a></div>
-            </div>
-            <ClientImage id={6} dark aspect="aspect-[4/3]" className="lg:col-span-5 lg:pt-8" />
+      <main id="main-content" tabIndex={-1} className="redevelopment-page flex-1 bg-ivory text-navy" data-motion-owned>
+        <section aria-labelledby="redevelopment-title" className="redevelopment-hero">
+          <Image src="/images/9.jpeg" alt="Client-supplied visual reference of an older residential society beside a high-rise construction site" fill preload sizes="100vw" className="redevelopment-heroImage" />
+          <div className="redevelopment-heroShade" aria-hidden="true" />
+          <Container className="redevelopment-heroGrid">
+            <Reveal className="redevelopment-heroCopy">
+              <p className="redevelopment-eyebrow">Society Redevelopment</p>
+              <h1 id="redevelopment-title">Society <em>Redevelopment</em></h1>
+              <p className="redevelopment-heroDescription">Mumbai redevelopment advisory and society redevelopment strategy.</p>
+              <div className="redevelopment-heroActions"><a href="#consultation" className="redevelopment-button">Discuss Your Society <ArrowUpRight size={16} aria-hidden="true" /></a><a href="#journey" className="redevelopment-textLink">Explore the journey <ArrowDown size={16} aria-hidden="true" /></a></div>
+            </Reveal>
+            <p className="redevelopment-heroCaption">Existing housing. An evolving city.<span>Client-supplied visual reference.<br />Not a verified company project.</span></p>
           </Container>
-          <div className="border-t border-ivory/15"><Container className="flex flex-wrap gap-x-10 gap-y-3 py-5 text-xs uppercase tracking-[0.16em] text-ivory/65"><span>Mumbai cooperative housing societies</span><span>Managing committees &amp; members</span><span>Property owners</span></Container></div>
+          <div className="redevelopment-heroAudience"><Container><span>Mumbai cooperative housing societies</span><span>Managing committees &amp; members</span><span>Property owners</span></Container></div>
         </section>
 
-        <section aria-label="Understanding society redevelopment" className="py-16 sm:py-24"><Container><Reveal><div className="grid gap-10 lg:grid-cols-12 lg:gap-20">
+        <section className="redevelopment-comparisonSection redevelopment-section" aria-labelledby="redevelopment-comparison-heading"><Container>
+          <Reveal className="redevelopment-sectionIntro"><div><p className="redevelopment-eyebrow">Architecture in perspective</p><h2 id="redevelopment-comparison-heading" className="redevelopment-heading">Older housing.<br /><em>Modern architecture.</em></h2></div><p className="redevelopment-body">Explore older society-building imagery alongside modern residential architecture. The buildings shown are different properties; this is an illustrative comparison.</p></Reveal>
+          <Reveal><BeforeAfterComparison /></Reveal>
+        </Container></section>
+
+        <section aria-label="Understanding society redevelopment" className="redevelopment-understanding py-16 sm:py-24"><Container><Reveal><div className="grid gap-10 lg:grid-cols-12 lg:gap-20">
           <div className="lg:col-span-5"><SectionHeading align="left" eyebrow="Understanding redevelopment" title={<>A new building begins with <span className="italic">shared understanding.</span></>} /><ClientImage id={19} aspect="aspect-[16/9]" className="mt-8" /></div>
           <div className="space-y-5 text-sm leading-7 text-charcoal/75 lg:col-span-7"><p>Society Redevelopment Advisory and Redevelopment Feasibility Study are included in the client-supplied professional services list.</p><p>The founder expertise identified in the task includes society redevelopment strategy and self-redevelopment.</p><p>The detailed redevelopment process remains pending the original company profile presentation.</p><p className="border-l-2 border-gold pl-5 font-serif text-2xl leading-snug text-navy">Society redevelopment strategy.<br />Self-redevelopment.</p></div>
         </div></Reveal></Container></section>
 
-        <section aria-label="Redevelopment advisory services" className="border-y border-navy/10 bg-white/50 py-20 sm:py-28"><Container><Reveal>
-          <div className="grid items-center gap-8 lg:grid-cols-12"><div className="lg:col-span-7"><SectionHeading align="left" showDivider={false} eyebrow="Our advisory scope" title={<>The right questions.<br /><span className="italic">At the right stage.</span></>} /></div><ClientImage id={12} aspect="aspect-[16/10]" className="max-w-lg lg:col-span-5" /></div>
+        <section aria-label="Redevelopment advisory services" className="redevelopment-advisory border-y border-navy/10 bg-white/50 py-20 sm:py-28"><Container><Reveal>
+          <div className="grid items-center gap-8 lg:grid-cols-12"><div className="lg:col-span-7"><SectionHeading align="left" showDivider={false} eyebrow="Our advisory scope" title={<>The right questions.<br /><span className="italic">At the right stage.</span></>} /></div><PerspectiveCard className="redevelopment-imageFrame max-w-lg lg:col-span-5"><ClientImage id={12} aspect="aspect-[16/10]" /></PerspectiveCard></div>
           <div className="mt-12 grid gap-x-16 lg:grid-cols-2">{advisory.map(({ icon: Icon, title, text }, index) => <article key={title} className="border-t border-navy/15 py-8"><div className="mb-5 flex items-center justify-between"><Icon size={25} strokeWidth={1.2} className="text-gold-700" aria-hidden="true" /><span className="font-serif text-xl text-gold-700">0{index + 1}</span></div><h3 className="font-serif text-3xl">{title}</h3><p className="mt-4 max-w-lg text-sm leading-7 text-charcoal/75">{text}</p></article>)}</div>
           <Link href="/services" className={`${focus} mt-5 inline-flex min-h-11 items-center gap-4 border-b border-gold text-xs hover:text-gold-800`}>Explore our full advisory services <ArrowUpRight size={16} aria-hidden="true" /></Link>
         </Reveal></Container></section>
 
-        <section aria-label="Developer due diligence" className="bg-navy py-20 text-ivory sm:py-28"><Container><Reveal><div className="grid gap-12 lg:grid-cols-12 lg:gap-20">
+        <RedevelopmentJourney />
+
+        <section aria-label="Developer due diligence" className="redevelopment-diligence bg-navy py-20 text-ivory sm:py-28"><Container><Reveal><div className="grid gap-12 lg:grid-cols-12 lg:gap-20">
           <div className="lg:col-span-5"><SectionHeading align="left" theme="dark" eyebrow="Developer due diligence" title={<>Look beyond<br /><span className="italic text-gold">the headline offer.</span></>} /><p className="mt-6 text-sm leading-7 text-ivory/70">The company profile criteria supplied in the task are listed here.</p><p className="mt-6 border-t border-gold/30 pt-6 text-xs leading-6 text-ivory/60">These criteria support an informed assessment. They do not assure future performance, funding or regulatory outcomes.</p></div>
-          <ol className="divide-y divide-ivory/15 border-t border-ivory/15 lg:col-span-7">{diligence.map(([title, text], index) => <li key={title} className="flex gap-5 py-6"><span className="pt-1 text-xs tabular-nums text-gold">0{index + 1}</span><div><h3 className="font-serif text-2xl">{title}</h3><p className="mt-3 text-sm leading-7 text-ivory/70">{text}</p></div></li>)}</ol>
+          <ol className="divide-y divide-ivory/15 border-t border-ivory/15 lg:col-span-7">{diligence.map(([title, text], index) => { const Icon = diligenceIcons[index]; return <li key={title} className="flex gap-5 py-6"><span className="redevelopment-diligenceIcon"><Icon size={24} strokeWidth={1.3} aria-hidden="true" /><span>0{index + 1}</span></span><div><h3 className="font-serif text-2xl">{title}</h3><p className="mt-3 text-sm leading-7 text-ivory/70">{text}</p></div></li>; })}</ol>
         </div></Reveal></Container></section>
 
-        <section id="journey" aria-label="Redevelopment journey" className="scroll-mt-28 py-20 sm:py-28"><Container><Reveal>
-          <div className="grid items-end gap-6 lg:grid-cols-2"><SectionHeading align="left" eyebrow="Redevelopment advisory topics" title={<>Society redevelopment.<br /><span className="italic">Advisory topics.</span></>} /><p className="max-w-sm text-sm leading-7 text-charcoal/70 lg:justify-self-end">Advisory topics only. An approved process and its sequence await the original company profile.</p></div>
-          <div className="mt-10 grid items-start gap-10 lg:grid-cols-12 lg:gap-14">
-            <ol className="lg:col-span-8">
-              {journey.map(([title, text], index) => <li key={title} className="relative flex gap-5 pb-8 last:pb-0 sm:gap-7">
-                {index < journey.length - 1 && <span data-motion-line aria-hidden="true" className="absolute top-11 bottom-0 left-5 w-px bg-gold/40" />}
-                <span data-motion-number aria-hidden="true" className="relative flex size-10 shrink-0 items-center justify-center rounded-full border border-gold/60 bg-ivory font-serif text-xl text-gold-800">{String(index + 1).padStart(2, "0")}</span>
-                <div className="min-w-0 pt-1"><h3 className="font-serif text-2xl leading-tight sm:text-3xl">{title}</h3><p className="mt-3 max-w-xl text-sm leading-7 text-charcoal/80">{text}</p></div>
-              </li>)}
-            </ol>
-            <aside aria-label="Supporting process illustration" className="border-t border-navy/15 pt-5 lg:col-span-4">
-              <p className="font-serif text-2xl">An illustration, not a project commitment.</p>
-              <p id="process-image-note" className="mt-3 text-xs leading-6 text-charcoal/75">This client-supplied illustration does not verify registration, amenities, entitlements or project outcomes. The detailed redevelopment process awaits the original company profile.</p>
-              <details className="mt-5 border-y border-navy/15 py-3">
-                <summary className={focus + " cursor-pointer py-2 text-sm text-navy"}>View the client-supplied illustration</summary>
-                <div aria-describedby="process-image-note"><ClientImage id={4} aspect="aspect-square" className="mt-5" /></div>
-              </details>
-            </aside>
-          </div>
-        </Reveal></Container></section>
+        <AdvisoryTopics topics={journey} />
 
-        <section aria-label="Protecting society member interests" className="border-y border-navy/10 bg-ivory-200/40 py-20 sm:py-28"><Container><Reveal><div className="grid gap-12 lg:grid-cols-12 lg:gap-20">
+        <section aria-label="Protecting society member interests" className="redevelopment-interests border-y border-navy/10 bg-ivory-200/40 py-20 sm:py-28"><Container><Reveal><div className="grid gap-12 lg:grid-cols-12 lg:gap-20">
           <div className="lg:col-span-4"><SectionHeading align="left" eyebrow="Member interests" title={<>The details that <span className="italic">matter at home.</span></>} /><p className="mt-5 text-sm leading-7 text-charcoal/70">These service names follow the client-supplied list. Exact descriptions await the original services image.</p><ClientImage id={20} aspect="aspect-[16/9]" className="mt-8" /></div>
           <dl className="grid gap-x-10 sm:grid-cols-2 lg:col-span-8">{interests.map(([title, text]) => <div key={title} className="border-t border-navy/15 py-6"><dt className="font-serif text-2xl">{title}</dt><dd className="mt-3 text-sm leading-7 text-charcoal/75">{text}</dd></div>)}</dl>
         </div></Reveal></Container></section>
 
-        <section aria-label="Traditional versus self-redevelopment" className="py-20 sm:py-28"><Container><Reveal>
+        <section aria-label="Traditional versus self-redevelopment" className="redevelopment-approaches py-20 sm:py-28"><Container><Reveal>
           <SectionHeading align="left" eyebrow="Two approaches. A considered choice." title={<>Developer-led or society-led?<br /><span className="italic">Start with suitability.</span></>} subtitle="Both topics are identified in the client task. Detailed comparison awaits the company profile." />
           <dl className="mt-8 space-y-7 md:hidden">
             {comparison.map(([label, developer, society]) => <div key={label} className="border-t border-navy/20 pt-5"><dt className="font-serif text-2xl">{label}</dt><dd className="mt-4 space-y-4"><div className="border-l-2 border-navy pl-4"><p className="text-xs font-semibold text-navy">Developer-led</p><p className="mt-2 text-sm leading-7 text-charcoal/80">{developer}</p></div><div className="border-l-2 border-gold pl-4"><p className="text-xs font-semibold text-gold-800">Society-led / Self-redevelopment</p><p className="mt-2 text-sm leading-7 text-charcoal/80">{society}</p></div></dd></div>)}
@@ -187,7 +184,7 @@ export default function RedevelopmentPage() {
           <div className="mt-7 flex flex-col justify-between gap-5 sm:flex-row sm:items-center"><p className="max-w-lg text-xs leading-6 text-charcoal/65">Detailed process, commercial terms and responsibilities await the original company profile.</p><Link href="/services#redevelopment" className={`${focus} inline-flex min-h-11 shrink-0 items-center gap-4 border-b border-gold text-xs hover:text-gold-800`}>Discuss self-redevelopment guidance <ArrowUpRight size={16} aria-hidden="true" /></Link></div>
         </Reveal></Container></section>
 
-        <section id="consultation" aria-labelledby="consultation-heading" className="relative scroll-mt-28 overflow-hidden border-t border-gold/25 bg-navy-950 py-20 text-ivory sm:py-28">
+        <section id="consultation" aria-labelledby="consultation-heading" className="redevelopment-consultation relative scroll-mt-28 overflow-hidden border-t border-gold/25 bg-navy-950 py-20 text-ivory sm:py-28">
           <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(198,166,107,0.09),transparent_70%)]" />
           <Container className="relative"><Reveal><div className="grid items-center gap-10 lg:grid-cols-12"><div className="lg:col-span-7"><p className={`${eyebrow} mb-6 text-gold`}>Let&apos;s build your future</p><h2 id="consultation-heading" className="font-serif text-4xl leading-tight sm:text-5xl">Discuss Society <span className="font-light italic text-gold">Redevelopment Advisory.</span></h2><p className="mt-6 max-w-lg text-sm leading-7 text-ivory/75">Tell us about your society, your concerns and the decisions ahead. Begin with a conversation about the guidance your committee needs.</p></div><div className="border border-gold/30 bg-navy p-7 sm:p-9 lg:col-span-5"><p className="font-serif text-2xl">Discuss your society&apos;s next step.</p><p className="mt-3 text-xs leading-6 text-ivory/65">For chairmen, secretaries, managing committees and property owners.</p><a href="tel:+917021892236" className={`${focus} mt-7 inline-flex min-h-12 w-full items-center justify-center gap-3 bg-gold px-4 py-4 text-sm font-medium text-navy hover:bg-gold-300 motion-safe:transition-colors`}><Phone size={16} aria-hidden="true" />{COMPANY_DETAILS.contact.phone}</a><Link href="/#contact" className={`${focus} mt-4 inline-flex min-h-11 items-center gap-3 text-xs text-ivory hover:text-gold`}>Visit our consultation section <ArrowUpRight size={16} aria-hidden="true" /></Link></div></div></Reveal></Container>
         </section>

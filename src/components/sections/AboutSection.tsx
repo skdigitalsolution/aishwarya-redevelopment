@@ -1,10 +1,14 @@
 "use client";
 
+import { premiumMotion, usePremiumMotion } from "@/components/ui/premium-motion";
+
 import { ClientImage } from "@/components/ui/ClientImage";
+import { PerspectiveCard } from "@/components/ui/PerspectiveCard";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 import React from "react";
 import Link from "next/link";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import { ArrowRight, Building2, Scale, Compass, CheckCircle2 } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 
@@ -15,18 +19,18 @@ const expertiseHighlights = [
 ];
 
 export const AboutSection: React.FC = () => {
-  const shouldReduceMotion = useReducedMotion();
+  const { reducedMotion: shouldReduceMotion } = usePremiumMotion();
 
   // Subtle scroll-reveal animation variants
   const fadeIn = {
     hidden: { opacity: 1, y: 0 },
     visible: (delay: number) => ({
       opacity: shouldReduceMotion ? 1 : [0, 1],
-      y: shouldReduceMotion ? 0 : [38, 0],
+      y: shouldReduceMotion ? 0 : [premiumMotion.revealDistance, 0],
       transition: {
-        duration: shouldReduceMotion ? 0 : 0.7,
-        delay: shouldReduceMotion ? 0 : Math.min(Math.max(delay - 1, 0) * 0.08, 0.24),
-        ease: [0.21, 0.47, 0.32, 0.98] as const,
+        duration: shouldReduceMotion ? 0 : premiumMotion.fadeDuration,
+        delay: shouldReduceMotion ? 0 : Math.min(Math.max(delay - 1, 0) * premiumMotion.stagger, 0.24),
+        ease: premiumMotion.ease,
       },
     }),
   };
@@ -40,14 +44,11 @@ export const AboutSection: React.FC = () => {
       <Container size="xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 xl:gap-20 items-center">
           {/* Left Column: Asymmetrical Editorial Image Composition (5 Cols on Desktop) */}
-          <motion.div data-motion-owned
-            initial={false}
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            custom={1}
-            variants={fadeIn}
-            className="lg:col-span-5 relative"
-          >
+          <ScrollReveal distance={30} className="lg:col-span-5 home-about-composition">
+          <PerspectiveCard className="home-about-building">
+            <ClientImage id={21} aspect="aspect-video" />
+          </PerspectiveCard>
+          <PerspectiveCard className="home-about-inset">
             {/* Architectural Frame & Subtle Layered Offset */}
             <div className="relative mx-auto max-w-md lg:max-w-none">
               {/* Client artwork retains its full embedded wording. */}
@@ -56,7 +57,8 @@ export const AboutSection: React.FC = () => {
               </div>
 
             </div>
-          </motion.div>
+          </PerspectiveCard>
+          </ScrollReveal>
 
           {/* Right Column: Company Editorial Narrative & Expertise (7 Cols on Desktop) */}
           <motion.div data-motion-owned

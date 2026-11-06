@@ -11,6 +11,7 @@ import { LandBankingSection } from "@/components/sections/LandBankingSection";
 import { ConsultationCTA } from "@/components/sections/ConsultationCTA";
 import { existsSync } from "node:fs";
 import path from "node:path";
+import "@/components/sections/homepage-sections.css";
 
 export const metadata = pageMetadata("/", "Redevelopment Advisory in Mumbai", "Aishwarya Redevelopment Advisory Company supports Mumbai housing societies and property owners with redevelopment, feasibility, title review and land advisory.");
 
@@ -30,6 +31,7 @@ export default function Home() {
         <Hero skylineImage={skylineImage} />
 
         {/* Phase 3: Premium Editorial About Aishwarya Section */}
+        <div className="homepage-sections" data-motion-owned>
         <AboutSection />
 
         {/* Phase 4: Distinctive Luxury Editorial Services Section */}
@@ -48,7 +50,8 @@ export default function Home() {
         <LandBankingSection />
 
         {/* Phase 7: Section 1 — Premium Consultation CTA */}
-        <ConsultationCTA />
+        <ConsultationCTA homepage />
+        </div>
       </main>
 
       {/* Phase 7: Section 2 — Reusable Global Corporate Footer */}

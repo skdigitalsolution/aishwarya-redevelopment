@@ -1,0 +1,132 @@
+/* Isolated to /redevelopment. Shared navigation, footer and motion utilities stay intact. */
+.redevelopment-page { overflow: clip; background: #f8f6f1; color: #0b1d3a; }
+.redevelopment-page section { scroll-margin-top: 7rem; }
+.redevelopment-page .redevelopment-section { padding-block: clamp(4rem, 7vw, 7rem); }
+.redevelopment-page a:focus-visible, .redevelopment-page summary:focus-visible { outline: 2px solid #c6a66b; outline-offset: 5px; }
+.redevelopment-page .redevelopment-eyebrow { display: flex; align-items: center; gap: .8rem; font-size: .68rem; font-weight: 600; line-height: 1.7; letter-spacing: .2em; text-transform: uppercase; color: #85693c; margin-bottom: 1.25rem; }
+.redevelopment-eyebrow::before { content: ""; height: 1px; width: 2rem; background: currentColor; flex-shrink: 0; }
+.redevelopment-heading { font-family: var(--font-cormorant), serif; font-size: clamp(2.4rem,4.3vw,4rem); line-height: 1.08; letter-spacing: -.025em; font-weight: 400; }
+.redevelopment-heading em { font-weight: 300; color: #85693c; }
+.redevelopment-sectionIntro { display: grid; gap: 1.75rem; align-items: end; margin-bottom: 3rem; }
+.redevelopment-body { max-width: 30rem; font-size: .9rem; line-height: 1.9; color: #4b5260; }
+.redevelopment-button { display: inline-flex; align-items: center; justify-content: center; gap: 1rem; min-height: 48px; background: #c6a66b; color: #0b1d3a; padding: 1rem 1.5rem; font-size: .75rem; font-weight: 600; }
+.redevelopment-textLink { display: inline-flex; align-items: center; gap: 1rem; min-height: 48px; border-bottom: 1px solid #c6a66b80; color: #f8f6f1; font-size: .75rem; }
+
+.redevelopment-hero { position: relative; isolation: isolate; min-height: 43rem; display: flex; flex-direction: column; justify-content: end; padding-top: 10rem; background: #0b1d3a; color: #f8f6f1; }
+.redevelopment-heroImage { object-fit: cover; object-position: 65% center; z-index: -2; }
+.redevelopment-heroShade { position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgb(6 15 30 / 94%), rgb(11 29 58 / 75%) 46%, rgb(11 29 58 / 15%)), linear-gradient(0deg, rgb(6 15 30 / 92%), transparent 70%); }
+.redevelopment-heroGrid { display: grid; gap: 2.5rem; align-items: end; padding-block: 3rem 4.5rem; flex: 1; }
+.redevelopment-hero .redevelopment-eyebrow { color: #c6a66b; }
+.redevelopment-heroCopy { max-width: 47rem; align-self: center; }
+.redevelopment-hero h1 { font-family: var(--font-cormorant), serif; font-size: clamp(3.2rem,7vw,6.7rem); font-weight: 400; line-height: 1.02; letter-spacing: -.025em; }
+.redevelopment-hero h1 em { display: block; color: #d8c29c; font-weight: 300; }
+.redevelopment-heroDescription { margin-top: 2rem; max-width: 28rem; color: rgb(248 246 241 / 82%); font-size: 1rem; line-height: 1.9; }
+.redevelopment-heroActions { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem; align-items: center; }
+.redevelopment-heroCaption { border-left: 1px solid #c6a66b; padding-left: 1.25rem; font-family: var(--font-cormorant), serif; font-size: 1.5rem; line-height: 1.25; max-width: 20rem; }
+.redevelopment-heroCaption span { display: block; font-family: var(--font-jakarta), sans-serif; margin-top: .8rem; color: rgb(248 246 241 / 78%); font-size: .65rem; line-height: 1.8; }
+.redevelopment-heroAudience { border-top: 1px solid rgb(198 166 107 / 30%); background: rgb(6 15 30 / 50%); }
+.redevelopment-heroAudience > div { display: flex; flex-wrap: wrap; gap: 1rem 2.5rem; padding-block: 1.5rem; font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; color: rgb(248 246 241 / 75%); }
+
+/* Original files remain untouched. Only the before layer is clipped. */
+.redevelopment-comparison { border: 1px solid rgb(198 166 107 / 50%); padding: .75rem; background: #fffdf8; box-shadow: .75rem .75rem 0 rgb(198 166 107 / 8%), 0 22px 45px -32px rgb(11 29 58 / 40%); }
+.redevelopment-comparisonFrame { position: relative; overflow: hidden; aspect-ratio: 16 / 8; background: #0b1d3a; user-select: none; touch-action: pan-y; cursor: ew-resize; }
+.redevelopment-comparisonFrame img { object-fit: cover; pointer-events: none; }
+.redevelopment-comparisonBefore { position: absolute; inset: 0; }
+.redevelopment-comparisonBefore img { object-position: 25% center; }
+.redevelopment-comparisonAfter { object-position: center; }
+.redevelopment-comparisonLabel { position: absolute; top: 1rem; z-index: 2; padding: .7rem .9rem; background: rgb(6 15 30 / 88%); border: 1px solid rgb(198 166 107 / 60%); color: #f8f6f1; font-family: var(--font-cormorant), serif; font-size: 1.4rem; pointer-events: none; }
+.redevelopment-comparisonLabel small { display: block; font-family: var(--font-jakarta), sans-serif; font-size: .6rem; margin-top: .2rem; color: #d8c29c; }
+.redevelopment-beforeLabel { left: 1rem; }
+.redevelopment-afterLabel { right: 1rem; text-align: right; }
+.redevelopment-comparisonHandle { position: absolute; z-index: 3; inset-block: 0; width: 2px; margin-left: -1px; background: #c6a66b; box-shadow: 0 0 0 1px rgb(6 15 30 / 25%); pointer-events: none; }
+.redevelopment-comparisonHandle > span { position: absolute; top: 50%; left: 50%; translate: -50% -50%; display: grid; place-items: center; width: 48px; height: 48px; border: 1px solid #c6a66b; border-radius: 50%; background: #0b1d3a; color: #f8f6f1; box-shadow: 0 4px 20px rgb(0 0 0 / 25%); }
+.redevelopment-sliderControls { padding: 1.25rem .5rem .5rem; }
+.redevelopment-sliderControls label { display: block; font-size: .8rem; font-weight: 500; color: #0b1d3a; }
+.redevelopment-sliderControls input { display: block; accent-color: #85693c; width: 100%; min-height: 44px; cursor: ew-resize; margin: .25rem 0; }
+.redevelopment-sliderControls input:focus-visible { outline: 2px solid #85693c; outline-offset: 3px; }
+.redevelopment-sliderControls p { font-size: .7rem; line-height: 1.8; color: #4b5260; }
+.redevelopment-comparison:focus-within .redevelopment-comparisonFrame { box-shadow: inset 0 0 0 2px #c6a66b; }
+.redevelopment-comparison > figcaption { font-size: .75rem; line-height: 1.85; padding: 1rem .5rem .25rem; color: #4b5260; border-top: 1px solid rgb(11 29 58 / 15%); margin-top: .5rem; }
+.redevelopment-comparison > figcaption strong { color: #0b1d3a; font-weight: 600; }
+
+/* Scroll position highlights the educational sequence, never project status. */
+.redevelopment-journey { background: #eeeae1; }
+.redevelopment-stages { display: grid; gap: 2rem; }
+.redevelopment-stages > li { position: relative; display: grid; grid-template-columns: 44px minmax(0,1fr); gap: 1.25rem; }
+.redevelopment-stageMarker { position: relative; }
+.redevelopment-stageNumber { position: relative; z-index: 1; display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid rgb(133 105 60 / 60%); background: #eeeae1; color: #85693c; font-family: var(--font-cormorant), serif; font-size: 1.5rem; transition: background-color .4s ease, color .4s ease; }
+.redevelopment-stageTrack { position: absolute; pointer-events: none; background: rgb(133 105 60 / 25%); }
+.redevelopment-stageTrack > span { display: block; width: 100%; height: 100%; background: #a8864e; transform-origin: top left; }
+.redevelopment-stageTrackHorizontal { display: none; }
+.redevelopment-stageTrackVertical { top: 44px; bottom: -2rem; width: 2px; left: 21px; }
+.redevelopment-stageVisual { padding: .5rem; background: #f8f6f1; border: 1px solid rgb(133 105 60 / 25%); }
+.redevelopment-stageVisual .editorial-image-frame img { object-fit: cover; }
+.redevelopment-stageVisual figcaption { font-size: .65rem; line-height: 1.7; margin-top: .6rem; padding-top: .6rem; }
+.redevelopment-stageContent h3 { margin-top: 1.5rem; font-family: var(--font-cormorant), serif; font-size: 1.65rem; line-height: 1.15; }
+.redevelopment-stageContent > p { margin-top: .75rem; font-size: .8rem; line-height: 1.9; color: #4b5260; }
+.redevelopment-stages > li[data-active="true"] .redevelopment-stageNumber { background: #0b1d3a; color: #d8c29c; border-color: #c6a66b; }
+.redevelopment-stages > li[data-active="true"] .redevelopment-stageVisual { border-color: #a8864e; box-shadow: 0 15px 30px -24px rgb(11 29 58 / 50%); }
+
+.redevelopment-understanding, .redevelopment-advisory, .redevelopment-diligence, .redevelopment-topics, .redevelopment-interests, .redevelopment-approaches { padding-block: clamp(4rem,7vw,7rem); }
+.redevelopment-understanding .editorial-image-frame, .redevelopment-interests .editorial-image-frame { box-shadow: 0 18px 36px -25px rgb(11 29 58 / 35%); }
+.redevelopment-imageFrame { padding: .75rem; border: 1px solid rgb(198 166 107 / 50%); box-shadow: .75rem .75rem 0 rgb(198 166 107 / 8%); }
+.redevelopment-advisory article { padding-inline: 1.5rem; margin-top: 1rem; border: 1px solid rgb(11 29 58 / 12%); border-top-color: #c6a66b; background: #fffdf8; }
+.redevelopment-diligence { background: #0b1d3a; }
+.redevelopment-diligence ol { display: grid; gap: 1rem; border: 0; }
+.redevelopment-diligence li { padding: 1.5rem; border: 1px solid rgb(198 166 107 / 35%); background: rgb(248 246 241 / 3%); transition: box-shadow .35s ease, border-color .35s ease, translate .35s ease; }
+.redevelopment-diligenceIcon { display: flex; flex-direction: column; align-items: center; gap: .75rem; flex-shrink: 0; color: #c6a66b; }
+.redevelopment-diligenceIcon > span { font-size: .65rem; }
+.redevelopment-diligence h3 { font-size: 1.7rem; line-height: 1.15; }
+.redevelopment-diligence li p { font-size: .8rem; line-height: 1.85; }
+.redevelopment-topics aside { padding: 1.5rem; border: 1px solid rgb(133 105 60 / 30%); background: #fffdf8; box-shadow: 0 14px 30px -25px rgb(11 29 58 / 35%); }
+.redevelopment-interests dl > div { padding-inline: 1.25rem; margin-bottom: 1rem; border: 1px solid rgb(133 105 60 / 25%); background: #fffdf8; }
+.redevelopment-approaches table { background: #fffdf8; border: 1px solid rgb(133 105 60 / 25%); }
+.redevelopment-consultation { background: linear-gradient(115deg,#060f1e,#0b1d3a); }
+.redevelopment-consultation .lg\:col-span-5 { box-shadow: 0 24px 50px -30px rgb(0 0 0 / 50%); }
+
+@media (min-width: 640px) {
+  .redevelopment-diligence ol { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .redevelopment-diligence li:last-child { grid-column: 1 / -1; }
+}
+@media (min-width: 1024px) {
+  .redevelopment-heroGrid { grid-template-columns: minmax(0,2fr) minmax(0,1fr); }
+  .redevelopment-heroCaption { justify-self: end; }
+  .redevelopment-sectionIntro { grid-template-columns: minmax(0,1.2fr) minmax(0,1fr); gap: 4rem; }
+  .redevelopment-sectionIntro > .redevelopment-body { justify-self: end; }
+  .redevelopment-stages { grid-template-columns: repeat(5,minmax(0,1fr)); gap: 1.5rem; }
+  .redevelopment-stages > li { display: block; }
+  .redevelopment-stageMarker { height: 44px; margin-bottom: 1.5rem; }
+  .redevelopment-stageTrackHorizontal { display: block; top: 21px; height: 2px; left: 44px; right: -1.5rem; }
+  .redevelopment-stageTrackVertical { display: none; }
+  .redevelopment-stageContent h3 { font-size: 1.5rem; }
+}
+@media (max-width: 639px) {
+  .redevelopment-hero { padding-top: 7.5rem; min-height: 44rem; }
+  .redevelopment-heroGrid { padding-block: 2.5rem; }
+  .redevelopment-hero h1 { font-size: clamp(2.8rem,11vw,4.3rem); }
+  .redevelopment-heroImage { object-position: 62% center; }
+  .redevelopment-heroShade { background: linear-gradient(90deg,rgb(6 15 30 / 90%),rgb(11 29 58 / 55%)),linear-gradient(0deg,#060f1e,transparent); }
+  .redevelopment-heroActions { align-items: stretch; flex-direction: column; gap: 1rem; }
+  .redevelopment-textLink { align-self: start; }
+  .redevelopment-heroCaption { font-size: 1.25rem; }
+  .redevelopment-heroAudience > div { gap: .75rem; font-size: .6rem; }
+  .redevelopment-heading { font-size: clamp(2.2rem,8.5vw,3rem); }
+  .redevelopment-comparison { padding: .5rem; }
+  .redevelopment-comparisonFrame { aspect-ratio: 4 / 3; }
+  .redevelopment-comparisonLabel { top: .5rem; padding: .5rem; font-size: 1.1rem; }
+  .redevelopment-comparisonLabel small { font-size: .5rem; }
+  .redevelopment-beforeLabel { left: .5rem; }
+  .redevelopment-afterLabel { right: .5rem; }
+  .redevelopment-stages > li { gap: .9rem; }
+  .redevelopment-stageContent h3 { font-size: 1.6rem; }
+}
+@media (min-width: 1024px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .redevelopment-button { transition: translate .35s ease, box-shadow .35s ease; }
+  .redevelopment-button:hover { translate: 0 -3px; box-shadow: 0 12px 25px -15px rgb(0 0 0 / 40%); }
+  .redevelopment-diligence li:hover { translate: 0 -3px; border-color: #c6a66b; box-shadow: 0 18px 35px -24px rgb(0 0 0 / 40%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .redevelopment-page [data-motion-owned] { opacity: 1 !important; transform: none !important; }
+  .redevelopment-stageTrack > span { transform: none !important; }
+  .redevelopment-page *, .redevelopment-page *::before, .redevelopment-page *::after { transition: none !important; }
+}

@@ -1,0 +1,165 @@
+/* Phase 6: opt-in presentation used only by About, Founder and Our Team. */
+.company-page { overflow: clip; background: #f8f6f1; color: #0b1d3a; }
+.company-page section, .company-page article { scroll-margin-top: 7rem; }
+.company-page .company-section { padding-block: clamp(4rem,7vw,7rem); }
+.company-page a:focus-visible, .company-page button:focus-visible { outline: 2px solid #c6a66b; outline-offset: 5px; }
+.company-page .company-eyebrow { display: flex; align-items: center; gap: .8rem; font-size: .65rem; font-weight: 600; letter-spacing: .18em; line-height: 1.8; text-transform: uppercase; color: #85693c; margin-bottom: 1.25rem; }
+.company-eyebrow::before { content: ""; width: 2rem; height: 1px; background: currentColor; flex-shrink: 0; }
+.company-heading { font-family: var(--font-cormorant),serif; font-size: clamp(2.3rem,4.2vw,3.8rem); line-height: 1.08; letter-spacing: -.025em; font-weight: 400; }
+.company-heading em { color: #85693c; font-weight: 300; }
+.company-body { margin-top: 1.5rem; max-width: 48rem; font-size: .9rem; line-height: 1.9; color: #4b5260; }
+.company-textLink { display: inline-flex; gap: 1rem; align-items: center; min-height: 44px; margin-top: 1.25rem; font-size: .8rem; color: #85693c; border-bottom: 1px solid rgb(133 105 60 / 40%); }
+.company-imageFrame { padding: .8rem; border: 1px solid rgb(198 166 107 / 45%); background: #fffdf8; box-shadow: .9rem .9rem 0 rgb(198 166 107 / 10%),0 22px 45px -30px rgb(11 29 58 / 35%); }
+.company-approvalNote { margin-top: 1.5rem; padding: 1rem 1.25rem; border-left: 2px solid #a8864e; background: rgb(198 166 107 / 10%); font-size: .75rem; line-height: 1.9; color: #4b5260; }
+
+/* Architecture is visible on the right, with readable editorial content on the left. */
+.company-aboutHero { min-height: 41rem; padding-top: 12rem; padding-bottom: 4rem; display: flex; align-items: end; }
+.company-aboutHero > .relative { display: grid; gap: 2rem; align-items: end; }
+.company-aboutHero img { object-position: 65% center; }
+.company-aboutHero h1 { font-size: clamp(3rem,5.8vw,5.4rem); line-height: 1.05; max-width: 44rem; }
+.company-aboutHero .space-y-6 > p { max-width: 40rem; font-size: 1rem; line-height: 1.9; }
+.company-heroCaption { max-width: 17rem; border-left: 1px solid #c6a66b; padding: 1rem 1.25rem; background: rgb(6 15 30 / 78%); font-family: var(--font-cormorant),serif; font-size: 1.5rem; line-height: 1.2; color: #f8f6f1; }
+.company-heroCaption span { display: block; font-family: var(--font-jakarta),sans-serif; font-size: .65rem; line-height: 1.9; margin-top: .75rem; color: rgb(248 246 241 / 80%); }
+.company-aboutIntro, .company-aboutPhilosophy, .company-aboutExpertise, .company-aboutValues, .company-aboutLeadership, .company-aboutClosing { padding-block: clamp(4rem,7vw,7rem); }
+.company-aboutIntro h2 { font-size: clamp(2.1rem,3.5vw,3.2rem); line-height: 1.12; }
+.company-aboutIntro h2::after { content: ""; display: block; margin-top: 1.5rem; width: 4rem; height: 1px; background: #c6a66b; }
+.company-criteriaLabel { font-size: .65rem; font-weight: 600; text-transform: uppercase; letter-spacing: .12em; color: #85693c; }
+.company-aboutPhilosophy { background: #eeeae1; }
+.company-aboutPhilosophy .grid > div { border-radius: 0; box-shadow: 0 16px 35px -28px rgb(11 29 58 / 35%); }
+.company-aboutPhilosophy .grid h3 { font-size: 1.8rem; }
+.company-aboutExpertise .premium-perspective-card { padding: 1.75rem; background: #0b1d3a; box-shadow: 0 16px 35px -25px rgb(0 0 0 / 40%); }
+.company-aboutExpertise h3 { font-size: 1.5rem; line-height: 1.2; }
+.company-aboutExpertise .premium-perspective-card p { font-size: .8rem; line-height: 1.9; }
+.company-aboutValues ol { display: grid; gap: 1rem; border: 0; }
+.company-aboutValues li { padding: 1.5rem; border: 1px solid rgb(133 105 60 / 25%); background: #fffdf8; }
+.company-aboutValues h3 { font-size: 1.6rem; }
+.company-aboutLeadershipGrid { display: grid; gap: 2.5rem; align-items: center; }
+.company-leadershipPortrait { width: 100%; max-width: 18rem; margin-inline: auto; padding: .75rem; border: 1px solid rgb(133 105 60 / 35%); background: #fffdf8; box-shadow: .8rem .8rem 0 rgb(198 166 107 / 10%); }
+.company-leadershipPortrait > div { background: #fff; }
+.company-leadershipPortrait figcaption { margin-top: .75rem; font-size: .65rem; line-height: 1.7; color: #4b5260; }
+.company-aboutClosing > .premium-scroll-reveal > div > div { box-shadow: 0 24px 50px -30px rgb(0 0 0 / 40%); }
+
+/* The founder photograph stays flat and uncropped; depth belongs to its frame. */
+.company-founderHero { padding-top: 8.5rem; background: linear-gradient(110deg,#060f1e,#0b1d3a); }
+.company-founderHero .max-w-7xl { padding-top: 3rem; padding-bottom: 4.5rem; }
+.company-founderHero .editorial-portrait-title { font-size: clamp(4rem,7vw,6.6rem); line-height: .98; }
+.company-founderHero figure { max-width: 27rem; padding: 1rem; border: 1px solid rgb(198 166 107 / 50%); background: rgb(248 246 241 / 3%); box-shadow: 1rem 1rem 0 rgb(198 166 107 / 10%),0 25px 55px -30px rgb(0 0 0 / 50%); }
+.company-founderHero figure > div:first-child[aria-hidden] { display: none; }
+.company-founderHero figcaption { color: rgb(248 246 241 / 80%); font-size: .65rem; line-height: 1.9; margin-top: 1rem; letter-spacing: .08em; }
+.company-founderIntro, .company-founderPerspective, .company-founderExpertise, .company-founderPhilosophy, .company-founderCommitments { padding-block: clamp(4rem,7vw,7rem); }
+.company-founderContext { padding: .75rem; border: 1px solid rgb(198 166 107 / 35%); }
+.company-founderContext .editorial-image-frame img { object-fit: cover; }
+.company-founderExpertise ol { display: grid; gap: 1rem; border: 0; }
+.company-founderExpertise li { padding: 1.5rem; border: 1px solid rgb(133 105 60 / 25%); background: #fffdf8; }
+.company-founderPhilosophy { background: #eeeae1; }
+.company-founderPhilosophy h2 { font-size: clamp(2.7rem,5vw,4.3rem); }
+.company-founderCommitments .company-expertiseCard { padding: 1.75rem; margin-top: 1rem; border: 1px solid rgb(133 105 60 / 25%); background: #fffdf8; }
+.company-founderCommitments .grid { gap: 1.5rem; }
+.company-founder #consultation-form > div, .company-team #consultation-form > div { box-shadow: 0 25px 50px -30px rgb(0 0 0 / 45%); border-color: rgb(198 166 107 / 50%); }
+
+.company-teamHero { position: relative; isolation: isolate; min-height: 43rem; padding-block: 11rem 4rem; display: flex; align-items: end; background: #0b1d3a; color: #f8f6f1; }
+.company-teamHeroImage { object-fit: cover; object-position: 65% center; z-index: -2; }
+.company-teamHeroShade { position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg,rgb(6 15 30 / 95%),rgb(11 29 58 / 80%) 45%,rgb(11 29 58 / 25%)),linear-gradient(0deg,rgb(6 15 30 / 85%),transparent); }
+.company-teamHeroGrid { display: grid; gap: 3rem; align-items: end; }
+.company-teamHero .company-eyebrow, .company-teamHero .company-textLink { color: #c6a66b; }
+.company-teamHero h1 { font-family: var(--font-cormorant),serif; font-size: clamp(3.2rem,6.5vw,6rem); line-height: 1.04; font-weight: 400; letter-spacing: -.025em; }
+.company-teamHero h1 em { color: #d8c29c; font-weight: 300; }
+.company-teamHeroIntro { max-width: 37rem; font-size: 1rem; line-height: 1.9; margin-top: 1.75rem; color: rgb(248 246 241 / 85%); }
+.company-teamHeroCaption { border-left: 1px solid #c6a66b; padding: 1.25rem 1.5rem; background: rgb(6 15 30 / 70%); }
+.company-teamHeroCaption > p { font-family: var(--font-cormorant),serif; font-size: 1.8rem; line-height: 1.2; }
+.company-teamHeroCaption em { color: #d8c29c; }
+.company-teamHeroCaption span,.company-teamHeroCaption small { display: block; margin-top: 1rem; color: rgb(248 246 241 / 78%); font-size: .75rem; line-height: 1.9; }
+.company-teamHeroCaption small { font-size: .65rem; }
+.company-treeLabel { margin-block: 2.5rem 1.5rem; color: #85693c; font-size: .7rem; text-transform: uppercase; font-weight: 600; letter-spacing: .15em; }
+.company-leadershipTree,.company-functionalTree { display: grid; gap: 1.5rem; }
+.company-leadershipTree > li { position: relative; border-left: 1px solid #c6a66b; padding-left: 1rem; }
+.company-leadershipTree > li::before { content: ""; position: absolute; left: -3px; top: 0; width: 5px; height: 5px; background: #a8864e; }
+.company-hierarchyCard { height: 100%; border: 1px solid rgb(133 105 60 / 30%); background: #fffdf8; }
+.company-hierarchyCard > a { display: flex; flex-direction: column; padding: 1.5rem; height: 100%; }
+.company-roleNumber { color: #85693c; font-family: var(--font-cormorant),serif; font-size: 2rem; line-height: 1; margin-bottom: 1.25rem; }
+.company-roleTitle { font-family: var(--font-cormorant),serif; font-size: 1.7rem; line-height: 1.15; }
+.company-roleName { margin-top: 1rem; color: #4b5260; font-size: .75rem; line-height: 1.8; }
+.company-roleApproval { display: block; border-top: 1px solid rgb(133 105 60 / 30%); margin-top: 1rem; padding-top: .8rem; font-size: .7rem; line-height: 1.8; color: #4b5260; }
+.company-roleLink { display: flex; align-items: center; gap: .75rem; margin-top: auto; padding-top: 1.25rem; font-size: .75rem; line-height: 1.8; color: #85693c; }
+.company-teamProfiles { border-top: 1px solid rgb(11 29 58 / 12%); background: #eeeae1; }
+.company-profileIntro { display: grid; gap: 2rem; align-items: end; margin-bottom: 3rem; }
+.company-profilesGrid { display: grid; gap: 1.5rem; }
+.company-teamProfile { padding: 1.5rem; border: 1px solid rgb(133 105 60 / 30%); background: #fffdf8; box-shadow: 0 16px 35px -30px rgb(11 29 58 / 35%); }
+.company-profileIdentity { display: grid; grid-template-columns: 104px minmax(0,1fr); gap: 1.5rem; align-items: start; }
+.company-profilePortraitFrame { position: relative; width: 100%; aspect-ratio: 4 / 5; background: #0b1d3a; border: 1px solid rgb(133 105 60 / 30%); }
+.company-neutralPortrait { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .75rem; height: 100%; color: #d8c29c; padding: .75rem; }
+.company-neutralPortrait span { font-size: .55rem; line-height: 1.7; text-transform: uppercase; letter-spacing: .08em; text-align: center; }
+.company-profilePortrait figcaption { margin-top: .65rem; font-size: .6rem; line-height: 1.8; color: #4b5260; }
+.company-teamProfile h3 { font-family: var(--font-cormorant),serif; font-weight: 400; font-size: 1.8rem; line-height: 1.1; letter-spacing: -.015em; }
+.company-teamProfile .company-eyebrow { font-size: .6rem; letter-spacing: .1em; margin-bottom: .8rem; }
+.company-teamProfile .company-eyebrow::before { width: 1rem; }
+.company-profileDesignation { font-size: .75rem; line-height: 1.9; color: #85693c; margin-top: 1rem; font-weight: 600; }
+.company-profileStatus { font-size: .7rem; line-height: 1.9; color: #4b5260; margin-top: .75rem; }
+.company-profileBiography { margin-top: 1.25rem; font-size: .85rem; line-height: 1.9; color: #4b5260; }
+.company-profileDraft { border-top: 1px solid rgb(133 105 60 / 25%); padding-top: 1.5rem; margin-top: 1.5rem; display: grid; gap: 1.25rem; }
+.company-profileDraft h4 { color: #85693c; font-size: .65rem; font-weight: 600; line-height: 1.8; letter-spacing: .05em; }
+.company-profileDraft p,.company-profileDraft li { font-size: .75rem; line-height: 1.9; color: #4b5260; margin-top: .5rem; }
+.company-teamProfile[data-founder="true"] .company-profileIdentity { grid-template-columns: minmax(0,1fr); }
+.company-teamProfile[data-founder="true"] .company-profilePortrait { width: 100%; max-width: 17rem; }
+.company-teamProfile[data-founder="true"] .company-profilePortraitFrame { aspect-ratio: 516 / 564; background: #fff; box-shadow: .65rem .65rem 0 rgb(198 166 107 / 10%); }
+.company-teamEnd { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; margin-top: 2rem; border-top: 1px solid rgb(133 105 60 / 30%); padding-top: 1.5rem; }
+.company-teamEnd > p { max-width: 39rem; font-size: .75rem; line-height: 1.9; color: #4b5260; }
+.company-teamEnd .company-textLink { margin-top: 0; }
+
+@media (min-width: 640px) {
+  .company-functionalTree { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .company-aboutLeadershipGrid { grid-template-columns: minmax(0,.6fr) minmax(0,1.4fr); }
+  .company-teamProfile[data-founder="true"] .company-profileIdentity { grid-template-columns: minmax(0,.7fr) minmax(0,1.3fr); }
+}
+@media (min-width: 1024px) {
+  .company-aboutHero > .relative { grid-template-columns: minmax(0,2fr) minmax(0,1fr); gap: 3rem; }
+  .company-heroCaption { justify-self: end; }
+  .company-aboutLeadershipGrid { grid-template-columns: 280px minmax(0,1fr); gap: 4rem; }
+  .company-aboutExpertise .premium-perspective-card:last-child { grid-column: 1 / -1; }
+  .company-aboutExpertise .premium-perspective-card:last-child > div { display: grid; grid-template-columns: auto minmax(0,1fr); column-gap: 1.5rem; align-items: center; }
+  .company-aboutExpertise .premium-perspective-card:last-child > div > div { grid-row: 1 / 3; margin-bottom: 0; }
+  .company-aboutExpertise .premium-perspective-card:last-child h3,.company-aboutExpertise .premium-perspective-card:last-child p { grid-column: 2; }
+  .company-teamHeroGrid { grid-template-columns: minmax(0,1.8fr) minmax(0,1fr); gap: 4rem; }
+  .company-leadershipTree { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 2rem; }
+  .company-leadershipTree > li { border-left: 0; border-top: 1px solid #c6a66b; padding-left: 0; padding-top: 1.5rem; }
+  .company-leadershipTree > li::before { left: 50%; top: -3px; }
+  .company-leadershipTree > li:first-child { grid-column: 1 / -1; width: min(100%,32rem); justify-self: center; border-top: 0; padding-top: 0; }
+  .company-leadershipTree > li:first-child::before { left: 50%; top: 100%; height: 2rem; width: 1px; }
+  .company-functionalTree { grid-template-columns: repeat(4,minmax(0,1fr)); }
+  .company-profileIntro { grid-template-columns: minmax(0,1.2fr) minmax(0,1fr); gap: 4rem; }
+  .company-profilesGrid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 2rem; }
+  .company-profilesGrid > :first-child { grid-column: 1 / -1; }
+  .company-profilesGrid > :last-child { grid-column: 1 / -1; }
+  .company-profilesGrid > :last-child .company-profileDraft { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  .company-teamProfile[data-founder="true"] { padding: 2rem; }
+  .company-teamProfile[data-founder="true"] .company-profileIdentity { grid-template-columns: 300px minmax(0,1fr); gap: 3rem; }
+  .company-teamProfile[data-founder="true"] .company-profilePortrait { max-width: 100%; }
+  .company-teamProfile[data-founder="true"] h3 { font-size: 2.5rem; }
+  .company-teamProfile[data-founder="true"] .company-profileDraft { grid-template-columns: repeat(3,minmax(0,1fr)); }
+}
+@media (max-width: 639px) {
+  .company-aboutHero { padding-top: 9rem; padding-bottom: 3rem; min-height: 40rem; }
+  .company-aboutHero h1 { font-size: clamp(2.6rem,10vw,3.8rem); }
+  .company-aboutHero > .relative { gap: 2rem; }
+  .company-founderHero { padding-top: 7rem; }
+  .company-founderHero .max-w-7xl { padding-top: 2.5rem; padding-bottom: 3.5rem; }
+  .company-founderHero figure { max-width: 22rem; padding: .75rem; }
+  .company-heading { font-size: clamp(2.1rem,8.5vw,3rem); }
+  .company-teamHero { min-height: 44rem; padding-top: 8.5rem; padding-bottom: 3rem; }
+  .company-teamHero h1 { font-size: clamp(2.8rem,11vw,4rem); }
+  .company-profileIdentity { grid-template-columns: 80px minmax(0,1fr); gap: 1rem; }
+  .company-teamProfile { padding: 1.25rem; }
+  .company-teamProfile h3 { font-size: 1.6rem; }
+  .company-teamProfile[data-founder="true"] .company-profilePortrait { margin-inline: auto; }
+  .company-approvalNote { padding: .9rem 1rem; }
+}
+@media (min-width: 1024px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .company-hierarchyCard, .company-aboutExpertise .premium-perspective-card,.company-expertiseCard { transition: translate .35s ease,box-shadow .35s ease; }
+  .company-hierarchyCard:hover, .company-aboutExpertise .premium-perspective-card:hover,.company-expertiseCard:hover { translate: 0 -3px; box-shadow: 0 18px 35px -24px rgb(11 29 58 / 40%); }
+  .company-teamProfile:not([data-founder="true"]) { transition: border-color .35s ease,box-shadow .35s ease; }
+  .company-teamProfile:not([data-founder="true"]):hover { border-color: #a8864e; box-shadow: 0 18px 35px -25px rgb(11 29 58 / 30%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .company-page [data-motion-owned] { opacity: 1 !important; transform: none !important; }
+  .company-page *, .company-page *::before, .company-page *::after { transition: none !important; }
+}
