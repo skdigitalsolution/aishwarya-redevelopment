@@ -1,23 +1,20 @@
 import type { NextConfig } from "next";
-import { getSiteConfig } from "./src/lib/site-config";
+
+const isGithubActions = process.env.GITHUB_ACTIONS === "true";
+const repo = process.env.GITHUB_REPOSITORY?.replace(/.*?\//, "");
+const isCustomDomain = process.env.CUSTOM_DOMAIN === "true";
+
+// For GitHub Pages under user.github.io/repo-name:
+const basePath =
+  isGithubActions && repo && !repo.endsWith(".github.io") && !isCustomDomain
+    ? `/${repo}`
+    : "";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  cacheComponents: true,
-  images: {
-    qualities: [75, 85, 88, 90],
-  },
-  partialPrefetching: true,
-  async headers() {
-    return [{
-      source: "/:path*",
-      headers: [
-        { key: "X-Content-Type-Options", value: "nosniff" },
-        { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-        ...(!getSiteConfig().indexable ? [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] : []),
-      ],
-    }];
-  },
+  output: "export",
+  basePath: basePath || undefined,
+  assetPrefix: basePath ? `${basePath}/` : undefined,
+  trailingSlash: true,
   turbopack: {
     rules: {
       "*.css": {
@@ -25,6 +22,10 @@ const nextConfig: NextConfig = {
         as: "*.css",
       },
     },
+  },
+  images: {
+    unoptimized: true,
+    qualities: [75, 88],
   },
 };
 

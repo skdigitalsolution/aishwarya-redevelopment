@@ -1,5 +1,4 @@
-
-name: Production Build
+name: Production Build & Deploy
 
 on:
   push:
@@ -12,6 +11,12 @@ on:
 
 permissions:
   contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -33,11 +38,36 @@ jobs:
 
       - name: Build Production Website
         run: npm run build
+        env:
+          GITHUB_ACTIONS: "true"
+          GITHUB_REPOSITORY: ${{ github.repository }}
 
-      - name: Upload Production Build
+      - name: Disable Jekyll processing
+        run: touch out/.nojekyll
+
+      - name: Upload Production Build Artifact
         uses: actions/upload-artifact@v4
         with:
           name: aishwarya-production-build
-          path: dist/
+          path: out/
           if-no-files-found: error
           retention-days: 30
+
+      - name: Upload GitHub Pages Artifact
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
