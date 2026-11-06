@@ -26,7 +26,7 @@ import { Container } from "@/components/layout/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { COMPANY_DETAILS } from "@/lib/constants";
 
-export const metadata = pageMetadata("/about", "About Us", "Learn about Aishwarya Redevelopment Advisory Company, its advisory approach and support for housing societies and property owners in Mumbai.");
+export const metadata = pageMetadata("/about", "Company Overview", "Learn about Aishwarya Redevelopment Advisory Company, its advisory approach and support for housing societies and property owners in Mumbai.");
 
 const expertiseAreas = [
  {title: "Society Redevelopment Advisory", description: "Mumbai redevelopment advisory.", icon: Building2},
@@ -105,9 +105,7 @@ export default function AboutPage() {
               </div>
 
               <h1 className="editorial-hero-title font-serif text-4xl sm:text-5xl md:text-6xl text-ivory-50 font-normal leading-[1.12] tracking-tight">
-                Redevelopment Advisory.{" "}
-                <br className="hidden sm:inline" />
-                <span className="italic font-light text-gold-300">Mumbai.</span>
+                Company <span className="italic font-light text-gold-300">Overview</span>
               </h1>
 
               <p className="font-sans text-base sm:text-lg text-ivory-200/90 leading-relaxed font-light">Aishwarya Redevelopment Advisory Company: Mumbai redevelopment advisory, led by Mr. Sachin Murudkar, Founder &amp; Director.</p>

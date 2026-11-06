@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown, ArrowUpRight, Calendar, Phone } from "lucide-react";
 import { Container } from "./Container";
 import { BrandWordmark } from "@/components/brand";
+import { AboutNavigation } from "./AboutNavigation";
 import { cn } from "@/lib/utils";
 import { COMPANY_DETAILS } from "@/lib/constants";
 
@@ -109,7 +110,7 @@ export const Navbar: React.FC = () => {
     drawer?.querySelector<HTMLElement>(selector)?.focus();
     const trapFocus = (event: KeyboardEvent) => {
       if (event.key !== "Tab" || !drawer) return;
-      const controls = Array.from(drawer.querySelectorAll<HTMLElement>(selector));
+      const controls = Array.from(drawer.querySelectorAll<HTMLElement>(selector)).filter(element => element.getClientRects().length > 0);
       const first = controls[0];
       const last = controls[controls.length - 1];
       if (event.shiftKey && (document.activeElement === first || !drawer.contains(document.activeElement))) {
@@ -182,6 +183,8 @@ export const Navbar: React.FC = () => {
                     item.children.some(
                       (c) => isLinkActive(c.href)
                     ));
+
+                if (item.href === "/about") return <AboutNavigation key={pathname + "-about-desktop"} pathname={pathname} onOpen={() => setServicesDropdownOpen(false)} />;
 
                 if (item.children) {
                   return (
@@ -371,6 +374,7 @@ export const Navbar: React.FC = () => {
                   { label: "Our Team", href: "/our-team", num: "07" },
                   { label: "Contact", href: "/contact", num: "08" },
                 ].map((item) => {
+                  if (item.href === "/about") return <AboutNavigation key={pathname + "-about-mobile"} pathname={pathname} mobile onNavigate={() => setMobileMenuOpen(false)} />;
                   const isActive = isLinkActive(item.href);
                   return (
                     <Link

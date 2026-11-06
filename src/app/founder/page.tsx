@@ -1,104 +1,109 @@
-import { ClientImage } from "@/components/ui/ClientImage";
-import { CompanyReveal } from "@/components/company/CompanyReveal";
-import { PerspectiveCard } from "@/components/ui/PerspectiveCard";
-import "@/components/company/company-pages.css";
-import { pageMetadata } from "@/lib/seo";
-import Image from "@/components/ui/SiteImage";
+﻿import type { ReactNode } from "react";
 import Link from "next/link";
-import { existsSync } from "node:fs";
-import path from "node:path";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Building2, FileCheck2, Scale, Users, Layers3 } from "lucide-react";
+import Image from "@/components/ui/SiteImage";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/layout/Container";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { ConsultationCTA } from "@/components/sections/ConsultationCTA";
+import { CompanyReveal } from "@/components/company/CompanyReveal";
+import { PerspectiveCard } from "@/components/ui/PerspectiveCard";
+import { clientImages, type ClientImageId } from "@/lib/client-images";
+import { pageMetadata } from "@/lib/seo";
+import { competencies, commitments, sourceServices } from "./founder-content";
+import "./founder.css";
 
-export const metadata = pageMetadata("/founder", "Mr. Sachin Murudkar, Founder & Director", "Meet Mr. Sachin Murudkar, Founder & Director of Aishwarya Redevelopment Advisory Company, and explore the company's redevelopment advisory perspective.");
+export const metadata = pageMetadata("/founder", "Founder & Leadership", "Meet Mr. Sachin Murudkar, Founder & Director, and explore his Mumbai redevelopment advisory perspective, core competencies and corporate philosophy.");
 
-const portraitSrc = "/images/founder-portrait.jpeg";
-const pillars = [
-  [
-    "Municipal & Administrative Procedures",
-    "Identified area of founder expertise."
-  ],
-  [
-    "Title Resolution & Due Diligence",
-    "Identified area of founder expertise."
-  ],
-  [
-    "Society Redevelopment Strategy",
-    "Identified area of founder expertise."
-  ],
-  [
-    "Self-Redevelopment",
-    "Identified area of founder expertise."
-  ],
-  [
-    "Land Amalgamation & Land Valuation",
-    "Both are identified areas of founder expertise."
-  ]
-];
-const commitments = [
-  [
-    "Mumbai Redevelopment Advisory",
-    "Identified area of founder expertise."
-  ],
-  [
-    "Society Redevelopment Strategy",
-    "Identified area of founder expertise."
-  ],
-  [
-    "Title Resolution & Due Diligence",
-    "Identified area of founder expertise."
-  ],
-  [
-    "Land Valuation",
-    "Identified area of founder expertise."
-  ]
-];
-const focus = "focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold";
+const icons = [Building2, FileCheck2, Users, Scale, Layers3];
+
+function EditorialImage({ id, caption, className = "" }: { id: ClientImageId; caption?: string; className?: string }) {
+  return <figure className={`founder-editorialImage ${className}`}>
+    <div><Image src={`/images/${id}.jpeg`} alt={clientImages[id].alt} fill loading="lazy" sizes="(max-width: 767px) calc(100vw - 48px), 550px" /></div>
+    <figcaption>{caption ?? clientImages[id].caption}</figcaption>
+  </figure>;
+}
+
+function Heading({ number, label, children, id }: { number: string; label: string; children: ReactNode; id: string }) {
+  return <><p className="founder-eyebrow"><span>{number}</span>{label}</p><h2 id={id} className="founder-heading">{children}</h2></>;
+}
 
 export default function FounderPage() {
-  const hasPortrait = existsSync(path.join(process.cwd(), "public", portraitSrc));
-  return (
-    <>
-      <Navbar />
-      <main id="main-content" tabIndex={-1} className="company-page company-founder flex-1 bg-ivory text-navy" data-motion-owned>
-        <section aria-labelledby="founder-name" className="company-founderHero overflow-hidden bg-navy pt-24 text-ivory sm:pt-32">
-<CompanyReveal>
-          <Container className="grid items-center gap-14 py-16 sm:py-24 lg:grid-cols-12 lg:gap-16">
-            <div className="lg:col-span-7"><p className="mb-9 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.24em] text-gold"><span className="h-px w-9 bg-gold" aria-hidden="true" />Founder &amp; Director</p><p className="mb-3 font-serif text-2xl text-ivory/70">Mr.</p><h1 id="founder-name" className="editorial-portrait-title font-serif text-6xl leading-[0.98] tracking-tight sm:text-7xl lg:text-8xl">Sachin<br /><span className="font-light italic text-gold">Murudkar</span></h1><p className="mt-9 max-w-lg font-serif text-2xl leading-snug sm:text-3xl">Mumbai Redevelopment Advisory.<br />Founder &amp; Director.</p><p className="mt-6 max-w-md text-sm leading-7 text-ivory/65">Founder &amp; Director<br />Aishwarya Redevelopment Advisory Company</p><a href="#introduction" className={`${focus} mt-8 inline-flex min-h-12 items-center gap-5 border-b border-gold/50 text-xs text-gold hover:text-ivory`}>The leadership perspective <ArrowDown size={16} aria-hidden="true" /></a></div>
-            <figure className="relative mx-auto w-full max-w-md lg:col-span-5"><div aria-hidden="true" className="pointer-events-none absolute inset-0 translate-x-2 translate-y-2 sm:translate-x-3 sm:translate-y-3 border border-gold/25" /><div className="editorial-image-frame relative aspect-[516/564] overflow-hidden border border-gold/25 bg-navy-950">
-              {hasPortrait ? <Image src={portraitSrc} alt="Mr. Sachin Murudkar, Founder and Director of Aishwarya Redevelopment Advisory Company" fill preload sizes="(max-width: 639px) calc(100vw - 64px), (max-width: 1023px) 448px, 38vw" className="bg-white object-contain" /> : <div className="flex h-full flex-col justify-between p-8 sm:p-10"><p className="border-b border-gold/25 pb-5 text-xs uppercase tracking-[0.22em] text-gold">Executive Leadership</p><div className="py-10 text-center"><span aria-hidden="true" className="font-serif text-8xl font-light tracking-[0.04em] text-gold/80">SM</span><p className="mt-6 text-xs tracking-wide text-ivory/60">Official portrait forthcoming</p></div><p className="border-t border-gold/25 pt-5 font-serif text-xl text-ivory/80">A considered perspective.<br /><span className="italic text-gold">A clear sense of responsibility.</span></p></div>}
-            </div><figcaption className="relative mt-6 text-xs uppercase tracking-[0.16em] text-ivory/55">{hasPortrait ? "Mr. Sachin Murudkar / Founder & Director" : "Typographic profile / No substitute portrait used"}</figcaption></figure>
-          </Container>
+  return <><Navbar /><main id="main-content" tabIndex={-1} className="founder-page" data-motion-owned>
+    <section className="founder-hero" aria-labelledby="founder-heading">
+      <Container className="founder-heroGrid">
+        <CompanyReveal className="founder-portraitReveal">
+          <figure className="founder-portrait">
+            <div><Image src="/images/founder-portrait.jpeg" alt="Mr. Sachin Murudkar, Founder and Director of Aishwarya Redevelopment Advisory Company" width={516} height={564} preload sizes="(max-width: 767px) calc(100vw - 64px), 440px" /></div>
+            <figcaption>Mr. Sachin Murudkar<span>Founder &amp; Director</span></figcaption>
+          </figure>
         </CompanyReveal>
-</section>
+        <div className="founder-heroCopy">
+          <CompanyReveal className="founder-heroArchitecture"><Image src="/images/22.jpeg" alt="" fill preload sizes="(max-width: 767px) 100vw, 65vw" aria-hidden="true" /></CompanyReveal>
+          <div className="founder-heroText">
+            <CompanyReveal><p className="founder-eyebrow">Founder &amp; Leadership</p><h1 id="founder-heading"><span>Mr. Sachin</span><em>Murudkar</em></h1></CompanyReveal>
+            <CompanyReveal delay={0.08}><p className="founder-designation">Founder &amp; Director</p><p className="founder-company">Aishwarya Redevelopment Advisory Company</p></CompanyReveal>
+            <CompanyReveal delay={0.16}><blockquote>“Led by Vision. Built on Trust.<br />Driven by Uncompromising Results.”</blockquote><a href="#leadership-profile" className="founder-link">Explore the leadership perspective <ArrowDown size={16} aria-hidden="true" /></a><p className="founder-heroNote">Client-supplied architectural concept. Not a verified company project.</p></CompanyReveal>
+          </div>
+        </div>
+      </Container>
+    </section>
 
-        <section id="introduction" aria-label="Executive introduction" className="company-founderIntro scroll-mt-28 py-20 sm:py-28">
-<CompanyReveal><Container><div className="grid gap-10 lg:grid-cols-12 lg:gap-20"><div className="lg:col-span-5"><SectionHeading align="left" eyebrow="Executive introduction" title={<>Mr. Sachin Murudkar: <span className="italic">Founder &amp; Director.</span></>} /></div><div className="space-y-5 text-sm leading-7 text-charcoal/75 lg:col-span-7"><p>Mr. Sachin Murudkar is the Founder &amp; Director of Aishwarya Redevelopment Advisory Company.</p><p>His stated expertise includes Mumbai redevelopment advisory, municipal and administrative procedures, title resolution and due diligence, society redevelopment strategy, self-redevelopment, land amalgamation and land valuation.</p><p>The full biography and professional background await the original Director Introduction document.</p><Link href="/services" className={`${focus} inline-flex min-h-12 items-center gap-4 border-b border-gold text-xs text-navy hover:text-gold-800`}>Explore the advisory practice <ArrowUpRight size={16} aria-hidden="true" /></Link></div></div></Container></CompanyReveal>
-</section>
+    <section id="leadership-profile" className="founder-section" aria-labelledby="profile-heading">
+      <Container className="founder-editorialGrid">
+        <CompanyReveal><EditorialImage id={14} /></CompanyReveal>
+        <CompanyReveal delay={0.08}><Heading number="01" label="Executive Summary & Leadership Profile" id="profile-heading">Leadership with<br /><em>a wider perspective.</em></Heading>
+          <div className="founder-prose"><p>Mr. Sachin Murudkar is the Founder &amp; Director of Aishwarya Redevelopment Advisory Company. His leadership perspective brings together the preservation of a property?s legacy, legal precision, urban economics and the trust of the people who call it home.</p><p>In Mumbai, the value of a property is both financial and personal. His approach considers municipal regulatory frameworks, urban planning requirements and developer financial health alongside the needs of housing society residents, commercial plot owners and landowning families.</p><p>The advisory practice connects cooperative housing societies and developers through due diligence, feasibility reporting and project modelling. Long-term value creation, regulatory compliance and legal clarity form the basis of this leadership approach.</p></div>
+        </CompanyReveal>
+      </Container>
+    </section>
 
-        <section aria-label="Experience and perspective" className="company-founderPerspective border-y border-gold/25 bg-navy py-20 text-ivory sm:py-24">
-<CompanyReveal><Container><div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-20"><div className="lg:col-span-6"><p className="mb-5 text-xs font-semibold uppercase tracking-[0.22em] text-gold">Founder expertise</p><h2 className="font-serif text-5xl leading-tight sm:text-6xl">Advisory<br /><span className="font-light italic text-gold">&amp; Expertise</span></h2><ClientImage id={14} dark aspect="aspect-video" className="company-founderContext mt-8" /></div><div className="border-l border-gold/50 pl-7 lg:col-span-6"><p className="font-serif text-2xl leading-snug sm:text-3xl">Mumbai redevelopment advisory.</p><p className="mt-6 text-sm leading-7 text-ivory/70">The client task identifies redevelopment strategy, municipal and administrative procedures, title resolution and due diligence as areas of founder expertise.</p><p className="mt-4 text-sm leading-7 text-ivory/70">No employment history, qualifications, awards or numerical achievements are published without supporting source information.</p></div></div></Container></CompanyReveal>
-</section>
+    <section className="founder-section founder-market" aria-labelledby="market-heading">
+      <Container className="founder-editorialGrid founder-editorialGrid-reverse">
+        <CompanyReveal><Heading number="02" label="Industry Experience & Mumbai Market Knowledge" id="market-heading">The city.<br /><em>The neighbourhood.<br />The details.</em></Heading>
+          <div className="founder-prose"><p>The Director Introduction describes an advisory practice rooted in Western Mumbai and its extended corridors, with a particular focus on Borivali West and neighbourhoods from Gorai to IC Colony.</p><p>Understanding these markets means looking beyond statutory requirements: neighbourhood histories, community needs, local development parameters, City Survey records and micro-market land titles all inform a property discussion.</p><p>The experience narrative covers traditional developer-led redevelopment, society-led alternatives, title investigation, land valuation and the structuring of Joint Venture (JV) and Joint Development Agreements (JDA). Access-constrained Gaothan properties and fragmented ownership illustrate why each assessment needs a detailed local context.</p></div>
+        </CompanyReveal>
+        <CompanyReveal delay={0.08}><EditorialImage id={5} caption="Mumbai urban development context · Client-supplied architectural reference, not a verified company project" /></CompanyReveal>
+      </Container>
+    </section>
 
-        <section aria-label="Founder expertise" className="company-founderExpertise py-20 sm:py-28">
-<CompanyReveal><Container><div className="grid gap-12 lg:grid-cols-12 lg:gap-20"><div className="lg:col-span-4"><SectionHeading align="left" eyebrow="Founder expertise" title={<>A connected view.<br /><span className="italic">A focused approach.</span></>} /><p className="mt-6 text-sm leading-7 text-charcoal/70">The expertise topics explicitly supplied in the client task are listed here.</p></div><ol className="divide-y divide-navy/15 border-t border-navy/15 lg:col-span-8">{pillars.map(([title, text], index) => <li key={title} className="group flex gap-5 py-8 sm:gap-8"><span className="font-serif text-3xl text-gold-700 sm:text-4xl">0{index + 1}</span><div><h3 className="font-serif text-2xl leading-tight motion-safe:transition-colors group-hover:text-gold-800 sm:text-3xl">{title}</h3><p className="mt-4 max-w-xl text-sm leading-7 text-charcoal/75">{text}</p></div></li>)}</ol></div></Container></CompanyReveal>
-</section>
+    <section className="founder-section founder-competencies" aria-labelledby="competencies-heading">
+      <Container><CompanyReveal><Heading number="03" label="The advisory practice" id="competencies-heading">Core Advisory Competencies<br /><em>&amp; Strategic Pillars</em></Heading><p className="founder-sectionIntro">Five connected areas of advisory, spanning property records, society decisions and development planning.</p></CompanyReveal>
+        <div className="founder-competencyGrid">{competencies.map((item, index) => {
+          const Icon = icons[index];
+          return <CompanyReveal key={item.title} delay={(index % 3) * 0.08} className="founder-cardReveal">
+            <PerspectiveCard as="article" className="founder-competencyCard">
+              <div className="founder-cardImage"><Image src={`/images/${item.image}.jpeg`} alt={clientImages[item.image].alt} fill loading="lazy" sizes="(max-width: 767px) calc(100vw - 48px), (max-width: 1023px) 45vw, 380px" /><span>0{index + 1}</span></div>
+              <div className="founder-cardCopy"><Icon size={23} strokeWidth={1.25} aria-hidden="true" /><h3>{item.title}</h3><p>{item.text}</p></div>
+            </PerspectiveCard>
+          </CompanyReveal>;
+        })}</div>
+        <p className="founder-contextNote">Client-supplied visuals are illustrative references. They do not establish company involvement in the properties shown. Advisory scope, legal requirements and development potential depend on the individual engagement.</p>
+      </Container>
+    </section>
 
-        <section aria-label="Leadership philosophy" className="company-founderPhilosophy border-y border-navy/10 bg-white/50 py-20 sm:py-28">
-<CompanyReveal><Container><div className="grid gap-12 lg:grid-cols-12 lg:gap-20"><div className="lg:col-span-7"><p className="mb-7 text-xs font-semibold uppercase tracking-[0.22em] text-gold-800">Leadership philosophy</p><h2 className="max-w-2xl font-serif text-5xl leading-[1.08] sm:text-6xl">Client&apos;s Profit<br /><span className="font-light italic text-gold-800">is Our Success.</span></h2><p className="mt-8 max-w-lg text-sm leading-7 text-charcoal/70">The corporate philosophy supplied in the task is reproduced above. It is not a guarantee of financial returns.</p></div><div className="space-y-6 self-center border-l border-gold/50 pl-7 text-sm leading-7 text-charcoal/75 lg:col-span-5"><p>Company philosophy: Client&apos;s Profit is Our Success.</p><p>Further founder philosophy and background await the original Director Introduction document.</p></div></div></Container></CompanyReveal>
-</section>
+    <section className="founder-section founder-philosophy" aria-labelledby="philosophy-heading">
+      <Container className="founder-editorialGrid">
+        <CompanyReveal><EditorialImage id={11} /></CompanyReveal>
+        <CompanyReveal delay={0.08}><Heading number="04" label="Corporate Philosophy" id="philosophy-heading">“Client’s Profit<br /><em>is Our Success.”</em></Heading>
+          <div className="founder-prose"><p>The company?s motto expresses a focus on long-term asset building and intergenerational value rather than purely transactional real estate activity. It is a statement of philosophy, not a promise of financial returns.</p><p>The Director Introduction emphasizes transparent feasibility reporting, compliance and coordinated technical, legal and operational advisory. The intention is to help property owners and society managing committees understand the decisions and professional inputs involved.</p></div>
+          <details className="founder-serviceList"><summary>Advisory areas listed in the Director Introduction</summary><p>This source list retains the document?s terminology. Scope and availability are subject to the agreed engagement; it does not promise funding, approvals or project outcomes.</p><ol>{sourceServices.map(service => <li key={service}>{service}</li>)}</ol><Link href="/services" className="founder-link">Explore our advisory services <ArrowUpRight size={16} aria-hidden="true" /></Link></details>
+        </CompanyReveal>
+      </Container>
+    </section>
 
-        <section aria-label="Founder expertise" className="company-founderCommitments py-20 sm:py-28">
-<CompanyReveal><Container><SectionHeading align="left" eyebrow="Founder expertise" title={<>Areas of expertise.<br /><span className="italic">As supplied by the client.</span></>} /><div className="mt-12 grid gap-x-16 md:grid-cols-2">{commitments.map(([title, text], index) => <PerspectiveCard as="article" key={title} className="company-expertiseCard border-t border-navy/15 py-8"><p className="mb-5 text-xs text-gold-700">0{index + 1} / Expertise</p><h3 className="font-serif text-3xl leading-tight">{title}</h3><p className="mt-4 max-w-lg text-sm leading-7 text-charcoal/75">{text}</p></PerspectiveCard>)}</div><p className="mt-5 max-w-2xl border-l-2 border-gold pl-5 text-xs leading-6 text-charcoal/65">Detailed commitments and engagement claims await the original Director Introduction document.</p></Container></CompanyReveal>
-</section>
-        <ConsultationCTA title={<>Discuss <span className="font-light italic text-gold-300">Redevelopment Advisory.</span></>} />
-      </main>
-      <Footer />
-    </>
-  );
+    <section className="founder-section" aria-labelledby="commitment-heading">
+      <Container>
+        <div className="founder-editorialGrid"><CompanyReveal><Heading number="05" label="Standard of Professional Integrity" id="commitment-heading">The Aishwarya<br /><em>Commitment</em></Heading><p className="founder-sectionIntro">A considered approach to valuation, disclosure, legal review and coordination throughout the agreed engagement.</p></CompanyReveal><CompanyReveal delay={0.08}><EditorialImage id={18} /></CompanyReveal></div>
+        <div className="founder-commitmentGrid">{commitments.map((item, index) => <CompanyReveal key={item.title} delay={(index % 2) * 0.08}><article className="founder-commitment"><span>0{index + 1}</span><div><h3>{item.title}</h3><p>{item.text}</p></div></article></CompanyReveal>)}</div>
+      </Container>
+    </section>
+
+    <section className="founder-section founder-vision" aria-labelledby="vision-heading">
+      <Container className="founder-editorialGrid">
+        <CompanyReveal><EditorialImage id={24} caption="Residential architecture and shared amenities · Illustrative reference, not a verified Aishwarya project" /></CompanyReveal>
+        <CompanyReveal delay={0.08}><Heading number="06" label="The next chapter" id="vision-heading">Vision for<br /><em>the Future</em></Heading><div className="founder-prose"><p>The Director Introduction places professional advisory within Mumbai?s changing urban landscape: aging housing infrastructure, redevelopment and the relationship between planning policy and community needs.</p><p>Its vision is for ethical, value-conscious advisory that helps individual plot owners, society committees and those facing complex title questions make informed decisions about their properties.</p><p>Begin with a conversation about your society, landholding or advisory requirements. Project-specific options and responsibilities can then be considered with the relevant professional inputs.</p></div><Link href="/contact" className="founder-button">Discuss a consultation <ArrowUpRight size={17} aria-hidden="true" /></Link><p className="founder-contextNote">This leadership overview is not project-specific legal or financial advice. Approvals, funding, timelines and financial outcomes are not guaranteed.</p></CompanyReveal>
+      </Container>
+    </section>
+  </main><Footer /></>;
 }
 
