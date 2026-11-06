@@ -1,5 +1,5 @@
 import { pageMetadata } from "@/lib/seo";
-import Image from "next/image";
+import Image from "@/components/ui/SiteImage";
 import Link from "next/link";
 import { existsSync } from "node:fs";
 import path from "node:path";

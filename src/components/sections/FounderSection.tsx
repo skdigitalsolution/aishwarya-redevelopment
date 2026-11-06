@@ -4,7 +4,7 @@ import React from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { Shield, FileCheck2, Building, Scale, ArrowRight } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "@/components/ui/SiteImage";
 import { Container } from "@/components/layout/Container";
 
 const leadershipExpertise = [

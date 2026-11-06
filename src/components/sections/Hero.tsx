@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Image from "@/components/ui/SiteImage";
 import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
 import { ArrowDown, ArrowRight, Calendar, ShieldCheck, FileCheck, Building2, Landmark } from "lucide-react";

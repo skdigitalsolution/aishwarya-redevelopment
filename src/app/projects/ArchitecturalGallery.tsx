@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "@/components/ui/SiteImage";
 import type { ArchitecturalShowcaseImage } from "@/types/portfolio";
 
 export function ArchitecturalGallery({ images }: { images: readonly ArchitecturalShowcaseImage[] }) {

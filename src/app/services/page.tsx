@@ -1,6 +1,6 @@
 import { pageMetadata } from "@/lib/seo";
 import { ClientImage } from "@/components/ui/ClientImage";
-import Image from "next/image";
+import Image from "@/components/ui/SiteImage";
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight, Phone } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";

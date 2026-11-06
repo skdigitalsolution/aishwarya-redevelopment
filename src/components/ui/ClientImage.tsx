@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "@/components/ui/SiteImage";
 import { clientImages, type ClientImageId } from "@/lib/client-images";
 import { cn } from "@/lib/utils";
 
